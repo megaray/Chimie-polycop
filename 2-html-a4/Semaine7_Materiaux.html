@@ -40,6 +40,35 @@
             }
         });
     </script>
+
+    <!-- ChemDoodle Web Components -->
+    <link rel="stylesheet" href="https://web.chemdoodle.com/install/ChemDoodleWeb.css" type="text/css">
+    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js"></script>
+
+    <style>
+        .chemdoodle-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            gap: 15px;
+        }
+        .molecule-box {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .molecule-box canvas {
+            margin: 10px auto;
+        }
+        .molecule-label {
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
     <!-- COVER PAGE -->
@@ -496,6 +525,96 @@ graph LR
         </tbody>
     </table>
 
+    <div class="visual-concept">
+        <h3>🧪 Structures des Hydrures Moléculaires</h3>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 15px;">
+            Géométries moléculaires des principaux hydrures
+        </p>
+
+        <div class="chemdoodle-container">
+            <div class="molecule-box">
+                <canvas id="mol_ch4_mat" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{CH4}$ - Méthane</div>
+                <div style="font-size: 12px; color: #666;">Tétraédrique</div>
+            </div>
+
+            <div class="molecule-box">
+                <canvas id="mol_nh3_mat" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{NH3}$ - Ammoniac</div>
+                <div style="font-size: 12px; color: #666;">Pyramidale</div>
+            </div>
+
+            <div class="molecule-box">
+                <canvas id="mol_h2o_mat" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{H2O}$ - Eau</div>
+                <div style="font-size: 12px; color: #666;">Coudée (104.5°)</div>
+            </div>
+
+            <div class="molecule-box">
+                <canvas id="mol_hcl_mat" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{HCl}$ - Acide chlorhydrique</div>
+                <div style="font-size: 12px; color: #666;">Linéaire</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    window.addEventListener('load', function() {
+        if (typeof ChemDoodle !== 'undefined') {
+            ChemDoodle.DEFAULT_STYLES.bonds_width_2D = 2;
+            ChemDoodle.DEFAULT_STYLES.atoms_font_size_2D = 14;
+
+            // CH4 - Méthane (tétraédrique)
+            var ch4Canvas = new ChemDoodle.ViewerCanvas('mol_ch4_mat', 150, 150);
+            var ch4 = new ChemDoodle.structures.Molecule();
+            var c = new ChemDoodle.structures.Atom('C', 0, 0);
+            var h1 = new ChemDoodle.structures.Atom('H', 0, 1);
+            var h2 = new ChemDoodle.structures.Atom('H', 1, 0);
+            var h3 = new ChemDoodle.structures.Atom('H', 0, -1);
+            var h4 = new ChemDoodle.structures.Atom('H', -1, 0);
+            ch4.atoms.push(c, h1, h2, h3, h4);
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h1));
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h2));
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h3));
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h4));
+            ch4Canvas.loadMolecule(ch4);
+
+            // NH3 - Ammoniac (pyramidale)
+            var nh3Canvas = new ChemDoodle.ViewerCanvas('mol_nh3_mat', 150, 150);
+            var nh3 = new ChemDoodle.structures.Molecule();
+            var n = new ChemDoodle.structures.Atom('N', 0, 0);
+            var h1_nh3 = new ChemDoodle.structures.Atom('H', -0.9, -0.5);
+            var h2_nh3 = new ChemDoodle.structures.Atom('H', 0.9, -0.5);
+            var h3_nh3 = new ChemDoodle.structures.Atom('H', 0, 0.8);
+            nh3.atoms.push(n, h1_nh3, h2_nh3, h3_nh3);
+            nh3.bonds.push(new ChemDoodle.structures.Bond(n, h1_nh3));
+            nh3.bonds.push(new ChemDoodle.structures.Bond(n, h2_nh3));
+            nh3.bonds.push(new ChemDoodle.structures.Bond(n, h3_nh3));
+            nh3Canvas.loadMolecule(nh3);
+
+            // H2O - Eau (coudée)
+            var h2oCanvas = new ChemDoodle.ViewerCanvas('mol_h2o_mat', 150, 150);
+            var h2o = new ChemDoodle.structures.Molecule();
+            var o = new ChemDoodle.structures.Atom('O', 0, 0);
+            var h_left = new ChemDoodle.structures.Atom('H', -0.8, -0.6);
+            var h_right = new ChemDoodle.structures.Atom('H', 0.8, -0.6);
+            h2o.atoms.push(o, h_left, h_right);
+            h2o.bonds.push(new ChemDoodle.structures.Bond(o, h_left));
+            h2o.bonds.push(new ChemDoodle.structures.Bond(o, h_right));
+            h2oCanvas.loadMolecule(h2o);
+
+            // HCl - Acide chlorhydrique (linéaire)
+            var hclCanvas = new ChemDoodle.ViewerCanvas('mol_hcl_mat', 150, 150);
+            var hcl = new ChemDoodle.structures.Molecule();
+            var h_hcl = new ChemDoodle.structures.Atom('H', -0.7, 0);
+            var cl = new ChemDoodle.structures.Atom('Cl', 0.7, 0);
+            hcl.atoms.push(h_hcl, cl);
+            hcl.bonds.push(new ChemDoodle.structures.Bond(h_hcl, cl));
+            hclCanvas.loadMolecule(hcl);
+        }
+    });
+    </script>
+
     <h2>5.2 Oxydes</h2>
 
     <h3>A. Oxydes Basiques</h3>
@@ -522,6 +641,89 @@ graph LR
             $$\ce{N2O5 + H2O -> 2 HNO3}$$
         </div>
     </div>
+
+    <div class="visual-concept">
+        <h3>🧪 Structures des Principaux Oxydes</h3>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 15px;">
+            Géométries moléculaires des oxydes courants
+        </p>
+
+        <div class="chemdoodle-container">
+            <div class="molecule-box">
+                <canvas id="mol_co2_ox" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{CO2}$ - Dioxyde de carbone</div>
+                <div style="font-size: 12px; color: #666;">Linéaire (O=C=O)</div>
+            </div>
+
+            <div class="molecule-box">
+                <canvas id="mol_so2_ox" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{SO2}$ - Dioxyde de soufre</div>
+                <div style="font-size: 12px; color: #666;">Coudée (V-shape)</div>
+            </div>
+
+            <div class="molecule-box">
+                <canvas id="mol_no2_ox" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{NO2}$ - Dioxyde d'azote</div>
+                <div style="font-size: 12px; color: #666;">Coudée (134°)</div>
+            </div>
+
+            <div class="molecule-box">
+                <canvas id="mol_h2o_ox" width="150" height="150"></canvas>
+                <div class="molecule-label">$\ce{H2O}$ - Eau (oxyde d'H)</div>
+                <div style="font-size: 12px; color: #666;">Coudée (104.5°)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    window.addEventListener('load', function() {
+        if (typeof ChemDoodle !== 'undefined') {
+            // CO2 - Linéaire
+            var co2Canvas = new ChemDoodle.ViewerCanvas('mol_co2_ox', 150, 150);
+            var co2 = new ChemDoodle.structures.Molecule();
+            var o_left = new ChemDoodle.structures.Atom('O', -1.3, 0);
+            var c = new ChemDoodle.structures.Atom('C', 0, 0);
+            var o_right = new ChemDoodle.structures.Atom('O', 1.3, 0);
+            co2.atoms.push(o_left, c, o_right);
+            co2.bonds.push(new ChemDoodle.structures.Bond(o_left, c, 2));
+            co2.bonds.push(new ChemDoodle.structures.Bond(c, o_right, 2));
+            co2Canvas.loadMolecule(co2);
+
+            // SO2 - Coudée
+            var so2Canvas = new ChemDoodle.ViewerCanvas('mol_so2_ox', 150, 150);
+            var so2 = new ChemDoodle.structures.Molecule();
+            var s = new ChemDoodle.structures.Atom('S', 0, 0);
+            var o1_so2 = new ChemDoodle.structures.Atom('O', -0.9, -0.7);
+            var o2_so2 = new ChemDoodle.structures.Atom('O', 0.9, -0.7);
+            so2.atoms.push(s, o1_so2, o2_so2);
+            so2.bonds.push(new ChemDoodle.structures.Bond(s, o1_so2, 2));
+            so2.bonds.push(new ChemDoodle.structures.Bond(s, o2_so2, 2));
+            so2Canvas.loadMolecule(so2);
+
+            // NO2 - Coudée
+            var no2Canvas = new ChemDoodle.ViewerCanvas('mol_no2_ox', 150, 150);
+            var no2 = new ChemDoodle.structures.Molecule();
+            var n = new ChemDoodle.structures.Atom('N', 0, 0);
+            var o1_no2 = new ChemDoodle.structures.Atom('O', -0.9, -0.6);
+            var o2_no2 = new ChemDoodle.structures.Atom('O', 0.9, -0.6);
+            no2.atoms.push(n, o1_no2, o2_no2);
+            no2.bonds.push(new ChemDoodle.structures.Bond(n, o1_no2, 2));
+            no2.bonds.push(new ChemDoodle.structures.Bond(n, o2_no2));
+            no2Canvas.loadMolecule(no2);
+
+            // H2O (reprise pour contexte)
+            var h2oCanvas = new ChemDoodle.ViewerCanvas('mol_h2o_ox', 150, 150);
+            var h2o = new ChemDoodle.structures.Molecule();
+            var o_h2o = new ChemDoodle.structures.Atom('O', 0, 0);
+            var h1 = new ChemDoodle.structures.Atom('H', -0.8, -0.6);
+            var h2 = new ChemDoodle.structures.Atom('H', 0.8, -0.6);
+            h2o.atoms.push(o_h2o, h1, h2);
+            h2o.bonds.push(new ChemDoodle.structures.Bond(o_h2o, h1));
+            h2o.bonds.push(new ChemDoodle.structures.Bond(o_h2o, h2));
+            h2oCanvas.loadMolecule(h2o);
+        }
+    });
+    </script>
 
     <!-- SECTION 6: ELECTRICAL CLASSIFICATION -->
     <div class="page-break"></div>

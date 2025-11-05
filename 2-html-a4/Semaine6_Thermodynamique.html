@@ -40,6 +40,35 @@
             }
         });
     </script>
+
+    <!-- ChemDoodle Web Components -->
+    <link rel="stylesheet" href="https://web.chemdoodle.com/install/ChemDoodleWeb.css" type="text/css">
+    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js"></script>
+
+    <style>
+        .chemdoodle-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            gap: 15px;
+        }
+        .molecule-box {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .molecule-box canvas {
+            margin: 10px auto;
+        }
+        .molecule-label {
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
     <!-- PAGE DE COUVERTURE -->
@@ -478,6 +507,110 @@ stateDiagram-v2
             $$\Delta H = -890 \text{ kJ}$$
         </div>
     </div>
+
+    <div class="visual-concept">
+        <h3>🧪 Molécules de la Réaction de Combustion</h3>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 15px;">
+            Structures moléculaires des réactifs et produits
+        </p>
+
+        <div style="background: #fef2f2; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="text-align: center; color: #dc2626; margin-bottom: 15px;">RÉACTIFS</h4>
+            <div class="chemdoodle-container">
+                <div class="molecule-box">
+                    <canvas id="mol_ch4_thermo" width="150" height="150"></canvas>
+                    <div class="molecule-label">$\ce{CH4}$ - Méthane</div>
+                    <div style="font-size: 12px; color: #666;">Combustible</div>
+                </div>
+
+                <div class="molecule-box">
+                    <canvas id="mol_o2_thermo" width="150" height="150"></canvas>
+                    <div class="molecule-label">$\ce{O2}$ - Dioxygène</div>
+                    <div style="font-size: 12px; color: #666;">Comburant (×2)</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <div style="font-size: 24px; color: #ea580c; font-weight: bold;">
+                🔥 COMBUSTION → ΔH = -890 kJ (exothermique)
+            </div>
+        </div>
+
+        <div style="background: #f0fdf4; padding: 15px; border-radius: 8px;">
+            <h4 style="text-align: center; color: #16a34a; margin-bottom: 15px;">PRODUITS</h4>
+            <div class="chemdoodle-container">
+                <div class="molecule-box">
+                    <canvas id="mol_co2_thermo" width="150" height="150"></canvas>
+                    <div class="molecule-label">$\ce{CO2}$ - Dioxyde de carbone</div>
+                    <div style="font-size: 12px; color: #666;">Gaz à effet de serre</div>
+                </div>
+
+                <div class="molecule-box">
+                    <canvas id="mol_h2o_thermo" width="150" height="150"></canvas>
+                    <div class="molecule-label">$\ce{H2O}$ - Eau</div>
+                    <div style="font-size: 12px; color: #666;">État liquide (×2)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    window.addEventListener('load', function() {
+        if (typeof ChemDoodle !== 'undefined') {
+            // Configuration
+            ChemDoodle.DEFAULT_STYLES.bonds_width_2D = 2;
+            ChemDoodle.DEFAULT_STYLES.bonds_saturationWidth_2D = 4;
+            ChemDoodle.DEFAULT_STYLES.atoms_font_size_2D = 14;
+
+            // CH4
+            var ch4Canvas = new ChemDoodle.ViewerCanvas('mol_ch4_thermo', 150, 150);
+            var ch4 = new ChemDoodle.structures.Molecule();
+            var c = new ChemDoodle.structures.Atom('C', 0, 0);
+            var h1 = new ChemDoodle.structures.Atom('H', 0, 1);
+            var h2 = new ChemDoodle.structures.Atom('H', 1, 0);
+            var h3 = new ChemDoodle.structures.Atom('H', 0, -1);
+            var h4 = new ChemDoodle.structures.Atom('H', -1, 0);
+            ch4.atoms.push(c, h1, h2, h3, h4);
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h1));
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h2));
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h3));
+            ch4.bonds.push(new ChemDoodle.structures.Bond(c, h4));
+            ch4Canvas.loadMolecule(ch4);
+
+            // O2
+            var o2Canvas = new ChemDoodle.ViewerCanvas('mol_o2_thermo', 150, 150);
+            var o2 = new ChemDoodle.structures.Molecule();
+            var o1 = new ChemDoodle.structures.Atom('O', -0.65, 0);
+            var o2_atom = new ChemDoodle.structures.Atom('O', 0.65, 0);
+            o2.atoms.push(o1, o2_atom);
+            o2.bonds.push(new ChemDoodle.structures.Bond(o1, o2_atom, 2));
+            o2Canvas.loadMolecule(o2);
+
+            // CO2
+            var co2Canvas = new ChemDoodle.ViewerCanvas('mol_co2_thermo', 150, 150);
+            var co2 = new ChemDoodle.structures.Molecule();
+            var o_left = new ChemDoodle.structures.Atom('O', -1.3, 0);
+            var c_co2 = new ChemDoodle.structures.Atom('C', 0, 0);
+            var o_right = new ChemDoodle.structures.Atom('O', 1.3, 0);
+            co2.atoms.push(o_left, c_co2, o_right);
+            co2.bonds.push(new ChemDoodle.structures.Bond(o_left, c_co2, 2));
+            co2.bonds.push(new ChemDoodle.structures.Bond(c_co2, o_right, 2));
+            co2Canvas.loadMolecule(co2);
+
+            // H2O
+            var h2oCanvas = new ChemDoodle.ViewerCanvas('mol_h2o_thermo', 150, 150);
+            var h2o = new ChemDoodle.structures.Molecule();
+            var o = new ChemDoodle.structures.Atom('O', 0, 0);
+            var h_left = new ChemDoodle.structures.Atom('H', -0.8, -0.6);
+            var h_right = new ChemDoodle.structures.Atom('H', 0.8, -0.6);
+            h2o.atoms.push(o, h_left, h_right);
+            h2o.bonds.push(new ChemDoodle.structures.Bond(o, h_left));
+            h2o.bonds.push(new ChemDoodle.structures.Bond(o, h_right));
+            h2oCanvas.loadMolecule(h2o);
+        }
+    });
+    </script>
 
     <div class="visual-concept">
         <h3>💡 Visualisation : Combustion du Méthane</h3>
