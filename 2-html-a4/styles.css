@@ -439,3 +439,212 @@ p, li, td, th {
     margin: 0;
   }
 }
+
+/* ============================================
+   TABLEAU PÉRIODIQUE INTERACTIF
+   ============================================ */
+
+.interactive-periodic-table {
+  background: #f8fafc;
+  border: 2px solid var(--epfl-primary);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Contrôles de sélection */
+.pt-controls {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pt-select {
+  padding: 8px 15px;
+  font-size: 12pt;
+  border: 2px solid var(--epfl-primary);
+  border-radius: 5px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.pt-select:hover {
+  background: var(--epfl-blue-light);
+  transform: translateY(-1px);
+}
+
+.pt-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
+}
+
+/* Légende */
+.pt-legend {
+  padding: 15px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 10pt;
+}
+
+/* Grille du tableau périodique */
+.periodic-table-grid {
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  gap: 3px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Case d'élément */
+.element {
+  aspect-ratio: 1;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-size: 9pt;
+}
+
+.element .atomic-number {
+  font-size: 7pt;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.element .symbol {
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 2px 0;
+}
+
+.element .name {
+  font-size: 6pt;
+  opacity: 0.9;
+  line-height: 1;
+  margin: 2px 0;
+}
+
+.element .value {
+  font-size: 8pt;
+  font-weight: bold;
+  margin-top: 2px;
+  background: rgba(255,255,255,0.3);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* Groupes d'éléments (pour périodes 6-7) */
+.element-group {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 9pt;
+  transition: all 0.3s ease;
+}
+
+.element-group .symbol {
+  font-size: 11pt;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.element-group .name {
+  font-size: 8pt;
+  opacity: 0.9;
+}
+
+/* Cases vides */
+.empty {
+  background: transparent;
+}
+
+/* Media query pour impression - Cacher le tableau interactif */
+@media print {
+  .interactive-periodic-table {
+    display: none !important;
+  }
+}
+
+/* Media query pour écrans moyens */
+@media screen and (max-width: 1200px) {
+  .periodic-table-grid {
+    gap: 2px;
+  }
+
+  .element {
+    font-size: 8pt;
+  }
+
+  .element .symbol {
+    font-size: 12pt;
+  }
+
+  .element .name {
+    font-size: 5pt;
+  }
+
+  .element .value {
+    font-size: 7pt;
+  }
+}
+
+/* Media query pour petits écrans */
+@media screen and (max-width: 800px) {
+  .interactive-periodic-table {
+    padding: 10px;
+  }
+
+  .periodic-table-grid {
+    gap: 1px;
+  }
+
+  .element {
+    font-size: 7pt;
+    padding: 3px;
+  }
+
+  .element .symbol {
+    font-size: 10pt;
+  }
+
+  .element .name {
+    display: none; /* Masquer les noms sur petits écrans */
+  }
+
+  .element .value {
+    font-size: 6pt;
+  }
+
+  .pt-controls {
+    padding: 10px;
+  }
+
+  .pt-select {
+    font-size: 10pt;
+    padding: 6px 12px;
+  }
+}

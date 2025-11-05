@@ -320,7 +320,457 @@ graph LR
         <p><strong>Diminue</strong> → de gauche à droite ($Z_{\text{eff}}$ augmente)</p>
     </div>
     <div class="visualPeriodicTable">
-        
+        <div class="interactive-periodic-table">
+            <h3 style="text-align: center; margin-bottom: 10px; color: #ff0000;">Tableau Périodique Interactif</h3>
+
+            <!-- Contrôles de sélection -->
+            <div class="pt-controls">
+                <label for="property-select" style="font-weight: bold; margin-right: 10px;">Propriété affichée :</label>
+                <select id="property-select" class="pt-select">
+                    <option value="blocks">Blocks (s, p, d, f)</option>
+                    <option value="electronegativity">Électronégativité</option>
+                    <option value="ionization">Énergie d'ionisation</option>
+                    <option value="bonding">Type de liaison (Salin/Métallique/Moléculaire)</option>
+                    <option value="polarizability">Polarisabilité</option>
+                    <option value="density">Densité</option>
+                    <option value="radius">Rayon atomique</option>
+                </select>
+            </div>
+
+            <!-- Légende -->
+            <div class="pt-legend" id="legend">
+                <!-- La légende sera mise à jour par JavaScript -->
+            </div>
+
+            <!-- Tableau périodique -->
+            <div class="periodic-table-grid">
+                <!-- Période 1 -->
+                <div class="element s-block" data-element="H" data-period="1" data-group="1"
+                     data-electronegativity="2.2" data-ionization="1312" data-bonding="molecular"
+                     data-polarizability="4.5" data-density="0.09" data-radius="37">
+                    <span class="atomic-number">1</span>
+                    <span class="symbol">H</span>
+                    <span class="name">Hydrogène</span>
+                    <span class="value"></span>
+                </div>
+                <div class="empty" style="grid-column: 2 / 18;"></div>
+                <div class="element s-block" data-element="He" data-period="1" data-group="18"
+                     data-electronegativity="0" data-ionization="2372" data-bonding="molecular"
+                     data-polarizability="1.4" data-density="0.18" data-radius="32">
+                    <span class="atomic-number">2</span>
+                    <span class="symbol">He</span>
+                    <span class="name">Hélium</span>
+                    <span class="value"></span>
+                </div>
+
+                <!-- Période 2 -->
+                <div class="element s-block" data-element="Li" data-period="2" data-group="1"
+                     data-electronegativity="0.98" data-ionization="520" data-bonding="metallic"
+                     data-polarizability="24.3" data-density="0.53" data-radius="152">
+                    <span class="atomic-number">3</span>
+                    <span class="symbol">Li</span>
+                    <span class="name">Lithium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element s-block" data-element="Be" data-period="2" data-group="2"
+                     data-electronegativity="1.57" data-ionization="899" data-bonding="metallic"
+                     data-polarizability="5.6" data-density="1.85" data-radius="112">
+                    <span class="atomic-number">4</span>
+                    <span class="symbol">Be</span>
+                    <span class="name">Béryllium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="empty" style="grid-column: 3 / 13;"></div>
+                <div class="element p-block" data-element="B" data-period="2" data-group="13"
+                     data-electronegativity="2.04" data-ionization="801" data-bonding="molecular"
+                     data-polarizability="3.0" data-density="2.34" data-radius="85">
+                    <span class="atomic-number">5</span>
+                    <span class="symbol">B</span>
+                    <span class="name">Bore</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="C" data-period="2" data-group="14"
+                     data-electronegativity="2.55" data-ionization="1086" data-bonding="molecular"
+                     data-polarizability="1.8" data-density="2.26" data-radius="77">
+                    <span class="atomic-number">6</span>
+                    <span class="symbol">C</span>
+                    <span class="name">Carbone</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="N" data-period="2" data-group="15"
+                     data-electronegativity="3.04" data-ionization="1402" data-bonding="molecular"
+                     data-polarizability="1.1" data-density="1.25" data-radius="75">
+                    <span class="atomic-number">7</span>
+                    <span class="symbol">N</span>
+                    <span class="name">Azote</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="O" data-period="2" data-group="16"
+                     data-electronegativity="3.44" data-ionization="1314" data-bonding="molecular"
+                     data-polarizability="0.8" data-density="1.43" data-radius="73">
+                    <span class="atomic-number">8</span>
+                    <span class="symbol">O</span>
+                    <span class="name">Oxygène</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="F" data-period="2" data-group="17"
+                     data-electronegativity="3.98" data-ionization="1681" data-bonding="molecular"
+                     data-polarizability="0.6" data-density="1.70" data-radius="71">
+                    <span class="atomic-number">9</span>
+                    <span class="symbol">F</span>
+                    <span class="name">Fluor</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Ne" data-period="2" data-group="18"
+                     data-electronegativity="0" data-ionization="2081" data-bonding="molecular"
+                     data-polarizability="0.4" data-density="0.90" data-radius="69">
+                    <span class="atomic-number">10</span>
+                    <span class="symbol">Ne</span>
+                    <span class="name">Néon</span>
+                    <span class="value"></span>
+                </div>
+
+                <!-- Période 3 -->
+                <div class="element s-block" data-element="Na" data-period="3" data-group="1"
+                     data-electronegativity="0.93" data-ionization="496" data-bonding="metallic"
+                     data-polarizability="24.1" data-density="0.97" data-radius="186">
+                    <span class="atomic-number">11</span>
+                    <span class="symbol">Na</span>
+                    <span class="name">Sodium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element s-block" data-element="Mg" data-period="3" data-group="2"
+                     data-electronegativity="1.31" data-ionization="738" data-bonding="metallic"
+                     data-polarizability="10.6" data-density="1.74" data-radius="160">
+                    <span class="atomic-number">12</span>
+                    <span class="symbol">Mg</span>
+                    <span class="name">Magnésium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="empty" style="grid-column: 3 / 13;"></div>
+                <div class="element p-block" data-element="Al" data-period="3" data-group="13"
+                     data-electronegativity="1.61" data-ionization="578" data-bonding="metallic"
+                     data-polarizability="6.8" data-density="2.70" data-radius="143">
+                    <span class="atomic-number">13</span>
+                    <span class="symbol">Al</span>
+                    <span class="name">Aluminium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Si" data-period="3" data-group="14"
+                     data-electronegativity="1.90" data-ionization="786" data-bonding="molecular"
+                     data-polarizability="5.4" data-density="2.33" data-radius="118">
+                    <span class="atomic-number">14</span>
+                    <span class="symbol">Si</span>
+                    <span class="name">Silicium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="P" data-period="3" data-group="15"
+                     data-electronegativity="2.19" data-ionization="1012" data-bonding="molecular"
+                     data-polarizability="3.6" data-density="1.82" data-radius="110">
+                    <span class="atomic-number">15</span>
+                    <span class="symbol">P</span>
+                    <span class="name">Phosphore</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="S" data-period="3" data-group="16"
+                     data-electronegativity="2.58" data-ionization="1000" data-bonding="molecular"
+                     data-polarizability="2.9" data-density="2.07" data-radius="103">
+                    <span class="atomic-number">16</span>
+                    <span class="symbol">S</span>
+                    <span class="name">Soufre</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Cl" data-period="3" data-group="17"
+                     data-electronegativity="3.16" data-ionization="1251" data-bonding="molecular"
+                     data-polarizability="2.2" data-density="3.21" data-radius="99">
+                    <span class="atomic-number">17</span>
+                    <span class="symbol">Cl</span>
+                    <span class="name">Chlore</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Ar" data-period="3" data-group="18"
+                     data-electronegativity="0" data-ionization="1521" data-bonding="molecular"
+                     data-polarizability="1.6" data-density="1.78" data-radius="97">
+                    <span class="atomic-number">18</span>
+                    <span class="symbol">Ar</span>
+                    <span class="name">Argon</span>
+                    <span class="value"></span>
+                </div>
+
+                <!-- Période 4 -->
+                <div class="element s-block" data-element="K" data-period="4" data-group="1"
+                     data-electronegativity="0.82" data-ionization="419" data-bonding="metallic"
+                     data-polarizability="43.4" data-density="0.86" data-radius="227">
+                    <span class="atomic-number">19</span>
+                    <span class="symbol">K</span>
+                    <span class="name">Potassium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element s-block" data-element="Ca" data-period="4" data-group="2"
+                     data-electronegativity="1.00" data-ionization="590" data-bonding="metallic"
+                     data-polarizability="22.8" data-density="1.55" data-radius="197">
+                    <span class="atomic-number">20</span>
+                    <span class="symbol">Ca</span>
+                    <span class="name">Calcium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Sc" data-period="4" data-group="3"
+                     data-electronegativity="1.36" data-ionization="633" data-bonding="metallic"
+                     data-polarizability="17.8" data-density="2.99" data-radius="162">
+                    <span class="atomic-number">21</span>
+                    <span class="symbol">Sc</span>
+                    <span class="name">Scandium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Ti" data-period="4" data-group="4"
+                     data-electronegativity="1.54" data-ionization="658" data-bonding="metallic"
+                     data-polarizability="14.6" data-density="4.51" data-radius="147">
+                    <span class="atomic-number">22</span>
+                    <span class="symbol">Ti</span>
+                    <span class="name">Titane</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="V" data-period="4" data-group="5"
+                     data-electronegativity="1.63" data-ionization="650" data-bonding="metallic"
+                     data-polarizability="12.4" data-density="6.11" data-radius="134">
+                    <span class="atomic-number">23</span>
+                    <span class="symbol">V</span>
+                    <span class="name">Vanadium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Cr" data-period="4" data-group="6"
+                     data-electronegativity="1.66" data-ionization="653" data-bonding="metallic"
+                     data-polarizability="11.6" data-density="7.19" data-radius="128">
+                    <span class="atomic-number">24</span>
+                    <span class="symbol">Cr</span>
+                    <span class="name">Chrome</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Mn" data-period="4" data-group="7"
+                     data-electronegativity="1.55" data-ionization="717" data-bonding="metallic"
+                     data-polarizability="9.4" data-density="7.43" data-radius="127">
+                    <span class="atomic-number">25</span>
+                    <span class="symbol">Mn</span>
+                    <span class="name">Manganèse</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Fe" data-period="4" data-group="8"
+                     data-electronegativity="1.83" data-ionization="762" data-bonding="metallic"
+                     data-polarizability="8.4" data-density="7.87" data-radius="126">
+                    <span class="atomic-number">26</span>
+                    <span class="symbol">Fe</span>
+                    <span class="name">Fer</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Co" data-period="4" data-group="9"
+                     data-electronegativity="1.88" data-ionization="760" data-bonding="metallic"
+                     data-polarizability="7.5" data-density="8.90" data-radius="125">
+                    <span class="atomic-number">27</span>
+                    <span class="symbol">Co</span>
+                    <span class="name">Cobalt</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Ni" data-period="4" data-group="10"
+                     data-electronegativity="1.91" data-ionization="737" data-bonding="metallic"
+                     data-polarizability="6.8" data-density="8.91" data-radius="124">
+                    <span class="atomic-number">28</span>
+                    <span class="symbol">Ni</span>
+                    <span class="name">Nickel</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Cu" data-period="4" data-group="11"
+                     data-electronegativity="1.90" data-ionization="745" data-bonding="metallic"
+                     data-polarizability="6.1" data-density="8.96" data-radius="128">
+                    <span class="atomic-number">29</span>
+                    <span class="symbol">Cu</span>
+                    <span class="name">Cuivre</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element d-block" data-element="Zn" data-period="4" data-group="12"
+                     data-electronegativity="1.65" data-ionization="906" data-bonding="metallic"
+                     data-polarizability="5.8" data-density="7.13" data-radius="134">
+                    <span class="atomic-number">30</span>
+                    <span class="symbol">Zn</span>
+                    <span class="name">Zinc</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Ga" data-period="4" data-group="13"
+                     data-electronegativity="1.81" data-ionization="579" data-bonding="metallic"
+                     data-polarizability="8.1" data-density="5.91" data-radius="135">
+                    <span class="atomic-number">31</span>
+                    <span class="symbol">Ga</span>
+                    <span class="name">Gallium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Ge" data-period="4" data-group="14"
+                     data-electronegativity="2.01" data-ionization="762" data-bonding="molecular"
+                     data-polarizability="6.0" data-density="5.32" data-radius="122">
+                    <span class="atomic-number">32</span>
+                    <span class="symbol">Ge</span>
+                    <span class="name">Germanium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="As" data-period="4" data-group="15"
+                     data-electronegativity="2.18" data-ionization="947" data-bonding="molecular"
+                     data-polarizability="4.3" data-density="5.72" data-radius="120">
+                    <span class="atomic-number">33</span>
+                    <span class="symbol">As</span>
+                    <span class="name">Arsenic</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Se" data-period="4" data-group="16"
+                     data-electronegativity="2.55" data-ionization="941" data-bonding="molecular"
+                     data-polarizability="3.8" data-density="4.79" data-radius="119">
+                    <span class="atomic-number">34</span>
+                    <span class="symbol">Se</span>
+                    <span class="name">Sélénium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Br" data-period="4" data-group="17"
+                     data-electronegativity="2.96" data-ionization="1140" data-bonding="molecular"
+                     data-polarizability="3.1" data-density="3.12" data-radius="114">
+                    <span class="atomic-number">35</span>
+                    <span class="symbol">Br</span>
+                    <span class="name">Brome</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Kr" data-period="4" data-group="18"
+                     data-electronegativity="3.00" data-ionization="1351" data-bonding="molecular"
+                     data-polarizability="2.5" data-density="3.75" data-radius="110">
+                    <span class="atomic-number">36</span>
+                    <span class="symbol">Kr</span>
+                    <span class="name">Krypton</span>
+                    <span class="value"></span>
+                </div>
+
+                <!-- Période 5 (simplifiée) -->
+                <div class="element s-block" data-element="Rb" data-period="5" data-group="1"
+                     data-electronegativity="0.82" data-ionization="403" data-bonding="metallic"
+                     data-polarizability="47.3" data-density="1.53" data-radius="248">
+                    <span class="atomic-number">37</span>
+                    <span class="symbol">Rb</span>
+                    <span class="name">Rubidium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element s-block" data-element="Sr" data-period="5" data-group="2"
+                     data-electronegativity="0.95" data-ionization="549" data-bonding="metallic"
+                     data-polarizability="27.6" data-density="2.63" data-radius="215">
+                    <span class="atomic-number">38</span>
+                    <span class="symbol">Sr</span>
+                    <span class="name">Strontium</span>
+                    <span class="value"></span>
+                </div>
+                <!-- d-block période 5 (simplifié - affichage groupé) -->
+                <div class="element-group d-block" style="grid-column: 3 / 13;">
+                    <span class="symbol">Y → Cd</span>
+                    <span class="name">Métaux de transition 4d</span>
+                </div>
+                <div class="element p-block" data-element="In" data-period="5" data-group="13"
+                     data-electronegativity="1.78" data-ionization="558" data-bonding="metallic"
+                     data-polarizability="10.2" data-density="7.31" data-radius="167">
+                    <span class="atomic-number">49</span>
+                    <span class="symbol">In</span>
+                    <span class="name">Indium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Sn" data-period="5" data-group="14"
+                     data-electronegativity="1.96" data-ionization="709" data-bonding="metallic"
+                     data-polarizability="7.7" data-density="7.31" data-radius="140">
+                    <span class="atomic-number">50</span>
+                    <span class="symbol">Sn</span>
+                    <span class="name">Étain</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Sb" data-period="5" data-group="15"
+                     data-electronegativity="2.05" data-ionization="834" data-bonding="molecular"
+                     data-polarizability="6.6" data-density="6.68" data-radius="140">
+                    <span class="atomic-number">51</span>
+                    <span class="symbol">Sb</span>
+                    <span class="name">Antimoine</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Te" data-period="5" data-group="16"
+                     data-electronegativity="2.10" data-ionization="869" data-bonding="molecular"
+                     data-polarizability="5.5" data-density="6.24" data-radius="136">
+                    <span class="atomic-number">52</span>
+                    <span class="symbol">Te</span>
+                    <span class="name">Tellure</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="I" data-period="5" data-group="17"
+                     data-electronegativity="2.66" data-ionization="1008" data-bonding="molecular"
+                     data-polarizability="5.4" data-density="4.93" data-radius="133">
+                    <span class="atomic-number">53</span>
+                    <span class="symbol">I</span>
+                    <span class="name">Iode</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element p-block" data-element="Xe" data-period="5" data-group="18"
+                     data-electronegativity="2.60" data-ionization="1170" data-bonding="molecular"
+                     data-polarizability="4.0" data-density="5.89" data-radius="131">
+                    <span class="atomic-number">54</span>
+                    <span class="symbol">Xe</span>
+                    <span class="name">Xénon</span>
+                    <span class="value"></span>
+                </div>
+
+                <!-- Période 6 (très simplifiée) -->
+                <div class="element s-block" data-element="Cs" data-period="6" data-group="1"
+                     data-electronegativity="0.79" data-ionization="376" data-bonding="metallic"
+                     data-polarizability="59.6" data-density="1.93" data-radius="265">
+                    <span class="atomic-number">55</span>
+                    <span class="symbol">Cs</span>
+                    <span class="name">Césium</span>
+                    <span class="value"></span>
+                </div>
+                <div class="element s-block" data-element="Ba" data-period="6" data-group="2"
+                     data-electronegativity="0.89" data-ionization="503" data-bonding="metallic"
+                     data-polarizability="39.7" data-density="3.51" data-radius="222">
+                    <span class="atomic-number">56</span>
+                    <span class="symbol">Ba</span>
+                    <span class="name">Baryum</span>
+                    <span class="value"></span>
+                </div>
+                <!-- d-block + f-block période 6 (très simplifié) -->
+                <div class="element-group d-block" style="grid-column: 3 / 13;">
+                    <span class="symbol">La → Hg</span>
+                    <span class="name">Métaux de transition 5d + Lanthanides</span>
+                </div>
+                <div class="element-group p-block" style="grid-column: 13 / 19;">
+                    <span class="symbol">Tl → Rn</span>
+                    <span class="name">Groupe 13-18 Période 6</span>
+                </div>
+
+                <!-- Période 7 (très simplifiée) -->
+                <div class="element-group s-block" style="grid-column: 1 / 3;">
+                    <span class="symbol">Fr, Ra</span>
+                    <span class="name">Groupe 1-2 Période 7</span>
+                </div>
+                <div class="element-group d-block" style="grid-column: 3 / 13;">
+                    <span class="symbol">Ac → Cn</span>
+                    <span class="name">Métaux de transition 6d + Actinides</span>
+                </div>
+                <div class="element-group p-block" style="grid-column: 13 / 19;">
+                    <span class="symbol">Nh → Og</span>
+                    <span class="name">Groupe 13-18 Période 7</span>
+                </div>
+
+                <!-- Séparation Lanthanides/Actinides -->
+                <div style="grid-column: 1 / 19; height: 10px;"></div>
+
+                <!-- Lanthanides (f-block) -->
+                <div class="element-group f-block" style="grid-column: 1 / 19;">
+                    <span class="symbol">Lanthanides (La-Lu)</span>
+                    <span class="name">4f¹⁻¹⁴ - Terres rares</span>
+                </div>
+
+                <!-- Actinides (f-block) -->
+                <div class="element-group f-block" style="grid-column: 1 / 19;">
+                    <span class="symbol">Actinides (Ac-Lr)</span>
+                    <span class="name">5f¹⁻¹⁴ - Éléments radioactifs</span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="visual-concept">
         <h3>Visualisation : Tendances Périodiques</h3>
@@ -1307,5 +1757,216 @@ graph TB
         <p>École Polytechnique Fédérale de Lausanne </p>
         <img src="/icon/" alt="EPFL" height="50" width="100">
     </footer>
+
+    <!-- JavaScript pour le tableau périodique interactif -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const propertySelect = document.getElementById('property-select');
+            const legend = document.getElementById('legend');
+            const elements = document.querySelectorAll('.element');
+
+            // Fonction pour obtenir une couleur basée sur une valeur et une échelle
+            function getColorForValue(value, min, max, reverse = false) {
+                if (value === null || value === undefined || value === 0) {
+                    return '#e5e7eb'; // Gris clair pour les valeurs manquantes
+                }
+
+                const normalized = (value - min) / (max - min);
+                const intensity = reverse ? 1 - normalized : normalized;
+
+                // Échelle de couleurs : bleu (faible) -> vert -> jaune -> orange -> rouge (élevé)
+                if (intensity < 0.25) {
+                    const t = intensity / 0.25;
+                    return `rgb(${Math.round(33 + (59-33)*t)}, ${Math.round(150 + (178-150)*t)}, ${Math.round(243 + (235-243)*t)})`;
+                } else if (intensity < 0.5) {
+                    const t = (intensity - 0.25) / 0.25;
+                    return `rgb(${Math.round(59 + (16-59)*t)}, ${Math.round(178 + (185-178)*t)}, ${Math.round(235 + (129-235)*t)})`;
+                } else if (intensity < 0.75) {
+                    const t = (intensity - 0.5) / 0.25;
+                    return `rgb(${Math.round(16 + (251-16)*t)}, ${Math.round(185 + (191-185)*t)}, ${Math.round(129 + (36-129)*t)})`;
+                } else {
+                    const t = (intensity - 0.75) / 0.25;
+                    return `rgb(${Math.round(251 + (220-251)*t)}, ${Math.round(191 + (38-191)*t)}, ${Math.round(36 + (38-36)*t)})`;
+                }
+            }
+
+            // Fonction pour mettre à jour l'affichage selon la propriété sélectionnée
+            function updateDisplay(property) {
+                switch(property) {
+                    case 'blocks':
+                        updateBlocks();
+                        break;
+                    case 'electronegativity':
+                        updateProperty('electronegativity', 'Électronégativité', 0, 4, false);
+                        break;
+                    case 'ionization':
+                        updateProperty('ionization', 'Énergie d\'ionisation (kJ/mol)', 300, 2500, false);
+                        break;
+                    case 'bonding':
+                        updateBonding();
+                        break;
+                    case 'polarizability':
+                        updateProperty('polarizability', 'Polarisabilité (Å³)', 0, 60, false);
+                        break;
+                    case 'density':
+                        updateProperty('density', 'Densité (g/cm³)', 0, 25, false);
+                        break;
+                    case 'radius':
+                        updateProperty('radius', 'Rayon atomique (pm)', 30, 280, true);
+                        break;
+                }
+            }
+
+            // Affichage des blocks
+            function updateBlocks() {
+                legend.innerHTML = `
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #ef4444; border-radius: 3px; vertical-align: middle;"></span> s-block</div>
+                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #3b82f6; border-radius: 3px; vertical-align: middle;"></span> p-block</div>
+                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #fbbf24; border-radius: 3px; vertical-align: middle;"></span> d-block</div>
+                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #10b981; border-radius: 3px; vertical-align: middle;"></span> f-block</div>
+                    </div>
+                `;
+
+                elements.forEach(el => {
+                    el.querySelector('.value').textContent = '';
+                    el.style.opacity = '1';
+
+                    if (el.classList.contains('s-block')) {
+                        el.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+                        el.style.color = 'white';
+                    } else if (el.classList.contains('p-block')) {
+                        el.style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
+                        el.style.color = 'white';
+                    } else if (el.classList.contains('d-block')) {
+                        el.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
+                        el.style.color = '#1e3a8a';
+                    } else if (el.classList.contains('f-block')) {
+                        el.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                        el.style.color = 'white';
+                    }
+                });
+
+                // Style pour les groupes d'éléments
+                document.querySelectorAll('.element-group').forEach(group => {
+                    group.style.opacity = '1';
+                    if (group.classList.contains('s-block')) {
+                        group.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+                        group.style.color = 'white';
+                    } else if (group.classList.contains('p-block')) {
+                        group.style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
+                        group.style.color = 'white';
+                    } else if (group.classList.contains('d-block')) {
+                        group.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
+                        group.style.color = '#1e3a8a';
+                    } else if (group.classList.contains('f-block')) {
+                        group.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                        group.style.color = 'white';
+                    }
+                });
+            }
+
+            // Affichage du type de liaison
+            function updateBonding() {
+                legend.innerHTML = `
+                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #dc2626; border-radius: 3px; vertical-align: middle;"></span> Salin (ionique)</div>
+                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #f59e0b; border-radius: 3px; vertical-align: middle;"></span> Métallique</div>
+                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #2563eb; border-radius: 3px; vertical-align: middle;"></span> Moléculaire (covalent)</div>
+                    </div>
+                `;
+
+                elements.forEach(el => {
+                    const bonding = el.getAttribute('data-bonding');
+                    el.querySelector('.value').textContent = '';
+                    el.style.opacity = '1';
+
+                    if (bonding === 'salin') {
+                        el.style.background = '#dc2626';
+                        el.style.color = 'white';
+                    } else if (bonding === 'metallic') {
+                        el.style.background = '#f59e0b';
+                        el.style.color = '#1e3a8a';
+                    } else if (bonding === 'molecular') {
+                        el.style.background = '#2563eb';
+                        el.style.color = 'white';
+                    }
+                });
+
+                // Masquer les groupes d'éléments pour cette vue
+                document.querySelectorAll('.element-group').forEach(group => {
+                    group.style.opacity = '0.3';
+                });
+            }
+
+            // Affichage d'une propriété numérique
+            function updateProperty(dataAttr, label, min, max, reverse = false) {
+                // Créer la légende avec un gradient
+                const gradientStyle = reverse
+                    ? 'background: linear-gradient(to right, #dc2626, #f59e0b, #fbbf24, #10b981, #2563eb);'
+                    : 'background: linear-gradient(to right, #2563eb, #10b981, #fbbf24, #f59e0b, #dc2626);';
+
+                legend.innerHTML = `
+                    <div style="text-align: center;">
+                        <div style="font-weight: bold; margin-bottom: 5px;">${label}</div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <span>${reverse ? 'Élevé' : 'Faible'}</span>
+                            <div style="width: 200px; height: 20px; ${gradientStyle} border-radius: 3px;"></div>
+                            <span>${reverse ? 'Faible' : 'Élevé'}</span>
+                        </div>
+                    </div>
+                `;
+
+                elements.forEach(el => {
+                    const value = parseFloat(el.getAttribute(`data-${dataAttr}`));
+                    const valueSpan = el.querySelector('.value');
+
+                    if (value && value > 0) {
+                        const color = getColorForValue(value, min, max, reverse);
+                        el.style.background = color;
+                        el.style.color = '#1e3a8a';
+                        el.style.opacity = '1';
+
+                        // Afficher la valeur
+                        valueSpan.textContent = value.toFixed(dataAttr === 'electronegativity' ? 2 :
+                                                             dataAttr === 'density' ? 1 : 0);
+                    } else {
+                        el.style.background = '#e5e7eb';
+                        el.style.color = '#6b7280';
+                        el.style.opacity = '0.5';
+                        valueSpan.textContent = 'N/A';
+                    }
+                });
+
+                // Masquer les groupes d'éléments pour cette vue
+                document.querySelectorAll('.element-group').forEach(group => {
+                    group.style.opacity = '0.3';
+                });
+            }
+
+            // Event listener pour le changement de propriété
+            propertySelect.addEventListener('change', function() {
+                updateDisplay(this.value);
+            });
+
+            // Initialiser l'affichage avec les blocks
+            updateDisplay('blocks');
+
+            // Effet hover sur les éléments
+            elements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+                    this.style.zIndex = '10';
+                });
+
+                el.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                    this.style.zIndex = '1';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
