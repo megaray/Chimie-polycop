@@ -4,7 +4,6 @@ package-lock.json
 
 # Build output
 dist/
-output/*.pdf
 
 # OS files
 .DS_Store
