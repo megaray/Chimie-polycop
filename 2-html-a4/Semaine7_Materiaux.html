@@ -22,7 +22,7 @@
             loader: {load: ['[tex]/mhchem']}
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Mermaid.js for Diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
@@ -43,7 +43,7 @@
 
     <!-- ChemDoodle Web Components -->
     <link rel="stylesheet" href="https://web.chemdoodle.com/install/ChemDoodleWeb.css" type="text/css">
-    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js"></script>
+    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js" defer></script>
 
     <style>
         .chemdoodle-container {
@@ -559,8 +559,14 @@ graph LR
     </div>
 
     <script>
-    window.addEventListener('load', function() {
-        if (typeof ChemDoodle !== 'undefined') {
+    function initChemDoodleHydrides() {
+        if (typeof ChemDoodle === 'undefined') {
+            // Retry if not loaded yet
+            setTimeout(initChemDoodleHydrides, 100);
+            return;
+        }
+
+        try {
             ChemDoodle.DEFAULT_STYLES.bonds_width_2D = 2;
             ChemDoodle.DEFAULT_STYLES.atoms_font_size_2D = 14;
 
@@ -611,8 +617,19 @@ graph LR
             hcl.atoms.push(h_hcl, cl);
             hcl.bonds.push(new ChemDoodle.structures.Bond(h_hcl, cl));
             hclCanvas.loadMolecule(hcl);
+
+            console.log('ChemDoodle hydrides loaded successfully (Semaine 7)');
+        } catch (error) {
+            console.error('Error initializing ChemDoodle hydrides:', error);
         }
-    });
+    }
+
+    // Start initialization after DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChemDoodleHydrides);
+    } else {
+        initChemDoodleHydrides();
+    }
     </script>
 
     <h2>5.2 Oxydes</h2>
@@ -676,8 +693,14 @@ graph LR
     </div>
 
     <script>
-    window.addEventListener('load', function() {
-        if (typeof ChemDoodle !== 'undefined') {
+    function initChemDoodleOxides() {
+        if (typeof ChemDoodle === 'undefined') {
+            // Retry if not loaded yet
+            setTimeout(initChemDoodleOxides, 100);
+            return;
+        }
+
+        try {
             // CO2 - Linéaire
             var co2Canvas = new ChemDoodle.ViewerCanvas('mol_co2_ox', 150, 150);
             var co2 = new ChemDoodle.structures.Molecule();
@@ -721,8 +744,19 @@ graph LR
             h2o.bonds.push(new ChemDoodle.structures.Bond(o_h2o, h1));
             h2o.bonds.push(new ChemDoodle.structures.Bond(o_h2o, h2));
             h2oCanvas.loadMolecule(h2o);
+
+            console.log('ChemDoodle oxides loaded successfully (Semaine 7)');
+        } catch (error) {
+            console.error('Error initializing ChemDoodle oxides:', error);
         }
-    });
+    }
+
+    // Start initialization after DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChemDoodleOxides);
+    } else {
+        initChemDoodleOxides();
+    }
     </script>
 
     <!-- SECTION 6: ELECTRICAL CLASSIFICATION -->

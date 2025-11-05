@@ -22,7 +22,7 @@
             loader: {load: ['[tex]/mhchem']}
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Mermaid.js for Diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
@@ -43,7 +43,7 @@
 
     <!-- ChemDoodle Web Components -->
     <link rel="stylesheet" href="https://web.chemdoodle.com/install/ChemDoodleWeb.css" type="text/css">
-    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js"></script>
+    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js" defer></script>
 
     <style>
         .chemdoodle-container {
@@ -556,8 +556,14 @@ stateDiagram-v2
     </div>
 
     <script>
-    window.addEventListener('load', function() {
-        if (typeof ChemDoodle !== 'undefined') {
+    function initChemDoodle() {
+        if (typeof ChemDoodle === 'undefined') {
+            // Retry if not loaded yet
+            setTimeout(initChemDoodle, 100);
+            return;
+        }
+
+        try {
             // Configuration
             ChemDoodle.DEFAULT_STYLES.bonds_width_2D = 2;
             ChemDoodle.DEFAULT_STYLES.bonds_saturationWidth_2D = 4;
@@ -608,8 +614,19 @@ stateDiagram-v2
             h2o.bonds.push(new ChemDoodle.structures.Bond(o, h_left));
             h2o.bonds.push(new ChemDoodle.structures.Bond(o, h_right));
             h2oCanvas.loadMolecule(h2o);
+
+            console.log('ChemDoodle molecules loaded successfully (Semaine 6)');
+        } catch (error) {
+            console.error('Error initializing ChemDoodle:', error);
         }
-    });
+    }
+
+    // Start initialization after DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChemDoodle);
+    } else {
+        initChemDoodle();
+    }
     </script>
 
     <div class="visual-concept">

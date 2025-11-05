@@ -16,6 +16,9 @@
                 processEnvironments: true,
                 packages: {'[+]': ['mhchem']}
             },
+            loader: {
+                load: ['[tex]/mhchem']
+            },
             svg: {
                 fontCache: 'global'
             },
@@ -24,7 +27,7 @@
             }
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Mermaid.js for Diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
@@ -45,7 +48,7 @@
 
     <!-- ChemDoodle Web Components -->
     <link rel="stylesheet" href="https://web.chemdoodle.com/install/ChemDoodleWeb.css" type="text/css">
-    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js"></script>
+    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js" defer></script>
 
     <style>
         .mermaid {
@@ -640,9 +643,15 @@ graph TD
     </div>
 
     <script>
-    // Attendre que ChemDoodle soit chargé
-    window.addEventListener('load', function() {
-        if (typeof ChemDoodle !== 'undefined') {
+    // Fonction pour initialiser ChemDoodle quand il est prêt
+    function initChemDoodle() {
+        if (typeof ChemDoodle === 'undefined') {
+            // Réessayer après 100ms si ChemDoodle n'est pas encore chargé
+            setTimeout(initChemDoodle, 100);
+            return;
+        }
+
+        try {
             // Configuration par défaut
             ChemDoodle.DEFAULT_STYLES.bonds_width_2D = 2;
             ChemDoodle.DEFAULT_STYLES.bonds_saturationWidth_2D = 4;
@@ -733,8 +742,19 @@ graph TD
             h2.atoms.push(h2_h2);
             h2.bonds.push(new ChemDoodle.structures.Bond(h1_h2, h2_h2));
             h2Canvas.loadMolecule(h2);
+
+            console.log('ChemDoodle molecules loaded successfully');
+        } catch (error) {
+            console.error('Error initializing ChemDoodle:', error);
         }
-    });
+    }
+
+    // Démarrer l'initialisation après le chargement du DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChemDoodle);
+    } else {
+        initChemDoodle();
+    }
     </script>
 
     <!-- SECTION 6: THÉORIE CINÉTIQUE -->
