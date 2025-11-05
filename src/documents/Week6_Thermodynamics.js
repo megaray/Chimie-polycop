@@ -208,7 +208,9 @@ const Week6Thermodynamics = () => (
       <Text style={styles.h2}>4.1 Enthalpie de Vaporisation (ΔH_vap)</Text>
 
       <InfoBox title="Définition :">
-        La vaporisation est la transition d'un liquide vers un gaz.
+        <Text style={styles.paragraph}>
+          La vaporisation est la transition d'un liquide vers un gaz.
+        </Text>
       </InfoBox>
 
       <FormulaBox>
@@ -229,7 +231,9 @@ const Week6Thermodynamics = () => (
       <Text style={styles.h2}>4.2 Enthalpie de Fusion (ΔH_fus)</Text>
 
       <InfoBox title="Définition :">
-        La fusion est la transition d'un solide vers un liquide.
+        <Text style={styles.paragraph}>
+          La fusion est la transition d'un solide vers un liquide.
+        </Text>
       </InfoBox>
 
       <FormulaBox>
@@ -237,7 +241,9 @@ const Week6Thermodynamics = () => (
       </FormulaBox>
 
       <ExampleBox title="Exemple : Eau">
-        À 0 °C : ΔH_fus = 6.0 kJ·mol⁻¹
+        <Text style={styles.paragraph}>
+          À 0 °C : ΔH_fus = 6.0 kJ·mol⁻¹
+        </Text>
       </ExampleBox>
 
       <InfoBox title="Pourquoi ΔH_vap >> ΔH_fus ?">
@@ -252,7 +258,9 @@ const Week6Thermodynamics = () => (
       <Text style={styles.h2}>4.3 Enthalpie de Sublimation (ΔH_sub)</Text>
 
       <InfoBox title="Définition :">
-        La sublimation est la transition directe d'un solide vers un gaz.
+        <Text style={styles.paragraph}>
+          La sublimation est la transition directe d'un solide vers un gaz.
+        </Text>
       </InfoBox>
 
       <FormulaBox title="Relation fondamentale :">
@@ -260,9 +268,11 @@ const Week6Thermodynamics = () => (
       </FormulaBox>
 
       <ExampleBox title="Exemples de sublimation :">
-        • Givre qui disparaît par temps froid et sec{'\n'}
-        • Glace sèche (CO₂ solide){'\n'}
-        • Iode solide
+        <Text style={styles.paragraph}>
+          • Givre qui disparaît par temps froid et sec{'\n'}
+          • Glace sèche (CO₂ solide){'\n'}
+          • Iode solide
+        </Text>
       </ExampleBox>
     </Page>
 
@@ -302,12 +312,16 @@ const Week6Thermodynamics = () => (
       <Text style={styles.h2}>5.1 Définitions</Text>
 
       <InfoBox title="Thermochimie :">
-        Branche de la thermodynamique qui étudie la chaleur absorbée ou dégagée
-        lors de réactions chimiques.
+        <Text style={styles.paragraph}>
+          Branche de la thermodynamique qui étudie la chaleur absorbée ou dégagée
+          lors de réactions chimiques.
+        </Text>
       </InfoBox>
 
       <InfoBox title="Équation thermochimique :">
-        Équation chimique accompagnée de la variation d'enthalpie de réaction.
+        <Text style={styles.paragraph}>
+          Équation chimique accompagnée de la variation d'enthalpie de réaction.
+        </Text>
       </InfoBox>
 
       <ExampleBox>
@@ -381,8 +395,10 @@ const Week6Thermodynamics = () => (
       />
 
       <InfoBox title="Cas particuliers :">
-        • Si aucun gaz n'est produit ou consommé : ΔH ≈ ΔU{'\n'}
-        • Si Δn_gaz ≠ 0 : la différence peut être significative
+        <Text style={styles.paragraph}>
+          • Si aucun gaz n'est produit ou consommé : ΔH ≈ ΔU{'\n'}
+          • Si Δn_gaz ≠ 0 : la différence peut être significative
+        </Text>
       </InfoBox>
 
       <Text style={styles.h3}>Dérivation :</Text>
@@ -402,8 +418,10 @@ const Week6Thermodynamics = () => (
       <Text style={styles.h2}>6.1 Définition</Text>
 
       <InfoBox title="Enthalpie standard de combustion (ΔH_c°) :">
-        Variation d'enthalpie par mole d'une substance brûlée dans une réaction
-        de combustion complète dans les conditions standard.
+        <Text style={styles.paragraph}>
+          Variation d'enthalpie par mole d'une substance brûlée dans une réaction
+          de combustion complète dans les conditions standard.
+        </Text>
       </InfoBox>
 
       <ImportantBox title="Conditions standard :">
@@ -435,9 +453,11 @@ const Week6Thermodynamics = () => (
       </FormulaBox>
 
       <InfoBox title="Utilité :">
-        • Comparaison de l'efficacité des carburants{'\n'}
-        • Choix du carburant pour une application donnée{'\n'}
-        • Transport et stockage d'énergie
+        <Text style={styles.paragraph}>
+          • Comparaison de l'efficacité des carburants{'\n'}
+          • Choix du carburant pour une application donnée{'\n'}
+          • Transport et stockage d'énergie
+        </Text>
       </InfoBox>
     </Page>
 
@@ -512,8 +532,10 @@ const Week6Thermodynamics = () => (
       <Text style={styles.h2}>7.1 Interprétation d'une Courbe de Chauffage</Text>
 
       <InfoBox>
-        • Axe horizontal : Énergie fournie sous forme de chaleur (q){'\n'}
-        • Axe vertical : Température (T)
+        <Text style={styles.paragraph}>
+          • Axe horizontal : Énergie fournie sous forme de chaleur (q){'\n'}
+          • Axe vertical : Température (T)
+        </Text>
       </InfoBox>
 
       <Text style={styles.h3}>Régions de la courbe :</Text>
@@ -586,8 +608,10 @@ const Week6Thermodynamics = () => (
       </FormulaBox>
 
       <InfoBox>
-        • <Text style={styles.bold}>Pente raide</Text> → Faible capacité calorifique{'\n'}
-        • <Text style={styles.bold}>Pente douce</Text> → Grande capacité calorifique
+        <Text style={styles.paragraph}>
+          • <Text style={styles.bold}>Pente raide</Text> → Faible capacité calorifique{'\n'}
+          • <Text style={styles.bold}>Pente douce</Text> → Grande capacité calorifique
+        </Text>
       </InfoBox>
 
       <ImportantBox title="Ordre pour l'eau :">
@@ -595,8 +619,10 @@ const Week6Thermodynamics = () => (
       </ImportantBox>
 
       <InfoBox title="Pourquoi le liquide a une grande capacité calorifique ?">
-        • Présence de liaisons hydrogène qui se brisent et se reforment{'\n'}
-        • Nécessite plus d'énergie pour augmenter la température
+        <Text style={styles.paragraph}>
+          • Présence de liaisons hydrogène qui se brisent et se reforment{'\n'}
+          • Nécessite plus d'énergie pour augmenter la température
+        </Text>
       </InfoBox>
     </Page>
 
