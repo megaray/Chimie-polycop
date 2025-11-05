@@ -6,6 +6,7 @@
     <title>Semaine 7 - Matériaux</title>
     <link rel="stylesheet" href="styles.css">
 
+    <!-- MathJax Configuration -->
     <script>
         window.MathJax = {
             tex: {
@@ -17,23 +18,65 @@
             },
             svg: {
                 fontCache: 'global'
-            }
+            },
+            loader: {load: ['[tex]/mhchem']}
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Mermaid.js for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#eff6ff',
+                primaryTextColor: '#1e3a8a',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#dc2626',
+                secondaryColor: '#fef2f2',
+                tertiaryColor: '#fff7ed'
+            }
+        });
+    </script>
+
+
+    <style>
+        }
+    </style>
 </head>
 <body>
     <!-- COVER PAGE -->
     <div class="cover-page">
         <h1 class="cover-title">POLYCOPIÉ DE CHIMIE GÉNÉRALE</h1>
         <svg width="200" height="200" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="10" fill="#1e3a8a"/>
-            <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="#dc2626" stroke-width="2"/>
-            <ellipse cx="100" cy="100" rx="30" ry="80" fill="none" stroke="#dc2626" stroke-width="2"/>
-            <circle cx="180" cy="100" r="6" fill="#ea580c"/>
-            <circle cx="20" cy="100" r="6" fill="#ea580c"/>
-            <circle cx="100" cy="180" r="6" fill="#ea580c"/>
-            <circle cx="100" cy="20" r="6" fill="#ea580c"/>
+            <defs>
+                <linearGradient id="silicon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+
+            <!-- Réseau cristallin (structure du silicium) -->
+            <circle cx="100" cy="100" r="12" fill="url(#silicon-gradient)"/>
+            <text x="100" y="105" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Si</text>
+
+            <!-- Atomes périphériques -->
+            <circle cx="50" cy="50" r="8" fill="#2563eb"/><text x="50" y="53" font-size="8" fill="white" text-anchor="middle">Si</text>
+            <circle cx="150" cy="50" r="8" fill="#2563eb"/><text x="150" y="53" font-size="8" fill="white" text-anchor="middle">Si</text>
+            <circle cx="50" cy="150" r="8" fill="#2563eb"/><text x="50" y="153" font-size="8" fill="white" text-anchor="middle">Si</text>
+            <circle cx="150" cy="150" r="8" fill="#2563eb"/><text x="150" y="153" font-size="8" fill="white" text-anchor="middle">Si</text>
+
+            <!-- Liaisons -->
+            <line x1="100" y1="100" x2="50" y2="50" stroke="#ea580c" stroke-width="2"/>
+            <line x1="100" y1="100" x2="150" y2="50" stroke="#ea580c" stroke-width="2"/>
+            <line x1="100" y1="100" x2="50" y2="150" stroke="#ea580c" stroke-width="2"/>
+            <line x1="100" y1="100" x2="150" y2="150" stroke="#ea580c" stroke-width="2"/>
+
+            <!-- Électron (porteur de charge) -->
+            <circle cx="130" cy="70" r="5" fill="#dc2626"/>
+            <text x="130" y="73" font-size="8" fill="white" text-anchor="middle" font-weight="bold">e⁻</text>
         </svg>
         <h2 class="cover-subtitle">Semaine 7</h2>
         <h2 class="cover-subtitle">Matériaux</h2>
@@ -75,6 +118,65 @@
         <div class="math-display">
             $$\Delta G = \Delta H - T\Delta S$$
         </div>
+    </div>
+
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Diagramme d'Énergie Libre de Gibbs</h3>
+        <svg width="600" height="350" viewBox="0 0 600 350">
+            <defs>
+                <marker id="arrow-gibbs" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#1e3a8a" />
+                </marker>
+            </defs>
+
+            <!-- Axes -->
+            <line x1="50" y1="300" x2="550" y2="300" stroke="#666" stroke-width="2" marker-end="url(#arrow-gibbs)"/>
+            <text x="300" y="330" font-size="14" fill="#666" text-anchor="middle">Progression de la réaction →</text>
+
+            <line x1="50" y1="300" x2="50" y2="30" stroke="#666" stroke-width="2" marker-end="url(#arrow-gibbs)"/>
+            <text x="30" y="165" font-size="14" fill="#666" text-anchor="middle" transform="rotate(-90 30 165)">Énergie libre G →</text>
+
+            <!-- Réaction SPONTANÉE (ΔG < 0) -->
+            <text x="150" y="50" font-size="16" fill="#16a34a" font-weight="bold">SPONTANÉ (ΔG < 0)</text>
+
+            <!-- Réactifs -->
+            <rect x="80" y="100" width="100" height="40" fill="#dc2626" opacity="0.7"/>
+            <text x="130" y="125" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Réactifs</text>
+            <text x="130" y="95" font-size="12" fill="#1e3a8a">G₁</text>
+
+            <!-- Produits -->
+            <rect x="220" y="200" width="100" height="40" fill="#16a34a" opacity="0.7"/>
+            <text x="270" y="225" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Produits</text>
+            <text x="270" y="195" font-size="12" fill="#1e3a8a">G₂</text>
+
+            <!-- Flèche ΔG -->
+            <path d="M 190 120 L 190 220" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-gibbs)" stroke-dasharray="5,5"/>
+            <text x="200" y="170" font-size="14" fill="#16a34a" font-weight="bold">ΔG < 0</text>
+            <text x="200" y="185" font-size="11" fill="#16a34a">Libère énergie ✓</text>
+
+            <!-- Courbe de réaction -->
+            <path d="M 180 120 Q 200 80, 220 220" stroke="#ea580c" stroke-width="2" fill="none"/>
+            <text x="205" y="70" font-size="10" fill="#ea580c">Énergie</text>
+            <text x="200" y="82" font-size="10" fill="#ea580c">d'activation</text>
+
+            <!-- Réaction NON SPONTANÉE (ΔG > 0) -->
+            <text x="460" y="50" font-size="16" fill="#dc2626" font-weight="bold">NON SPONTANÉ (ΔG > 0)</text>
+
+            <!-- Réactifs bas -->
+            <rect x="390" y="200" width="100" height="40" fill="#16a34a" opacity="0.7"/>
+            <text x="440" y="225" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Réactifs</text>
+            <text x="440" y="195" font-size="12" fill="#1e3a8a">G₁</text>
+
+            <!-- Produits haut -->
+            <rect x="390" y="100" width="100" height="40" fill="#dc2626" opacity="0.7"/>
+            <text x="440" y="125" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Produits</text>
+            <text x="440" y="95" font-size="12" fill="#1e3a8a">G₂</text>
+
+            <!-- Flèche ΔG -->
+            <path d="M 505 220 L 505 120" stroke="#dc2626" stroke-width="4" marker-end="url(#arrow-gibbs)" stroke-dasharray="5,5"/>
+            <text x="395" y="170" font-size="14" fill="#dc2626" font-weight="bold">ΔG > 0</text>
+            <text x="380" y="185" font-size="11" fill="#dc2626">Nécessite énergie ✗</text>
+        </svg>
     </div>
 
     <div class="important-box">
@@ -125,6 +227,40 @@
         <div class="math-display">
             $$\ce{ATP -> ADP + P_i} \quad \Delta G \approx -30 \text{ kJ·mol}^{-1} \text{ (hydrolyse)}$$
             $$\ce{ADP + P_i -> ATP} \quad \Delta G \approx +30 \text{ kJ·mol}^{-1} \text{ (synthèse)}$$
+        </div>
+    </div>
+
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Cycle Énergétique ATP/ADP</h3>
+        <div class="mermaid">
+graph LR
+    subgraph Catabolisme["🔥 Catabolisme (Dégradation)"]
+        G[Glucose<br/>C₆H₁₂O₆]
+        P[CO₂ + H₂O]
+    end
+
+    subgraph Cycle["💰 Monnaie Énergétique"]
+        ATP[ATP<br/>Adénosine-TriPhosphate<br/>⚡ Énergie stockée]
+        ADP[ADP + Pᵢ<br/>Adénosine-DiPhosphate<br/>📦 Énergie libérée]
+    end
+
+    subgraph Anabolisme["🔨 Anabolisme (Construction)"]
+        AA[Acides aminés]
+        PR[Protéines]
+    end
+
+    G -->|ΔG = -2879 kJ/mol<br/>Oxydation| P
+    P -.->|Recharge<br/>~80 ATP| ATP
+    ATP -->|Hydrolyse<br/>ΔG = -30 kJ/mol| ADP
+    ADP -.->|Recyclage| ATP
+    ADP -->|Fournit énergie<br/>ΔG = +17 kJ/mol| PR
+    AA -->|Liens peptidiques| PR
+
+    style Catabolisme fill:#fef2f2,stroke:#dc2626,stroke-width:2px
+    style Cycle fill:#eff6ff,stroke:#2563eb,stroke-width:3px
+    style Anabolisme fill:#f0fdf4,stroke:#16a34a,stroke-width:2px
+    style ATP fill:#dbeafe,stroke:#1e3a8a,stroke-width:2px
+    style ADP fill:#fef3c7,stroke:#ea580c,stroke-width:2px
         </div>
     </div>
 
@@ -190,6 +326,93 @@
         <div class="box-title">Tendances</div>
         <p><strong>Augmente</strong> ↓ en descendant un groupe (plus de couches)</p>
         <p><strong>Diminue</strong> → de gauche à droite ($Z_{\text{eff}}$ augmente)</p>
+    </div>
+
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Tendances Périodiques</h3>
+        <svg width="650" height="400" viewBox="0 0 650 400">
+            <defs>
+                <marker id="arrow-trend" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L10,3 z" fill="#dc2626" />
+                </marker>
+                <marker id="arrow-trend-blue" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L10,3 z" fill="#2563eb" />
+                </marker>
+            </defs>
+
+            <!-- Titre -->
+            <text x="325" y="30" font-size="18" fill="#1e3a8a" font-weight="bold" text-anchor="middle">TABLEAU PÉRIODIQUE - TENDANCES</text>
+
+            <!-- Tableau stylisé -->
+            <rect x="50" y="60" width="550" height="300" fill="#f8fafc" stroke="#1e3a8a" stroke-width="3" rx="10"/>
+
+            <!-- Groupes (colonnes) -->
+            <text x="100" y="55" font-size="12" fill="#666" text-anchor="middle">1</text>
+            <text x="200" y="55" font-size="12" fill="#666" text-anchor="middle">2</text>
+            <text x="350" y="55" font-size="12" fill="#666" text-anchor="middle">13-17</text>
+            <text x="500" y="55" font-size="12" fill="#666" text-anchor="middle">18</text>
+
+            <!-- Périodes (lignes) -->
+            <text x="35" y="110" font-size="12" fill="#666" text-anchor="middle">2</text>
+            <text x="35" y="180" font-size="12" fill="#666" text-anchor="middle">3</text>
+            <text x="35" y="250" font-size="12" fill="#666" text-anchor="middle">4</text>
+            <text x="35" y="320" font-size="12" fill="#666" text-anchor="middle">5</text>
+
+            <!-- Éléments représentatifs avec tailles -->
+            <!-- Période 2 -->
+            <circle cx="100" cy="100" r="25" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+            <text x="100" y="105" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Li</text>
+
+            <circle cx="500" cy="100" r="12" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
+            <text x="500" y="104" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Ne</text>
+
+            <!-- Période 3 -->
+            <circle cx="100" cy="170" r="30" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+            <text x="100" y="175" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Na</text>
+
+            <circle cx="500" cy="170" r="15" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
+            <text x="500" y="175" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Ar</text>
+
+            <!-- Période 4 -->
+            <circle cx="100" cy="250" r="35" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+            <text x="100" y="255" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">K</text>
+
+            <circle cx="500" cy="250" r="17" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
+            <text x="500" y="255" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Kr</text>
+
+            <!-- FLÈCHES DE TENDANCES -->
+
+            <!-- RAYON ATOMIQUE -->
+            <!-- Augmente vers le bas -->
+            <path d="M 70 110 L 70 300" stroke="#dc2626" stroke-width="5" marker-end="url(#arrow-trend)"/>
+            <text x="15" y="200" font-size="13" fill="#dc2626" font-weight="bold" transform="rotate(-90 15 200)">RAYON AUGMENTE</text>
+
+            <!-- Diminue vers la droite -->
+            <path d="M 140 80 L 470 80" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow-trend-blue)"/>
+            <text x="300" y="95" font-size="13" fill="#2563eb" font-weight="bold" text-anchor="middle">RAYON DIMINUE</text>
+
+            <!-- ÉNERGIE D'IONISATION -->
+            <!-- Augmente vers la droite -->
+            <path d="M 140 340 L 470 340" stroke="#16a34a" stroke-width="5" marker-end="url(#arrow-trend-blue)"/>
+            <text x="300" y="355" font-size="13" fill="#16a34a" font-weight="bold" text-anchor="middle">IONISATION AUGMENTE</text>
+
+            <!-- Diminue vers le bas -->
+            <path d="M 530 110 L 530 300" stroke="#ea580c" stroke-width="5" marker-end="url(#arrow-trend)"/>
+            <text x="615" y="200" font-size="13" fill="#ea580c" font-weight="bold" transform="rotate(90 615 200)">IONISATION DIMINUE</text>
+
+            <!-- Légende -->
+            <rect x="150" y="150" width="350" height="120" fill="white" stroke="#1e3a8a" stroke-width="2" rx="5" opacity="0.95"/>
+            <text x="325" y="175" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">TENDANCES</text>
+
+            <circle cx="170" cy="195" r="6" fill="#dc2626"/>
+            <text x="185" y="200" font-size="11" fill="#666">Rayon atomique : ↑ vers bas, ← vers gauche</text>
+
+            <circle cx="170" cy="220" r="6" fill="#16a34a"/>
+            <text x="185" y="225" font-size="11" fill="#666">Énergie d'ionisation : ↑ vers haut, → vers droite</text>
+
+            <circle cx="170" cy="245" r="6" fill="#2563eb"/>
+            <text x="185" y="250" font-size="11" fill="#666">Électronégativité : ↑ vers haut, → vers droite</text>
+        </svg>
     </div>
 
     <div class="important-box">
@@ -278,6 +501,100 @@
         </tbody>
     </table>
 
+    <div class="visual-concept">
+    <div class="visual-concept">
+        <h3>🧪 Structures des Hydrures Moléculaires</h3>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 15px;">
+            Géométries moléculaires des principaux hydrures
+        </p>
+
+        <svg width="700" height="500" viewBox="0 0 700 500">
+            <!-- CH4 - Méthane -->
+            <g transform="translate(80,60)">
+                <rect x="-40" y="-25" width="160" height="140" fill="white" stroke="#6366f1" stroke-width="2" rx="8"/>
+                <circle cx="40" cy="50" r="22" fill="#6366f1" opacity="0.3" stroke="#6366f1" stroke-width="2"/>
+                <text x="40" y="57" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e3a8a">C</text>
+                <line x1="40" y1="50" x2="40" y2="20" stroke="#666" stroke-width="2"/>
+                <line x1="40" y1="50" x2="68" y2="70" stroke="#666" stroke-width="2"/>
+                <line x1="40" y1="50" x2="12" y2="70" stroke="#666" stroke-width="2"/>
+                <line x1="40" y1="50" x2="40" y2="80" stroke="#666" stroke-width="2"/>
+                <circle cx="40" cy="20" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                <text x="40" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="68" cy="70" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                <text x="68" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="12" cy="70" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                <text x="12" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="40" cy="80" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                <text x="40" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
+                <text x="40" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#6366f1">CH₄ - Méthane</text>
+                <text x="40" y="130" text-anchor="middle" font-size="11" fill="#666">Tétraédrique</text>
+            </g>
+
+            <!-- NH3 - Ammoniac -->
+            <g transform="translate(290,60)">
+                <rect x="-40" y="-25" width="160" height="140" fill="white" stroke="#8b5cf6" stroke-width="2" rx="8"/>
+                <circle cx="40" cy="45" r="22" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
+                <text x="40" y="52" text-anchor="middle" font-size="20" font-weight="bold" fill="#5b21b6">N</text>
+                <line x1="40" y1="45" x2="18" y2="70" stroke="#666" stroke-width="2"/>
+                <line x1="40" y1="45" x2="62" y2="70" stroke="#666" stroke-width="2"/>
+                <line x1="40" y1="45" x2="40" y2="75" stroke="#666" stroke-width="2"/>
+                <circle cx="18" cy="70" r="12" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
+                <text x="18" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">H</text>
+                <circle cx="62" cy="70" r="12" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
+                <text x="62" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">H</text>
+                <circle cx="40" cy="75" r="12" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
+                <text x="40" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">H</text>
+                <ellipse cx="40" cy="30" rx="10" ry="6" fill="#faf5ff" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="40" y="23" text-anchor="middle" font-size="8" fill="#8b5cf6">doublet</text>
+                <text x="40" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#8b5cf6">NH₃ - Ammoniac</text>
+                <text x="40" y="130" text-anchor="middle" font-size="11" fill="#666">Pyramidale</text>
+            </g>
+
+            <!-- H2O - Eau -->
+            <g transform="translate(500,60)">
+                <rect x="-40" y="-25" width="160" height="140" fill="white" stroke="#0ea5e9" stroke-width="2" rx="8"/>
+                <circle cx="40" cy="45" r="22" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
+                <text x="40" y="52" text-anchor="middle" font-size="20" font-weight="bold" fill="#0284c7">O</text>
+                <line x1="40" y1="45" x2="18" y2="70" stroke="#0ea5e9" stroke-width="3"/>
+                <line x1="40" y1="45" x2="62" y2="70" stroke="#0ea5e9" stroke-width="3"/>
+                <circle cx="18" cy="70" r="14" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+                <text x="18" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#0284c7">H</text>
+                <circle cx="62" cy="70" r="14" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+                <text x="62" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#0284c7">H</text>
+                <path d="M 22 63 Q 40 55 58 63" fill="none" stroke="#0284c7" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="40" y="57" text-anchor="middle" font-size="8" fill="#0284c7">104.5°</text>
+                <ellipse cx="35" cy="30" rx="8" ry="5" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="2,2"/>
+                <ellipse cx="45" cy="30" rx="8" ry="5" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="40" y="21" text-anchor="middle" font-size="7" fill="#0ea5e9">2 doublets</text>
+                <text x="40" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#0ea5e9">H₂O - Eau</text>
+                <text x="40" y="130" text-anchor="middle" font-size="11" fill="#666">Coudée (104.5°)</text>
+            </g>
+
+            <!-- HCl - Acide chlorhydrique -->
+            <g transform="translate(80,250)">
+                <rect x="-40" y="-25" width="160" height="140" fill="white" stroke="#16a34a" stroke-width="2" rx="8"/>
+                <circle cx="20" cy="50" r="16" fill="#e0f2fe" stroke="#16a34a" stroke-width="2"/>
+                <text x="20" y="56" text-anchor="middle" font-size="16" font-weight="bold" fill="#16a34a">H</text>
+                <line x1="36" y1="50" x2="44" y2="50" stroke="#16a34a" stroke-width="3"/>
+                <circle cx="60" cy="50" r="22" fill="#16a34a" opacity="0.3" stroke="#16a34a" stroke-width="2"/>
+                <text x="60" y="56" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">Cl</text>
+                <text x="40" y="95" text-anchor="middle" font-size="13" font-weight="bold" fill="#16a34a">HCl</text>
+                <text x="40" y="110" text-anchor="middle" font-size="11" fill="#666">Linéaire</text>
+            </g>
+
+            <!-- Légende -->
+            <g transform="translate(290,250)">
+                <rect x="-40" y="-25" width="390" height="140" fill="#f8fafc" stroke="#64748b" stroke-width="2" rx="8"/>
+                <text x="155" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">GÉOMÉTRIES MOLÉCULAIRES</text>
+                <text x="0" y="25" font-size="12" fill="#333">• <tspan font-weight="bold">Tétraédrique (CH₄):</tspan> 4 liaisons, 109.5°</text>
+                <text x="0" y="45" font-size="12" fill="#333">• <tspan font-weight="bold">Pyramidale (NH₃):</tspan> 3 liaisons + 1 doublet</text>
+                <text x="0" y="65" font-size="12" fill="#333">• <tspan font-weight="bold">Coudée (H₂O):</tspan> 2 liaisons + 2 doublets</text>
+                <text x="0" y="85" font-size="12" fill="#333">• <tspan font-weight="bold">Linéaire (HCl):</tspan> 1 liaison simple</text>
+                <text x="0" y="105" font-size="10" fill="#666" font-style="italic">Note: Les doublets non-liants repoussent les liaisons</text>
+            </g>
+        </svg>
+    </div>
+
     <h2>5.2 Oxydes</h2>
 
     <h3>A. Oxydes Basiques</h3>
@@ -305,6 +622,77 @@
         </div>
     </div>
 
+    <div class="visual-concept">
+        <h3>🧪 Structures des Principaux Oxydes</h3>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 15px;">
+            Géométries moléculaires des oxydes courants
+        </p>
+
+        <svg width="700" height="300" viewBox="0 0 700 300">
+            <!-- CO2 - Linéaire -->
+            <g transform="translate(80,60)">
+                <rect x="-40" y="-20" width="160" height="120" fill="white" stroke="#16a34a" stroke-width="2" rx="8"/>
+                <circle cx="15" cy="50" r="18" fill="#16a34a" opacity="0.3" stroke="#16a34a" stroke-width="2"/>
+                <text x="15" y="55" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">O</text>
+                <line x1="33" y1="48" x2="47" y2="48" stroke="#16a34a" stroke-width="3"/>
+                <line x1="33" y1="52" x2="47" y2="52" stroke="#16a34a" stroke-width="3"/>
+                <circle cx="65" cy="50" r="22" fill="#16a34a" opacity="0.3" stroke="#16a34a" stroke-width="2"/>
+                <text x="65" y="57" text-anchor="middle" font-size="22" font-weight="bold" fill="#16a34a">C</text>
+                <line x1="87" y1="48" x2="101" y2="48" stroke="#16a34a" stroke-width="3"/>
+                <line x1="87" y1="52" x2="101" y2="52" stroke="#16a34a" stroke-width="3"/>
+                <circle cx="119" cy="50" r="18" fill="#16a34a" opacity="0.3" stroke="#16a34a" stroke-width="2"/>
+                <text x="119" y="55" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">O</text>
+                <text x="67" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#16a34a">CO₂</text>
+                <text x="67" y="105" text-anchor="middle" font-size="11" fill="#666">Linéaire (O=C=O)</text>
+            </g>
+
+            <!-- SO2 - Coudée -->
+            <g transform="translate(280,60)">
+                <rect x="-40" y="-20" width="160" height="120" fill="white" stroke="#eab308" stroke-width="2" rx="8"/>
+                <circle cx="40" cy="40" r="22" fill="#eab308" opacity="0.3" stroke="#eab308" stroke-width="2"/>
+                <text x="40" y="47" text-anchor="middle" font-size="20" font-weight="bold" fill="#854d0e">S</text>
+                <line x1="40" y1="40" x2="15" y2="65" stroke="#854d0e" stroke-width="3"/>
+                <line x1="40" y1="40" x2="65" y2="65" stroke="#854d0e" stroke-width="3"/>
+                <circle cx="15" cy="65" r="18" fill="#fef3c7" stroke="#eab308" stroke-width="2"/>
+                <text x="15" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#854d0e">O</text>
+                <circle cx="65" cy="65" r="18" fill="#fef3c7" stroke="#eab308" stroke-width="2"/>
+                <text x="65" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#854d0e">O</text>
+                <path d="M 19 58 Q 40 50 61 58" fill="none" stroke="#854d0e" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="40" y="53" text-anchor="middle" font-size="8" fill="#854d0e">~120°</text>
+                <text x="40" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#eab308">SO₂</text>
+                <text x="40" y="105" text-anchor="middle" font-size="11" fill="#666">Coudée (V-shape)</text>
+            </g>
+
+            <!-- NO2 - Coudée -->
+            <g transform="translate(480,60)">
+                <rect x="-40" y="-20" width="160" height="120" fill="white" stroke="#f97316" stroke-width="2" rx="8"/>
+                <circle cx="40" cy="40" r="22" fill="#f97316" opacity="0.3" stroke="#f97316" stroke-width="2"/>
+                <text x="40" y="47" text-anchor="middle" font-size="20" font-weight="bold" fill="#9a3412">N</text>
+                <line x1="40" y1="40" x2="15" y2="65" stroke="#9a3412" stroke-width="3"/>
+                <line x1="40" y1="40" x2="65" y2="65" stroke="#9a3412" stroke-width="3"/>
+                <circle cx="15" cy="65" r="18" fill="#fed7aa" stroke="#f97316" stroke-width="2"/>
+                <text x="15" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a3412">O</text>
+                <circle cx="65" cy="65" r="18" fill="#fed7aa" stroke="#f97316" stroke-width="2"/>
+                <text x="65" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a3412">O</text>
+                <path d="M 19 58 Q 40 48 61 58" fill="none" stroke="#9a3412" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="40" y="51" text-anchor="middle" font-size="8" fill="#9a3412">134°</text>
+                <circle cx="45" cy="25" r="6" fill="#9a3412"/>
+                <text x="52" y="22" font-size="8" fill="#9a3412">e⁻ impair</text>
+                <text x="40" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#f97316">NO₂</text>
+                <text x="40" y="105" text-anchor="middle" font-size="11" fill="#666">Coudée (134°)</text>
+            </g>
+
+            <!-- Comparaison -->
+            <g transform="translate(80,180)">
+                <rect x="-30" y="-20" width="590" height="110" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" rx="8"/>
+                <text x="265" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400e">COMPARAISON DES OXYDES</text>
+                <text x="0" y="25" font-size="12" fill="#333">• <tspan font-weight="bold">CO₂:</tspan> Linéaire, 2 doubles liaisons, symétrique → non-polaire</text>
+                <text x="0" y="45" font-size="12" fill="#333">• <tspan font-weight="bold">SO₂:</tspan> Coudée, doublet non-liant sur S → polaire</text>
+                <text x="0" y="65" font-size="12" fill="#333">• <tspan font-weight="bold">NO₂:</tspan> Coudée, électron impair → radical libre (réactif)</text>
+                <text x="0" y="85" font-size="10" fill="#dc2626" font-weight="bold">⚠ SO₂ et NO₂ sont des polluants atmosphériques (pluies acides)</text>
+            </g>
+        </svg>
+    </div>
     <!-- SECTION 6: ELECTRICAL CLASSIFICATION -->
     <div class="page-break"></div>
     <h1>6. CLASSIFICATION ÉLECTRIQUE DES SOLIDES</h1>
@@ -333,6 +721,84 @@
             <li>Dans un solide, $N \approx 10^{23}$</li>
             <li>Les OM sont si proches qu'elles forment une bande quasi-continue</li>
         </ul>
+    </div>
+
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Diagrammes de Bandes</h3>
+        <svg width="650" height="400" viewBox="0 0 650 400">
+            <defs>
+                <pattern id="electrons" patternUnits="userSpaceOnUse" width="10" height="10">
+                    <circle cx="5" cy="5" r="2" fill="#dc2626"/>
+                </pattern>
+            </defs>
+
+            <!-- Titre -->
+            <text x="325" y="30" font-size="18" fill="#1e3a8a" font-weight="bold" text-anchor="middle">THÉORIE DES BANDES</text>
+
+            <!-- CONDUCTEUR -->
+            <text x="110" y="70" font-size="14" fill="#16a34a" font-weight="bold" text-anchor="middle">CONDUCTEUR</text>
+            <text x="110" y="85" font-size="11" fill="#666" text-anchor="middle">(Métaux: Cu, Ag, Au)</text>
+
+            <!-- Bande de conduction (BC) partiellement remplie -->
+            <rect x="30" y="110" width="160" height="80" fill="url(#electrons)" stroke="#16a34a" stroke-width="3"/>
+            <text x="110" y="155" font-size="12" fill="#1e3a8a" font-weight="bold" text-anchor="middle">BC</text>
+            <text x="110" y="170" font-size="10" fill="#666" text-anchor="middle">(partiellement</text>
+            <text x="110" y="182" font-size="10" fill="#666" text-anchor="middle">remplie)</text>
+
+            <!-- Pas de gap -->
+            <text x="110" y="210" font-size="11" fill="#16a34a" font-weight="bold" text-anchor="middle">Eₘ = 0</text>
+            <text x="110" y="230" font-size="10" fill="#16a34a" text-anchor="middle">✓ Conduction facile</text>
+
+            <!-- SEMICONDUCTEUR -->
+            <text x="325" y="70" font-size="14" fill="#ea580c" font-weight="bold" text-anchor="middle">SEMICONDUCTEUR</text>
+            <text x="325" y="85" font-size="11" fill="#666" text-anchor="middle">(Si, Ge, GaAs)</text>
+
+            <!-- BC vide -->
+            <rect x="245" y="110" width="160" height="60" fill="#fff" stroke="#ea580c" stroke-width="3"/>
+            <text x="325" y="145" font-size="12" fill="#666" font-weight="bold" text-anchor="middle">BC (vide)</text>
+
+            <!-- Band gap PETIT -->
+            <rect x="245" y="170" width="160" height="30" fill="#fff7ed" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="325" y="188" font-size="10" fill="#ea580c" font-weight="bold" text-anchor="middle">Eₘ = 0.1-4 eV</text>
+
+            <!-- BV pleine -->
+            <rect x="245" y="200" width="160" height="60" fill="url(#electrons)" stroke="#ea580c" stroke-width="3"/>
+            <text x="325" y="235" font-size="12" fill="#1e3a8a" font-weight="bold" text-anchor="middle">BV (pleine)</text>
+
+            <text x="325" y="280" font-size="10" fill="#ea580c" text-anchor="middle">⚡ Excitation thermique</text>
+            <text x="325" y="295" font-size="10" fill="#ea580c" text-anchor="middle">possible</text>
+
+            <!-- Flèche excitation -->
+            <path d="M 335 250 L 335 180" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-gibbs)"/>
+            <circle cx="335" cy="245" r="3" fill="#dc2626"/>
+            <text x="345" y="220" font-size="9" fill="#dc2626">e⁻</text>
+
+            <!-- ISOLANT -->
+            <text x="540" y="70" font-size="14" fill="#2563eb" font-weight="bold" text-anchor="middle">ISOLANT</text>
+            <text x="540" y="85" font-size="11" fill="#666" text-anchor="middle">(Diamond, SiO₂)</text>
+
+            <!-- BC vide -->
+            <rect x="460" y="110" width="160" height="50" fill="#fff" stroke="#2563eb" stroke-width="3"/>
+            <text x="540" y="140" font-size="12" fill="#666" font-weight="bold" text-anchor="middle">BC (vide)</text>
+
+            <!-- Band gap GRAND -->
+            <rect x="460" y="160" width="160" height="70" fill="#eff6ff" stroke="#2563eb" stroke-width="3" stroke-dasharray="5,5"/>
+            <text x="540" y="188" font-size="11" fill="#2563eb" font-weight="bold" text-anchor="middle">Eₘ > 4 eV</text>
+            <text x="540" y="203" font-size="10" fill="#2563eb" font-weight="bold" text-anchor="middle">TRÈS GRAND</text>
+            <text x="540" y="218" font-size="9" fill="#dc2626">❌ Impossible</text>
+            <text x="540" y="228" font-size="9" fill="#dc2626">de franchir</text>
+
+            <!-- BV pleine -->
+            <rect x="460" y="230" width="160" height="60" fill="url(#electrons)" stroke="#2563eb" stroke-width="3"/>
+            <text x="540" y="265" font-size="12" fill="#1e3a8a" font-weight="bold" text-anchor="middle">BV (pleine)</text>
+
+            <text x="540" y="310" font-size="10" fill="#2563eb" text-anchor="middle">✗ Pas de conduction</text>
+
+            <!-- Légende -->
+            <rect x="150" y="330" width="350" height="50" fill="white" stroke="#1e3a8a" stroke-width="2" rx="5"/>
+            <text x="325" y="350" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">BC = Bande de Conduction | BV = Bande de Valence</text>
+            <text x="325" y="365" font-size="10" fill="#666" text-anchor="middle">Eₘ = Band Gap (Bande interdite) - Énergie nécessaire pour exciter un électron</text>
+        </svg>
     </div>
 
     <h2>7.2 Bande Interdite (Band Gap)</h2>
@@ -398,11 +864,247 @@
             <li>Porteurs de charge : trous (positifs)</li>
         </ul>
     </div>
+    <div class="visual-concept">
+        <h3>💡 Visualisation Détaillée : Dopage des Semiconducteurs</h3>
+        <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 20px;">
+            Comment le dopage modifie les propriétés électriques du silicium
+        </p>
 
-    <h2>8.3 Jonction p-n</h2>
-    <div class="important-box">
+        <svg width="750" height="900" viewBox="0 0 750 900">
+            <!-- Titre principal -->
+            <text x="375" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e3a8a">DOPAGE DU SILICIUM (Si)</text>
+
+            <!-- SILICIUM PUR (référence) -->
+            <g transform="translate(50,60)">
+                <rect x="0" y="0" width="650" height="180" fill="#f8fafc" stroke="#64748b" stroke-width="3" rx="10"/>
+                <text x="325" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a8a">Silicium PUR (intrinsèque)</text>
+
+                <!-- Réseau cristallin de Si -->
+                <g transform="translate(50,50)">
+                    <!-- Atomes de Si avec 4 électrons de valence -->
+                    <g transform="translate(0,0)">
+                        <circle cx="50" cy="50" r="25" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                        <text x="50" y="52" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Si</text>
+                        <text x="50" y="65" text-anchor="middle" font-size="10" fill="white">4e⁻</text>
+                    </g>
+
+                    <g transform="translate(150,0)">
+                        <circle cx="50" cy="50" r="25" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                        <text x="50" y="52" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Si</text>
+                        <text x="50" y="65" text-anchor="middle" font-size="10" fill="white">4e⁻</text>
+                    </g>
+
+                    <g transform="translate(300,0)">
+                        <circle cx="50" cy="50" r="25" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                        <text x="50" y="52" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Si</text>
+                        <text x="50" y="65" text-anchor="middle" font-size="10" fill="white">4e⁻</text>
+                    </g>
+
+                    <g transform="translate(450,0)">
+                        <circle cx="50" cy="50" r="25" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                        <text x="50" y="52" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Si</text>
+                        <text x="50" y="65" text-anchor="middle" font-size="10" fill="white">4e⁻</text>
+                    </g>
+
+                    <!-- Liaisons covalentes -->
+                    <line x1="75" y1="50" x2="175" y2="50" stroke="#475569" stroke-width="3"/>
+                    <line x1="225" y1="50" x2="325" y2="50" stroke="#475569" stroke-width="3"/>
+                    <line x1="375" y1="50" x2="475" y2="50" stroke="#475569" stroke-width="3"/>
+                </g>
+
+                <text x="325" y="160" text-anchor="middle" font-size="13" fill="#475569">✓ Chaque Si partage 4 électrons avec ses voisins</text>
+                <text x="325" y="175" text-anchor="middle" font-size="13" fill="#475569">✓ Toutes les liaisons sont complètes</text>
+            </g>
+
+            <!-- TYPE N - Dopé avec Arsenic (As) -->
+            <g transform="translate(50,270)">
+                <rect x="0" y="0" width="650" height="280" fill="#eff6ff" stroke="#2563eb" stroke-width="4" rx="10"/>
+                <text x="325" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#2563eb">TYPE n - Dopé avec ARSENIC (As)</text>
+                <text x="325" y="50" text-anchor="middle" font-size="14" fill="#1e3a8a">Groupe 15 → 5 électrons de valence</text>
+
+                <!-- Réseau avec As -->
+                <g transform="translate(40,70)">
+                    <!-- Si à gauche -->
+                    <circle cx="70" cy="70" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="70" y="73" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="70" y="84" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- Si en haut -->
+                    <circle cx="200" cy="20" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="200" y="23" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="200" y="34" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- As au centre (DOPANT) -->
+                    <circle cx="200" cy="70" r="28" fill="#ea580c" stroke="#dc2626" stroke-width="4"/>
+                    <text x="200" y="73" text-anchor="middle" font-size="18" font-weight="bold" fill="white">As</text>
+                    <text x="200" y="86" text-anchor="middle" font-size="10" fill="white">5e⁻</text>
+
+                    <!-- Si à droite -->
+                    <circle cx="330" cy="70" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="330" y="73" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="330" y="84" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- Si en bas -->
+                    <circle cx="200" cy="120" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="200" y="123" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="200" y="134" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- Liaisons (4 utilisées) -->
+                    <line x1="92" y1="70" x2="172" y2="70" stroke="#475569" stroke-width="3"/>
+                    <line x1="200" y1="42" x2="200" y2="42" stroke="#475569" stroke-width="3"/>
+                    <line x1="228" y1="70" x2="308" y2="70" stroke="#475569" stroke-width="3"/>
+                    <line x1="200" y1="98" x2="200" y2="98" stroke="#475569" stroke-width="3"/>
+
+                    <!-- ÉLECTRON LIBRE (5e) -->
+                    <circle cx="260" cy="30" r="12" fill="#dc2626" stroke="#7f1d1d" stroke-width="3"/>
+                    <text x="260" y="35" text-anchor="middle" font-size="14" font-weight="bold" fill="white">e⁻</text>
+
+                    <!-- Flèche pointant l'électron libre -->
+                    <path d="M 290 25 L 275 28" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/>
+                    <text x="295" y="20" font-size="12" font-weight="bold" fill="#dc2626">LIBRE!</text>
+                    <text x="295" y="33" font-size="10" fill="#dc2626">5e - 4 liaisons</text>
+                    <text x="295" y="45" font-size="10" fill="#dc2626">= 1 e⁻ mobile</text>
+                </g>
+
+                <!-- Explication détaillée -->
+                <rect x="420" y="70" width="210" height="130" fill="white" stroke="#2563eb" stroke-width="2" rx="5"/>
+                <text x="525" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#2563eb">EXPLICATION</text>
+                <text x="430" y="110" font-size="11" fill="#333">1. As a 5 électrons</text>
+                <text x="430" y="125" font-size="11" fill="#333">2. Si a besoin de 4 e⁻</text>
+                <text x="430" y="140" font-size="11" fill="#333">3. As forme 4 liaisons</text>
+                <text x="430" y="155" font-size="11" font-weight="bold" fill="#dc2626">4. 1 e⁻ RESTE LIBRE</text>
+                <text x="430" y="175" font-size="10" fill="#dc2626">→ Porteur négatif (n)</text>
+                <text x="430" y="190" font-size="10" fill="#dc2626">→ Conductivité ↑↑</text>
+
+                <text x="325" y="240" text-anchor="middle" font-size="14" font-weight="bold" fill="#2563eb">Type n = électrons LIBRES (charge négative)</text>
+                <text x="325" y="260" text-anchor="middle" font-size="12" fill="#1e3a8a">Utilisé pour: cathode, transistors NPN, partie n des diodes</text>
+            </g>
+
+            <!-- TYPE P - Dopé avec Indium (In) -->
+            <g transform="translate(50,580)">
+                <rect x="0" y="0" width="650" height="280" fill="#fef2f2" stroke="#dc2626" stroke-width="4" rx="10"/>
+                <text x="325" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#dc2626">TYPE p - Dopé avec INDIUM (In)</text>
+                <text x="325" y="50" text-anchor="middle" font-size="14" fill="#991b1b">Groupe 13 → 3 électrons de valence</text>
+
+                <!-- Réseau avec In -->
+                <g transform="translate(40,70)">
+                    <!-- Si à gauche -->
+                    <circle cx="70" cy="70" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="70" y="73" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="70" y="84" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- Si en haut -->
+                    <circle cx="200" cy="20" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="200" y="23" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="200" y="34" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- In au centre (DOPANT) -->
+                    <circle cx="200" cy="70" r="28" fill="#3b82f6" stroke="#1e40af" stroke-width="4"/>
+                    <text x="200" y="73" text-anchor="middle" font-size="18" font-weight="bold" fill="white">In</text>
+                    <text x="200" y="86" text-anchor="middle" font-size="10" fill="white">3e⁻</text>
+
+                    <!-- Si à droite -->
+                    <circle cx="330" cy="70" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="330" y="73" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="330" y="84" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- Si en bas -->
+                    <circle cx="200" cy="120" r="22" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                    <text x="200" y="123" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Si</text>
+                    <text x="200" y="134" text-anchor="middle" font-size="9" fill="white">4e⁻</text>
+
+                    <!-- 3 Liaisons complètes -->
+                    <line x1="92" y1="70" x2="172" y2="70" stroke="#475569" stroke-width="3"/>
+                    <line x1="200" y1="42" x2="200" y2="42" stroke="#475569" stroke-width="3"/>
+                    <line x1="228" y1="70" x2="308" y2="70" stroke="#475569" stroke-width="3"/>
+
+                    <!-- TROU (liaison manquante) -->
+                    <line x1="200" y1="98" x2="200" y2="98" stroke="#dc2626" stroke-width="3" stroke-dasharray="5,5"/>
+                    <circle cx="200" cy="135" r="12" fill="white" stroke="#dc2626" stroke-width="4"/>
+                    <text x="200" y="142" text-anchor="middle" font-size="16" font-weight="bold" fill="#dc2626">+</text>
+
+                    <!-- Flèche pointant le trou -->
+                    <path d="M 250 140 L 215 138" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/>
+                    <text x="255" y="135" font-size="12" font-weight="bold" fill="#dc2626">TROU!</text>
+                    <text x="255" y="148" font-size="10" fill="#dc2626">3e - 4 liaisons</text>
+                    <text x="255" y="160" font-size="10" fill="#dc2626">= 1 e⁻ manquant</text>
+                </g>
+
+                <!-- Explication détaillée -->
+                <rect x="420" y="70" width="210" height="130" fill="white" stroke="#dc2626" stroke-width="2" rx="5"/>
+                <text x="525" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#dc2626">EXPLICATION</text>
+                <text x="430" y="110" font-size="11" fill="#333">1. In a 3 électrons</text>
+                <text x="430" y="125" font-size="11" fill="#333">2. Si a besoin de 4 e⁻</text>
+                <text x="430" y="140" font-size="11" fill="#333">3. In forme 3 liaisons</text>
+                <text x="430" y="155" font-size="11" font-weight="bold" fill="#dc2626">4. 1 TROU (+) créé</text>
+                <text x="430" y="175" font-size="10" fill="#dc2626">→ Porteur positif (p)</text>
+                <text x="430" y="190" font-size="10" fill="#dc2626">→ Accepte électrons</text>
+
+                <text x="325" y="240" text-anchor="middle" font-size="14" font-weight="bold" fill="#dc2626">Type p = TROUS (charge positive manque d'e⁻)</text>
+                <text x="325" y="260" text-anchor="middle" font-size="12" fill="#991b1b">Utilisé pour: anode, transistors PNP, partie p des diodes</text>
+            </g>
+
+            <!-- Définition des marqueurs de flèche -->
+            <defs>
+                <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#dc2626"/>
+                </marker>
+            </defs>
+        </svg>
+    </div>
         <div class="box-title">Propriété fondamentale</div>
         <p>Le courant ne peut circuler que dans un sens (rectification).</p>
+    </div>
+
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Jonction p-n et Diode</h3>
+        <div class="mermaid">
+graph TB
+    subgraph Forward["⚡ POLARISATION DIRECTE (Courant passe)"]
+        PF[Type p<br/>🔴 Trous +]
+        NF[Type n<br/>🔵 Électrons -]
+        BattF[Batterie]
+        PosF[+ Pôle positif]
+        NegF[- Pôle négatif]
+
+        PosF -->|Connecté| PF
+        PF -->|Trous migrent →| NF
+        NF -->|Électrons migrent ←| PF
+        NF -->|Connecté| NegF
+        NegF --> BattF
+        BattF --> PosF
+    end
+
+    subgraph Reverse["❌ POLARISATION INVERSE (Courant bloqué)"]
+        PR[Type p<br/>🔴 Trous +]
+        NR[Type n<br/>🔵 Électrons -]
+        BattR[Batterie]
+        NegR[- Pôle négatif]
+        PosR[+ Pôle positif]
+
+        NegR -->|Connecté| PR
+        PR -.->|Trous attirés ←<br/>JONCTION S'ÉLARGIT| PR
+        NR -.->|Électrons attirés →<br/>JONCTION S'ÉLARGIT| NR
+        NR -->|Connecté| PosR
+        PosR --> BattR
+        BattR --> NegR
+    end
+
+    subgraph Result["📊 Résultat"]
+        D1[Polarisation Directe:<br/>⚡ COURANT CIRCULE ✓]
+        D2[Polarisation Inverse:<br/>🚫 PAS DE COURANT ✗]
+    end
+
+    style Forward fill:#d1fae5,stroke:#16a34a,stroke-width:3px
+    style Reverse fill:#fee2e2,stroke:#dc2626,stroke-width:3px
+    style Result fill:#eff6ff,stroke:#2563eb,stroke-width:2px
+    style PF fill:#fecaca,stroke:#dc2626,stroke-width:2px
+    style NF fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
+    style PR fill:#fecaca,stroke:#dc2626,stroke-width:2px
+    style NR fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
+    style D1 fill:#d1fae5,stroke:#16a34a,stroke-width:2px
+    style D2 fill:#fee2e2,stroke:#dc2626,stroke-width:2px
+        </div>
     </div>
 
     <h3>Polarisation Directe (Forward Bias)</h3>
