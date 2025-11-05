@@ -1776,19 +1776,27 @@ graph TB
                 const normalized = (value - min) / (max - min);
                 const intensity = reverse ? 1 - normalized : normalized;
 
-                // Échelle de couleurs : bleu (faible) -> vert -> jaune -> orange -> rouge (élevé)
-                if (intensity < 0.25) {
-                    const t = intensity / 0.25;
-                    return `rgb(${Math.round(33 + (59-33)*t)}, ${Math.round(150 + (178-150)*t)}, ${Math.round(243 + (235-243)*t)})`;
-                } else if (intensity < 0.5) {
-                    const t = (intensity - 0.25) / 0.25;
-                    return `rgb(${Math.round(59 + (16-59)*t)}, ${Math.round(178 + (185-178)*t)}, ${Math.round(235 + (129-235)*t)})`;
-                } else if (intensity < 0.75) {
-                    const t = (intensity - 0.5) / 0.25;
-                    return `rgb(${Math.round(16 + (251-16)*t)}, ${Math.round(185 + (191-185)*t)}, ${Math.round(129 + (36-129)*t)})`;
+                // Échelle de couleurs TRÈS MARQUÉE : bleu vif (faible) -> cyan -> vert -> jaune -> orange -> rouge vif (élevé)
+                if (intensity < 0.2) {
+                    // Bleu très foncé -> Bleu vif
+                    const t = intensity / 0.2;
+                    return `rgb(${Math.round(0 + (0-0)*t)}, ${Math.round(50 + (150-50)*t)}, ${Math.round(200 + (255-200)*t)})`;
+                } else if (intensity < 0.4) {
+                    // Bleu vif -> Cyan
+                    const t = (intensity - 0.2) / 0.2;
+                    return `rgb(${Math.round(0 + (0-0)*t)}, ${Math.round(150 + (255-150)*t)}, ${Math.round(255 + (255-255)*t)})`;
+                } else if (intensity < 0.6) {
+                    // Cyan -> Vert -> Jaune
+                    const t = (intensity - 0.4) / 0.2;
+                    return `rgb(${Math.round(0 + (255-0)*t)}, ${Math.round(255 + (255-255)*t)}, ${Math.round(255 + (0-255)*t)})`;
+                } else if (intensity < 0.8) {
+                    // Jaune -> Orange
+                    const t = (intensity - 0.6) / 0.2;
+                    return `rgb(${Math.round(255)}, ${Math.round(255 + (140-255)*t)}, ${Math.round(0)})`;
                 } else {
-                    const t = (intensity - 0.75) / 0.25;
-                    return `rgb(${Math.round(251 + (220-251)*t)}, ${Math.round(191 + (38-191)*t)}, ${Math.round(36 + (38-36)*t)})`;
+                    // Orange -> Rouge vif
+                    const t = (intensity - 0.8) / 0.2;
+                    return `rgb(${Math.round(255)}, ${Math.round(140 + (0-140)*t)}, ${Math.round(0)})`;
                 }
             }
 
@@ -1799,7 +1807,7 @@ graph TB
                         updateBlocks();
                         break;
                     case 'electronegativity':
-                        updateProperty('electronegativity', 'Électronégativité', 0, 4, false);
+                        updateProperty('electronegativity', 'Électronégativité (échelle de Pauling)', 0, 4, false);
                         break;
                     case 'ionization':
                         updateProperty('ionization', 'Énergie d\'ionisation (kJ/mol)', 300, 2500, false);
@@ -1814,107 +1822,172 @@ graph TB
                         updateProperty('density', 'Densité (g/cm³)', 0, 25, false);
                         break;
                     case 'radius':
-                        updateProperty('radius', 'Rayon atomique (pm)', 30, 280, true);
+                        // CORRECTION : rayon atomique augmente vers le bas et la gauche
+                        // Donc grands rayons (Cs, Fr) = rouge (élevé), petits (He, F) = bleu (faible)
+                        updateProperty('radius', 'Rayon atomique (pm)', 30, 280, false);
                         break;
                 }
             }
 
+            // Fonction pour réinitialiser les styles des éléments
+            function resetElementStyles() {
+                elements.forEach(el => {
+                    el.style.border = 'none';
+                    el.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                    el.style.fontWeight = 'normal';
+                });
+                document.querySelectorAll('.element-group').forEach(group => {
+                    group.style.border = 'none';
+                    group.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                    group.style.fontWeight = 'normal';
+                });
+            }
+
             // Affichage des blocks
             function updateBlocks() {
+                resetElementStyles();
                 legend.innerHTML = `
-                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #ef4444; border-radius: 3px; vertical-align: middle;"></span> s-block</div>
-                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #3b82f6; border-radius: 3px; vertical-align: middle;"></span> p-block</div>
-                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #fbbf24; border-radius: 3px; vertical-align: middle;"></span> d-block</div>
-                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #10b981; border-radius: 3px; vertical-align: middle;"></span> f-block</div>
+                    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 14px;">
+                        <div style="padding: 8px 15px; background: #ef4444; color: white; border-radius: 5px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <span style="font-size: 16px;">s-block</span> - Groupes 1-2 (Métaux alcalins et alcalino-terreux)
+                        </div>
+                        <div style="padding: 8px 15px; background: #3b82f6; color: white; border-radius: 5px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <span style="font-size: 16px;">p-block</span> - Groupes 13-18 (Non-métaux, métalloïdes)
+                        </div>
+                        <div style="padding: 8px 15px; background: #fbbf24; color: #1e3a8a; border-radius: 5px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <span style="font-size: 16px;">d-block</span> - Groupes 3-12 (Métaux de transition)
+                        </div>
+                        <div style="padding: 8px 15px; background: #10b981; color: white; border-radius: 5px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <span style="font-size: 16px;">f-block</span> - Lanthanides et Actinides
+                        </div>
                     </div>
                 `;
 
                 elements.forEach(el => {
                     el.querySelector('.value').textContent = '';
                     el.style.opacity = '1';
+                    el.style.fontWeight = 'bold';
 
                     if (el.classList.contains('s-block')) {
                         el.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
                         el.style.color = 'white';
+                        el.style.border = '2px solid #991b1b';
                     } else if (el.classList.contains('p-block')) {
                         el.style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
                         el.style.color = 'white';
+                        el.style.border = '2px solid #1e40af';
                     } else if (el.classList.contains('d-block')) {
                         el.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
                         el.style.color = '#1e3a8a';
+                        el.style.border = '2px solid #d97706';
                     } else if (el.classList.contains('f-block')) {
                         el.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
                         el.style.color = 'white';
+                        el.style.border = '2px solid #047857';
                     }
                 });
 
                 // Style pour les groupes d'éléments
                 document.querySelectorAll('.element-group').forEach(group => {
                     group.style.opacity = '1';
+                    group.style.fontWeight = 'bold';
                     if (group.classList.contains('s-block')) {
                         group.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
                         group.style.color = 'white';
+                        group.style.border = '2px solid #991b1b';
                     } else if (group.classList.contains('p-block')) {
                         group.style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
                         group.style.color = 'white';
+                        group.style.border = '2px solid #1e40af';
                     } else if (group.classList.contains('d-block')) {
                         group.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
                         group.style.color = '#1e3a8a';
+                        group.style.border = '2px solid #d97706';
                     } else if (group.classList.contains('f-block')) {
                         group.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
                         group.style.color = 'white';
+                        group.style.border = '2px solid #047857';
                     }
                 });
             }
 
             // Affichage du type de liaison
             function updateBonding() {
+                resetElementStyles();
                 legend.innerHTML = `
-                    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #dc2626; border-radius: 3px; vertical-align: middle;"></span> Salin (ionique)</div>
-                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #f59e0b; border-radius: 3px; vertical-align: middle;"></span> Métallique</div>
-                        <div><span style="display: inline-block; width: 20px; height: 20px; background: #2563eb; border-radius: 3px; vertical-align: middle;"></span> Moléculaire (covalent)</div>
+                    <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; font-size: 13px;">
+                        <div style="padding: 8px 15px; background: #f59e0b; color: white; border-radius: 5px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <span style="font-size: 16px;">🔗 Métallique</span><br>
+                            <span style="font-size: 11px;">Métaux (Na, Fe, Cu, etc.)</span>
+                        </div>
+                        <div style="padding: 8px 15px; background: #2563eb; color: white; border-radius: 5px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <span style="font-size: 16px;">🔗 Moléculaire/Covalent</span><br>
+                            <span style="font-size: 11px;">Non-métaux (H₂, O₂, S, etc.)</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px; font-size: 12px; color: #666;">
+                        Note: Les liaisons ioniques (salines) se forment entre métaux et non-métaux (ex: NaCl)
                     </div>
                 `;
 
                 elements.forEach(el => {
                     const bonding = el.getAttribute('data-bonding');
-                    el.querySelector('.value').textContent = '';
+                    const valueSpan = el.querySelector('.value');
+                    valueSpan.textContent = '';
                     el.style.opacity = '1';
+                    el.style.fontWeight = 'bold';
 
                     if (bonding === 'salin') {
+                        // Note: type "salin" n'est pas vraiment utilisé pour les éléments purs
                         el.style.background = '#dc2626';
                         el.style.color = 'white';
+                        el.style.border = '2px solid #991b1b';
                     } else if (bonding === 'metallic') {
-                        el.style.background = '#f59e0b';
-                        el.style.color = '#1e3a8a';
-                    } else if (bonding === 'molecular') {
-                        el.style.background = '#2563eb';
+                        el.style.background = 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)';
                         el.style.color = 'white';
+                        el.style.border = '2px solid #c2410c';
+
+                        // Ajouter une indication pour les métaux
+                        const group = parseInt(el.getAttribute('data-group'));
+                        if (group === 1 || group === 2) {
+                            el.style.boxShadow = '0 0 0 3px #ef4444'; // Bordure rouge pour s-block
+                        }
+                    } else if (bonding === 'molecular') {
+                        el.style.background = 'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)';
+                        el.style.color = 'white';
+                        el.style.border = '2px solid #1e3a8a';
                     }
                 });
 
-                // Masquer les groupes d'éléments pour cette vue
+                // Style spécial pour les groupes d'éléments (rendre visibles avec indication)
                 document.querySelectorAll('.element-group').forEach(group => {
-                    group.style.opacity = '0.3';
+                    const bonding = group.classList.contains('d-block') || group.classList.contains('f-block') || group.classList.contains('s-block');
+                    if (bonding) {
+                        group.style.opacity = '0.8';
+                        group.style.background = 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)';
+                        group.style.color = 'white';
+                        group.style.border = '2px solid #c2410c';
+                    } else {
+                        group.style.opacity = '0.3';
+                    }
                 });
             }
 
             // Affichage d'une propriété numérique
             function updateProperty(dataAttr, label, min, max, reverse = false) {
-                // Créer la légende avec un gradient
+                resetElementStyles();
+                // Créer la légende avec un gradient TRÈS MARQUÉ
                 const gradientStyle = reverse
-                    ? 'background: linear-gradient(to right, #dc2626, #f59e0b, #fbbf24, #10b981, #2563eb);'
-                    : 'background: linear-gradient(to right, #2563eb, #10b981, #fbbf24, #f59e0b, #dc2626);';
+                    ? 'background: linear-gradient(to right, #FF0000, #FF8C00, #FFFF00, #00FFFF, #0032C8);'
+                    : 'background: linear-gradient(to right, #0032C8, #00FFFF, #FFFF00, #FF8C00, #FF0000);';
 
                 legend.innerHTML = `
                     <div style="text-align: center;">
-                        <div style="font-weight: bold; margin-bottom: 5px;">${label}</div>
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-                            <span>${reverse ? 'Élevé' : 'Faible'}</span>
-                            <div style="width: 200px; height: 20px; ${gradientStyle} border-radius: 3px;"></div>
-                            <span>${reverse ? 'Faible' : 'Élevé'}</span>
+                        <div style="font-weight: bold; margin-bottom: 8px; font-size: 14px;">${label}</div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                            <span style="font-weight: bold; color: ${reverse ? '#FF0000' : '#0032C8'};">${reverse ? 'Élevé' : 'Faible'}</span>
+                            <div style="width: 300px; height: 25px; ${gradientStyle} border-radius: 5px; border: 2px solid #333;"></div>
+                            <span style="font-weight: bold; color: ${reverse ? '#0032C8' : '#FF0000'};">${reverse ? 'Faible' : 'Élevé'}</span>
                         </div>
                     </div>
                 `;
@@ -1926,8 +1999,13 @@ graph TB
                     if (value && value > 0) {
                         const color = getColorForValue(value, min, max, reverse);
                         el.style.background = color;
-                        el.style.color = '#1e3a8a';
+
+                        // Améliorer la lisibilité du texte selon la couleur de fond
+                        const rgb = color.match(/\d+/g);
+                        const brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+                        el.style.color = brightness > 128 ? '#000000' : '#FFFFFF';
                         el.style.opacity = '1';
+                        el.style.fontWeight = 'bold';
 
                         // Afficher la valeur
                         valueSpan.textContent = value.toFixed(dataAttr === 'electronegativity' ? 2 :
@@ -1936,6 +2014,7 @@ graph TB
                         el.style.background = '#e5e7eb';
                         el.style.color = '#6b7280';
                         el.style.opacity = '0.5';
+                        el.style.fontWeight = 'normal';
                         valueSpan.textContent = 'N/A';
                     }
                 });
