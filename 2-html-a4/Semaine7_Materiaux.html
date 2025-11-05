@@ -319,7 +319,137 @@ graph LR
         <p><strong>Augmente</strong> ↓ en descendant un groupe (plus de couches)</p>
         <p><strong>Diminue</strong> → de gauche à droite ($Z_{\text{eff}}$ augmente)</p>
     </div>
-    <div class="visualPeriodicTable">
+    <div class="visual-concept print-only">
+        <h3>Visualisation : Tendances Périodiques</h3>
+        <svg width="650" height="400" viewBox="0 0 650 400">
+            <defs>
+                <marker id="arrow-trend" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L10,3 z" fill="#dc2626" />
+                </marker>
+                <marker id="arrow-trend-blue" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L10,3 z" fill="#2563eb" />
+                </marker>
+            </defs>
+
+            <!-- Titre -->
+            <text x="325" y="30" font-size="18" fill="#1e3a8a" font-weight="bold" text-anchor="middle">TABLEAU PÉRIODIQUE - TENDANCES</text>
+
+            <!-- Tableau stylisé -->
+            <rect x="50" y="60" width="550" height="300" fill="#f8fafc" stroke="#1e3a8a" stroke-width="3" rx="10"/>
+
+            <!-- Groupes (colonnes) -->
+            <text x="100" y="55" font-size="12" fill="#666" text-anchor="middle">1</text>
+            <text x="200" y="55" font-size="12" fill="#666" text-anchor="middle">2</text>
+            <text x="350" y="55" font-size="12" fill="#666" text-anchor="middle">13-17</text>
+            <text x="500" y="55" font-size="12" fill="#666" text-anchor="middle">18</text>
+
+            <!-- Périodes (lignes) -->
+            <text x="35" y="110" font-size="12" fill="#666" text-anchor="middle">2</text>
+            <text x="35" y="180" font-size="12" fill="#666" text-anchor="middle">3</text>
+            <text x="35" y="250" font-size="12" fill="#666" text-anchor="middle">4</text>
+            <text x="35" y="320" font-size="12" fill="#666" text-anchor="middle">5</text>
+
+            <!-- Éléments représentatifs avec tailles -->
+            <!-- Période 2 -->
+            <circle cx="100" cy="100" r="25" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+            <text x="100" y="105" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Li</text>
+
+            <circle cx="500" cy="100" r="12" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
+            <text x="500" y="104" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Ne</text>
+
+            <!-- Période 3 -->
+            <circle cx="100" cy="170" r="30" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+            <text x="100" y="175" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Na</text>
+
+            <circle cx="500" cy="170" r="15" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
+            <text x="500" y="175" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Ar</text>
+
+            <!-- Période 4 -->
+            <circle cx="100" cy="250" r="35" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+            <text x="100" y="255" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">K</text>
+
+            <circle cx="500" cy="250" r="17" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
+            <text x="500" y="255" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Kr</text>
+
+            <!-- FLÈCHES DE TENDANCES -->
+
+            <!-- RAYON ATOMIQUE -->
+            <!-- Augmente vers le bas -->
+            <path d="M 25 110 L 25 350" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-trend)"/>
+            <text x="-100" y="200" font-size="13" fill="#dc2626" font-weight="bold" transform="rotate(-90 15 200)">RAYON AUGMENTE</text>
+
+            <!-- Augmente vers la droite -->
+            <path d="M 470 80 L 140 80" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-trend)"/>
+            <text x="300" y="95" font-size="13" fill="red" font-weight="bold" text-anchor="middle">RAYON AUGMENTE</text>
+
+            <!-- ÉNERGIE D'IONISATION -->
+            <!-- Augmente vers la droite -->
+            <path d="M 140 340 L 470 340" stroke="blue" stroke-width="2" marker-end="url(#arrow-trend-blue)"/>
+            <text x="300" y="355" font-size="13" fill="blue" font-weight="bold" text-anchor="middle">IONISATION AUGMENTE</text>
+
+            <!-- Diminue vers le bas -->
+            <path d="M 530 300 L 530 110" stroke="blue" stroke-width="2" marker-end="url(#arrow-trend-blue)"/>
+            <text x="560" y="250" font-size="13" fill="blue" font-weight="bold" transform="rotate(90 615 200)">IONISATION AUGMENTE</text>
+
+            <!-- Légende -->
+            <rect x="150" y="150" width="325" height="120" fill="white" stroke="#1e3a8a" stroke-width="2" rx="5" opacity="0.95"/>
+            <text x="325" y="175" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">TENDANCES</text>
+
+            <circle cx="170" cy="195" r="6" fill="#dc2626"/>
+            <text x="185" y="200" font-size="11" fill="#666">Rayon atomique : ↑ vers bas, ← vers gauche</text>
+
+            <circle cx="170" cy="220" r="6" fill="#16a34a"/>
+            <text x="185" y="225" font-size="11" fill="#666">Énergie d'ionisation : ↑ vers haut, → vers droite</text>
+
+            <circle cx="170" cy="245" r="6" fill="#2563eb"/>
+            <text x="185" y="250" font-size="11" fill="#666">Électronégativité : ↑ vers haut, → vers droite</text>
+        </svg>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Rayon ionique</div>
+        <ul>
+            <li>Cations : plus petits que l'atome neutre</li>
+            <li>Anions : plus grands que l'atome neutre</li>
+        </ul>
+    </div>
+
+    <h2>4.3 Contraction Lanthanide</h2>
+    <div class="info-box">
+        <div class="box-title">Définition</div>
+        <p>Diminution progressive des rayons atomiques des lanthanides due au remplissage des orbitales 4f.</p>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Conséquences</div>
+        <ul>
+            <li>Les éléments des Périodes 5 et 6 ont des rayons similaires</li>
+            <li>Densités plus élevées pour les éléments de Période 6</li>
+            <li>Exemple : Zr (160 pm) ≈ Hf (156 pm)</li>
+        </ul>
+    </div>
+
+    <h2>4.4 Énergie de Première Ionisation</h2>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\ce{M(g) -> M+(g) + e-} \quad I_1 > 0$$
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr><th>Propriété</th><th>Gauche → Droite</th><th>Haut → Bas</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Rayon atomique</td><td>Diminue</td><td>Augmente</td></tr>
+            <tr><td>Énergie d'ionisation</td><td>Augmente</td><td>Diminue</td></tr>
+            <tr><td>Électronégativité</td><td>Augmente</td><td>Diminue</td></tr>
+            <tr><td>Polarisabilité</td><td>Diminue</td><td>Augmente</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Tableau périodique interactif (visible uniquement sur écran) -->
+    <div class="screen-only">
         <div class="interactive-periodic-table">
             <h3 style="text-align: center; margin-bottom: 10px; color: #ff0000;">Tableau Périodique Interactif</h3>
 
@@ -772,134 +902,6 @@ graph LR
             </div>
         </div>
     </div>
-    <div class="visual-concept">
-        <h3>Visualisation : Tendances Périodiques</h3>
-        <svg width="650" height="400" viewBox="0 0 650 400">
-            <defs>
-                <marker id="arrow-trend" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
-                    <path d="M0,0 L0,6 L10,3 z" fill="#dc2626" />
-                </marker>
-                <marker id="arrow-trend-blue" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
-                    <path d="M0,0 L0,6 L10,3 z" fill="#2563eb" />
-                </marker>
-            </defs>
-
-            <!-- Titre -->
-            <text x="325" y="30" font-size="18" fill="#1e3a8a" font-weight="bold" text-anchor="middle">TABLEAU PÉRIODIQUE - TENDANCES</text>
-
-            <!-- Tableau stylisé -->
-            <rect x="50" y="60" width="550" height="300" fill="#f8fafc" stroke="#1e3a8a" stroke-width="3" rx="10"/>
-
-            <!-- Groupes (colonnes) -->
-            <text x="100" y="55" font-size="12" fill="#666" text-anchor="middle">1</text>
-            <text x="200" y="55" font-size="12" fill="#666" text-anchor="middle">2</text>
-            <text x="350" y="55" font-size="12" fill="#666" text-anchor="middle">13-17</text>
-            <text x="500" y="55" font-size="12" fill="#666" text-anchor="middle">18</text>
-
-            <!-- Périodes (lignes) -->
-            <text x="35" y="110" font-size="12" fill="#666" text-anchor="middle">2</text>
-            <text x="35" y="180" font-size="12" fill="#666" text-anchor="middle">3</text>
-            <text x="35" y="250" font-size="12" fill="#666" text-anchor="middle">4</text>
-            <text x="35" y="320" font-size="12" fill="#666" text-anchor="middle">5</text>
-
-            <!-- Éléments représentatifs avec tailles -->
-            <!-- Période 2 -->
-            <circle cx="100" cy="100" r="25" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
-            <text x="100" y="105" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Li</text>
-
-            <circle cx="500" cy="100" r="12" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
-            <text x="500" y="104" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Ne</text>
-
-            <!-- Période 3 -->
-            <circle cx="100" cy="170" r="30" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
-            <text x="100" y="175" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Na</text>
-
-            <circle cx="500" cy="170" r="15" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
-            <text x="500" y="175" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Ar</text>
-
-            <!-- Période 4 -->
-            <circle cx="100" cy="250" r="35" fill="#ef4444" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
-            <text x="100" y="255" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">K</text>
-
-            <circle cx="500" cy="250" r="17" fill="#3b82f6" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
-            <text x="500" y="255" font-size="11" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Kr</text>
-
-            <!-- FLÈCHES DE TENDANCES -->
-
-            <!-- RAYON ATOMIQUE -->
-            <!-- Augmente vers le bas -->
-            <path d="M 25 110 L 25 350" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-trend)"/>
-            <text x="-100" y="200" font-size="13" fill="#dc2626" font-weight="bold" transform="rotate(-90 15 200)">RAYON AUGMENTE</text>
-
-            <!-- Augmente vers la droite -->
-            <path d="M 470 80 L 140 80" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-trend)"/>
-            <text x="300" y="95" font-size="13" fill="red" font-weight="bold" text-anchor="middle">RAYON AUGMENTE</text>
-
-            <!-- ÉNERGIE D'IONISATION -->
-            <!-- Augmente vers la droite -->
-            <path d="M 140 340 L 470 340" stroke="blue" stroke-width="2" marker-end="url(#arrow-trend-blue)"/>
-            <text x="300" y="355" font-size="13" fill="blue" font-weight="bold" text-anchor="middle">IONISATION AUGMENTE</text>
-
-            <!-- Diminue vers le bas -->
-            <path d="M 530 300 L 530 110" stroke="blue" stroke-width="2" marker-end="url(#arrow-trend-blue)"/>
-            <text x="560" y="250" font-size="13" fill="blue" font-weight="bold" transform="rotate(90 615 200)">IONISATION AUGMENTE</text>
-
-            <!-- Légende -->
-            <rect x="150" y="150" width="325" height="120" fill="white" stroke="#1e3a8a" stroke-width="2" rx="5" opacity="0.95"/>
-            <text x="325" y="175" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">TENDANCES</text>
-
-            <circle cx="170" cy="195" r="6" fill="#dc2626"/>
-            <text x="185" y="200" font-size="11" fill="#666">Rayon atomique : ↑ vers bas, ← vers gauche</text>
-
-            <circle cx="170" cy="220" r="6" fill="#16a34a"/>
-            <text x="185" y="225" font-size="11" fill="#666">Énergie d'ionisation : ↑ vers haut, → vers droite</text>
-
-            <circle cx="170" cy="245" r="6" fill="#2563eb"/>
-            <text x="185" y="250" font-size="11" fill="#666">Électronégativité : ↑ vers haut, → vers droite</text>
-        </svg>
-    </div>
-
-    <div class="important-box">
-        <div class="box-title">Rayon ionique</div>
-        <ul>
-            <li>Cations : plus petits que l'atome neutre</li>
-            <li>Anions : plus grands que l'atome neutre</li>
-        </ul>
-    </div>
-
-    <h2>4.3 Contraction Lanthanide</h2>
-    <div class="info-box">
-        <div class="box-title">Définition</div>
-        <p>Diminution progressive des rayons atomiques des lanthanides due au remplissage des orbitales 4f.</p>
-    </div>
-
-    <div class="example-box">
-        <div class="box-title">Conséquences</div>
-        <ul>
-            <li>Les éléments des Périodes 5 et 6 ont des rayons similaires</li>
-            <li>Densités plus élevées pour les éléments de Période 6</li>
-            <li>Exemple : Zr (160 pm) ≈ Hf (156 pm)</li>
-        </ul>
-    </div>
-
-    <h2>4.4 Énergie de Première Ionisation</h2>
-    <div class="formula-box">
-        <div class="math-display">
-            $$\ce{M(g) -> M+(g) + e-} \quad I_1 > 0$$
-        </div>
-    </div>
-
-    <table>
-        <thead>
-            <tr><th>Propriété</th><th>Gauche → Droite</th><th>Haut → Bas</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>Rayon atomique</td><td>Diminue</td><td>Augmente</td></tr>
-            <tr><td>Énergie d'ionisation</td><td>Augmente</td><td>Diminue</td></tr>
-            <tr><td>Électronégativité</td><td>Augmente</td><td>Diminue</td></tr>
-            <tr><td>Polarisabilité</td><td>Diminue</td><td>Augmente</td></tr>
-        </tbody>
-    </table>
 
     <!-- SECTION 5: CHEMICAL PROPERTIES -->
     <div class="page-break"></div>

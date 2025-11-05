@@ -582,10 +582,25 @@ p, li, td, th {
   background: transparent;
 }
 
-/* Media query pour impression - Cacher le tableau interactif */
+/* Classes pour gérer l'affichage écran/impression */
+.print-only {
+  display: none !important;
+}
+
+.screen-only {
+  display: block;
+}
+
+/* Media query pour impression */
 @media print {
-  .interactive-periodic-table {
+  /* Masquer le contenu screen-only à l'impression */
+  .screen-only {
     display: none !important;
+  }
+
+  /* Afficher le contenu print-only à l'impression */
+  .print-only {
+    display: block !important;
   }
 }
 
