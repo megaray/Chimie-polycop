@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaine 6 - Thermodynamique</title>
+    <link rel="stylesheet" href="../src/html-templates/styles.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: {'[+]': ['mhchem']}
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+    <!-- PAGE DE COUVERTURE -->
+    <div class="cover-page">
+        <h1 class="cover-title">POLYCOPIÉ DE CHIMIE GÉNÉRALE</h1>
+
+        <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="10" fill="#1e3a8a"/>
+            <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <ellipse cx="100" cy="100" rx="30" ry="80" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <circle cx="180" cy="100" r="6" fill="#ea580c"/>
+            <circle cx="20" cy="100" r="6" fill="#ea580c"/>
+            <circle cx="100" cy="180" r="6" fill="#ea580c"/>
+            <circle cx="100" cy="20" r="6" fill="#ea580c"/>
+        </svg>
+
+        <h2 class="cover-subtitle">Semaine 6</h2>
+        <h2 class="cover-subtitle">Thermodynamique</h2>
+
+        <p class="cover-author">Dr. Arne Seitz</p>
+        <p class="cover-institution">BioImaging & Optics Platform (BIOP)</p>
+        <p class="cover-institution">École Polytechnique Fédérale de Lausanne (EPFL)</p>
+        <p class="cover-date">31 octobre 2025</p>
+    </div>
+
+    <!-- TABLE DES MATIÈRES -->
+    <div class="page-break"></div>
+    <h1>Table des Matières</h1>
+    <div class="toc">
+        <div class="toc-item"><span class="toc-title">1. Introduction à la Thermodynamique</span><span class="toc-page">3</span></div>
+        <div class="toc-item"><span class="toc-title">2. Enthalpie</span><span class="toc-page">4</span></div>
+        <div class="toc-item"><span class="toc-title">3. Capacités Calorifiques</span><span class="toc-page">5</span></div>
+        <div class="toc-item"><span class="toc-title">4. Changements Physiques</span><span class="toc-page">6</span></div>
+        <div class="toc-item"><span class="toc-title">5. Thermochimie</span><span class="toc-page">8</span></div>
+        <div class="toc-item"><span class="toc-title">6. Enthalpie de Combustion</span><span class="toc-page">10</span></div>
+        <div class="toc-item"><span class="toc-title">7. Courbes de Chauffage</span><span class="toc-page">11</span></div>
+        <div class="toc-item"><span class="toc-title">8. Formulaire Récapitulatif</span><span class="toc-page">13</span></div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="page-break"></div>
+    <h1>1. INTRODUCTION À LA THERMODYNAMIQUE</h1>
+
+    <h2>1.1 Premier Principe</h2>
+    <div class="formula-box">
+        <div class="box-title">Loi de conservation de l'énergie</div>
+        <div class="math-display">
+            $$\Delta U = q + w$$
+        </div>
+        <p><strong>Où :</strong></p>
+        <ul>
+            <li>$\Delta U$ = variation d'énergie interne (J)</li>
+            <li>$q$ = chaleur échangée (J)</li>
+            <li>$w$ = travail effectué (J)</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <div class="box-title">Conventions de signes</div>
+        <table>
+            <thead>
+                <tr><th>Processus</th><th>Signe</th><th>Signification</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>$q > 0$</td><td>+</td><td>Système absorbe chaleur (endothermique)</td></tr>
+                <tr><td>$q < 0$</td><td>−</td><td>Système libère chaleur (exothermique)</td></tr>
+                <tr><td>$w > 0$</td><td>+</td><td>Travail effectué SUR le système</td></tr>
+                <tr><td>$w < 0$</td><td>−</td><td>Travail effectué PAR le système</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="page-break"></div>
+    <h1>2. ENTHALPIE</h1>
+
+    <h2>2.1 Définition</h2>
+    <div class="formula-box">
+        <div class="box-title">Fonction d'état enthalpie</div>
+        <div class="math-display">
+            $$H = U + PV$$
+        </div>
+        <p>Pour une transformation à pression constante :</p>
+        <div class="math-display">
+            $$\Delta H = q_P$$
+        </div>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Pourquoi l'enthalpie ?</div>
+        <p>L'enthalpie est plus pratique que l'énergie interne car la plupart des réactions chimiques se déroulent à <strong>pression constante</strong> (pression atmosphérique).</p>
+        <p>$\Delta H$ correspond directement à la chaleur échangée à pression constante !</p>
+    </div>
+
+    <h2>2.2 Variations d'Enthalpie</h2>
+    <table>
+        <thead>
+            <tr><th>Processus</th><th>$\Delta H$</th><th>Nom</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Réaction chimique</td><td>$\Delta H_r$</td><td>Enthalpie de réaction</td></tr>
+            <tr><td>Formation depuis éléments</td><td>$\Delta H_f°$</td><td>Enthalpie de formation</td></tr>
+            <tr><td>Combustion complète</td><td>$\Delta H_c°$</td><td>Enthalpie de combustion</td></tr>
+            <tr><td>Fusion (solide → liquide)</td><td>$\Delta H_{\text{fus}}$</td><td>Enthalpie de fusion</td></tr>
+            <tr><td>Vaporisation (liquide → gaz)</td><td>$\Delta H_{\text{vap}}$</td><td>Enthalpie de vaporisation</td></tr>
+            <tr><td>Sublimation (solide → gaz)</td><td>$\Delta H_{\text{sub}}$</td><td>Enthalpie de sublimation</td></tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 3 -->
+    <div class="page-break"></div>
+    <h1>3. CAPACITÉS CALORIFIQUES</h1>
+
+    <h2>3.1 Définitions</h2>
+    <div class="formula-box">
+        <div class="box-title">Capacités calorifiques</div>
+        <p><strong>À volume constant :</strong></p>
+        <div class="math-display">
+            $$C_V = \frac{\Delta U}{\Delta T} = \left(\frac{\partial U}{\partial T}\right)_V$$
+        </div>
+        <p><strong>À pression constante :</strong></p>
+        <div class="math-display">
+            $$C_P = \frac{\Delta H}{\Delta T} = \left(\frac{\partial H}{\partial T}\right)_P$$
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="box-title">Relation entre $C_P$ et $C_V$ pour gaz parfait</div>
+        <div class="math-display">
+            $$C_{P,m} = C_{V,m} + R$$
+        </div>
+    </div>
+
+    <h2>3.2 Valeurs Molaires pour Différents Types de Molécules</h2>
+    <table>
+        <thead>
+            <tr><th>Type de molécule</th><th>$C_{V,m}$</th><th>$C_{P,m}$</th><th>Exemples</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monoatomique</td>
+                <td>$\frac{3}{2}R$</td>
+                <td>$\frac{5}{2}R$</td>
+                <td>He, Ne, Ar</td>
+            </tr>
+            <tr>
+                <td>Diatomique linéaire</td>
+                <td>$\frac{5}{2}R$</td>
+                <td>$\frac{7}{2}R$</td>
+                <td>$\ce{H2}$, $\ce{N2}$, $\ce{O2}$</td>
+            </tr>
+            <tr>
+                <td>Polyatomique non-linéaire</td>
+                <td>$3R$</td>
+                <td>$4R$</td>
+                <td>$\ce{H2O}$, $\ce{NH3}$</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 4 -->
+    <div class="page-break"></div>
+    <h1>4. ENTHALPIE DES CHANGEMENTS PHYSIQUES</h1>
+
+    <h2>4.1 Enthalpie de Vaporisation</h2>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\Delta H_{\text{vap}} = H_m(\text{vapeur}) - H_m(\text{liquide})$$
+        </div>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Exemple : Eau</div>
+        <ul>
+            <li>À 100°C : $\Delta H_{\text{vap}} = 40.7$ kJ/mol</li>
+            <li>À 25°C : $\Delta H_{\text{vap}} = 44.0$ kJ/mol</li>
+        </ul>
+    </div>
+
+    <h2>4.2 Enthalpie de Fusion</h2>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\Delta H_{\text{fus}} = H_m(\text{liquide}) - H_m(\text{solide})$$
+        </div>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Exemple : Eau</div>
+        <p>À 0°C : $\Delta H_{\text{fus}} = 6.0$ kJ/mol</p>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Pourquoi $\Delta H_{\text{vap}} \gg \Delta H_{\text{fus}}$ ?</div>
+        <ul>
+            <li><strong>Vaporisation :</strong> séparation complète des molécules, augmentation importante de l'énergie cinétique</li>
+            <li><strong>Fusion :</strong> molécules restent proches, forces intermoléculaires similaires au solide</li>
+        </ul>
+    </div>
+
+    <h2>4.3 Enthalpie de Sublimation</h2>
+    <div class="formula-box">
+        <div class="box-title">Relation fondamentale</div>
+        <div class="math-display">
+            $$\Delta H_{\text{sub}} = \Delta H_{\text{fus}} + \Delta H_{\text{vap}}$$
+        </div>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Exemples de sublimation</div>
+        <ul>
+            <li>Givre qui disparaît par temps froid et sec</li>
+            <li>Glace sèche ($\ce{CO2}$ solide)</li>
+            <li>Iode solide</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="page-break"></div>
+    <h1>5. THERMOCHIMIE</h1>
+
+    <h2>5.1 Équations Thermochimiques</h2>
+    <div class="example-box">
+        <div class="box-title">Exemple : Combustion du méthane</div>
+        <div class="math-display">
+            $$\ce{CH4(g) + 2 O2(g) -> CO2(g) + 2 H2O(l)}$$
+            $$\Delta H = -890 \text{ kJ}$$
+        </div>
+    </div>
+
+    <h2>5.2 Propriétés de $\Delta H$</h2>
+    <div class="info-box">
+        <div class="box-title">Règles importantes</div>
+        <ol>
+            <li><strong>Stoichiométrie :</strong> $\Delta H$ correspond aux coefficients de l'équation
+                <div class="math-display">$2\ce{CH4} \rightarrow \Delta H = 2 \times (-890) = -1780$ kJ</div>
+            </li>
+            <li><strong>Réaction inverse :</strong> Le signe de $\Delta H$ change
+                <div class="math-display">$\ce{CO2 + 2 H2O -> CH4 + 2 O2}$, $\Delta H = +890$ kJ</div>
+            </li>
+            <li><strong>États physiques :</strong> Toujours spécifier l'état (s, l, g, aq)</li>
+        </ol>
+    </div>
+
+    <h2>5.3 Relation entre $\Delta H$ et $\Delta U$</h2>
+    <div class="formula-box">
+        <div class="box-title">Formule générale</div>
+        <div class="math-display">
+            $$\Delta H = \Delta U + \Delta n_{\text{gaz}} RT$$
+        </div>
+        <p><strong>Où :</strong> $\Delta n_{\text{gaz}} = n_{\text{final}} - n_{\text{initial}}$ (moles de gaz)</p>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="page-break"></div>
+    <h1>6. ENTHALPIE DE COMBUSTION</h1>
+
+    <h2>6.1 Définition</h2>
+    <div class="info-box">
+        <div class="box-title">Enthalpie standard de combustion ($\Delta H_c°$)</div>
+        <p>Variation d'enthalpie par mole d'une substance brûlée dans une réaction de combustion complète dans les conditions standard.</p>
+        <p><strong>Conditions standard :</strong></p>
+        <ul>
+            <li>Pression : exactement 1 bar</li>
+            <li>Température : 298 K (25°C)</li>
+        </ul>
+    </div>
+
+    <h2>6.2 Tableau des Enthalpies de Combustion</h2>
+    <table>
+        <thead>
+            <tr><th>Substance</th><th>Formule</th><th>$\Delta H_c°$ (kJ/mol)</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Hydrogène</td><td>$\ce{H2(g)}$</td><td>−286</td></tr>
+            <tr><td>Méthane</td><td>$\ce{CH4(g)}$</td><td>−890</td></tr>
+            <tr><td>Éthanol</td><td>$\ce{CH3CH2OH(l)}$</td><td>−1368</td></tr>
+            <tr><td>Propane</td><td>$\ce{CH3CH2CH3(g)}$</td><td>−2220</td></tr>
+            <tr><td>Glucose</td><td>$\ce{C6H12O6(s)}$</td><td>−2808</td></tr>
+            <tr><td>Octane</td><td>$\ce{C8H18(l)}$</td><td>−5471</td></tr>
+        </tbody>
+    </table>
+
+    <h2>6.3 Enthalpie Spécifique</h2>
+    <div class="formula-box">
+        <div class="box-title">Enthalpie par gramme</div>
+        <div class="math-display">
+            $$\text{Enthalpie spécifique} = \frac{\Delta H°}{M} \quad \text{(kJ/g)}$$
+        </div>
+    </div>
+
+    <div class="info-box">
+        <div class="box-title">Utilité</div>
+        <ul>
+            <li>Comparaison de l'efficacité des carburants</li>
+            <li>Choix du carburant pour une application donnée</li>
+            <li>Transport et stockage d'énergie</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="page-break"></div>
+    <h1>7. COURBES DE CHAUFFAGE</h1>
+
+    <h2>7.1 Interprétation</h2>
+    <div class="info-box">
+        <p><strong>Axes :</strong></p>
+        <ul>
+            <li>Axe horizontal : Énergie fournie sous forme de chaleur ($q$)</li>
+            <li>Axe vertical : Température ($T$)</li>
+        </ul>
+    </div>
+
+    <h3>Régions de la courbe</h3>
+    <ol>
+        <li><strong>Chauffage du solide (Pente raide)</strong>
+            <ul>
+                <li>Molécules oscillent autour de positions fixes</li>
+                <li>Température augmente</li>
+            </ul>
+        </li>
+        
+        <li><strong>Fusion (Plateau horizontal)</strong>
+            <ul>
+                <li>Température constante</li>
+                <li>Toute l'énergie sert à briser les forces d'attraction</li>
+                <li>Durée du plateau $\propto \Delta H_{\text{fus}}$</li>
+            </ul>
+        </li>
+        
+        <li><strong>Chauffage du liquide (Pente moins raide)</strong>
+            <ul>
+                <li>Molécules se déplacent librement</li>
+                <li>Pente plus faible → capacité calorifique plus élevée</li>
+            </ul>
+        </li>
+        
+        <li><strong>Vaporisation (Plateau horizontal long)</strong>
+            <ul>
+                <li>Température constante</li>
+                <li>Toute l'énergie sert à séparer complètement les molécules</li>
+                <li>Durée du plateau $\propto \Delta H_{\text{vap}}$ (beaucoup plus long)</li>
+            </ul>
+        </li>
+        
+        <li><strong>Chauffage de la vapeur (Pente raide)</strong>
+            <ul>
+                <li>Molécules libres</li>
+                <li>Température augmente</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>7.2 Pentes et Capacités Calorifiques</h2>
+    <div class="formula-box">
+        <div class="box-title">Relation pente-capacité</div>
+        <div class="math-display">
+            $$\text{Pente} = \frac{\Delta T}{\Delta q} = \frac{1}{C}$$
+        </div>
+    </div>
+
+    <div class="info-box">
+        <ul>
+            <li><strong>Pente raide</strong> → Faible capacité calorifique</li>
+            <li><strong>Pente douce</strong> → Grande capacité calorifique</li>
+        </ul>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Ordre pour l'eau</div>
+        <div class="math-display">
+            $$C_{\text{solide}} < C_{\text{vapeur}} < C_{\text{liquide}}$$
+        </div>
+        <p><strong>Pourquoi le liquide a une grande capacité calorifique ?</strong></p>
+        <ul>
+            <li>Présence de liaisons hydrogène qui se brisent et se reforment</li>
+            <li>Nécessite plus d'énergie pour augmenter la température</li>
+        </ul>
+    </div>
+
+    <!-- FORMULAIRE -->
+    <div class="page-break"></div>
+    <h1>8. FORMULAIRE RÉCAPITULATIF</h1>
+
+    <h2>8.1 Fonctions d'État</h2>
+    <table>
+        <thead>
+            <tr><th>Fonction</th><th>Formule</th><th>Conditions</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Énergie interne</td><td>$\Delta U = q + w$</td><td>Toujours</td></tr>
+            <tr><td>Enthalpie</td><td>$H = U + PV$</td><td>Toujours</td></tr>
+            <tr><td>Variation d'enthalpie</td><td>$\Delta H = \Delta U + P\Delta V$</td><td>Pression constante</td></tr>
+            <tr><td>Chaleur à $P$ constant</td><td>$\Delta H = q_P$</td><td>Pression constante</td></tr>
+            <tr><td>Chaleur à $V$ constant</td><td>$\Delta U = q_V$</td><td>Volume constant</td></tr>
+        </tbody>
+    </table>
+
+    <h2>8.2 Capacités Calorifiques</h2>
+    <table>
+        <thead>
+            <tr><th>Type</th><th>$C_{V,m}$</th><th>$C_{P,m}$</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Monoatomique</td><td>$\frac{3}{2}R$</td><td>$\frac{5}{2}R$</td></tr>
+            <tr><td>Diatomique</td><td>$\frac{5}{2}R$</td><td>$\frac{7}{2}R$</td></tr>
+            <tr><td>Polyatomique</td><td>$3R$</td><td>$4R$</td></tr>
+        </tbody>
+    </table>
+
+    <h2>8.3 Changements de Phase</h2>
+    <table>
+        <thead>
+            <tr><th>Transition</th><th>Symbole</th><th>Signe</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Fusion (s → l)</td><td>$\Delta H_{\text{fus}}$</td><td>$> 0$ (endothermique)</td></tr>
+            <tr><td>Vaporisation (l → g)</td><td>$\Delta H_{\text{vap}}$</td><td>$> 0$ (endothermique)</td></tr>
+            <tr><td>Sublimation (s → g)</td><td>$\Delta H_{\text{sub}}$</td><td>$> 0$ (endothermique)</td></tr>
+            <tr><td>Solidification (l → s)</td><td>$-\Delta H_{\text{fus}}$</td><td>$< 0$ (exothermique)</td></tr>
+            <tr><td>Condensation (g → l)</td><td>$-\Delta H_{\text{vap}}$</td><td>$< 0$ (exothermique)</td></tr>
+        </tbody>
+    </table>
+
+    <h2>8.4 Relations Importantes</h2>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\Delta H_{\text{sub}} = \Delta H_{\text{fus}} + \Delta H_{\text{vap}}$$
+            $$C_{P,m} = C_{V,m} + R$$
+            $$\Delta H = \Delta U + \Delta n_{\text{gaz}} RT$$
+        </div>
+    </div>
+
+    <h2>8.5 Conseils Pratiques</h2>
+    <div class="important-box">
+        <ol>
+            <li>Toujours vérifier les unités de $\Delta H$ (kJ vs kJ/mol)</li>
+            <li>Spécifier les états physiques dans les équations thermochimiques</li>
+            <li>$\Delta H_{\text{vap}} \gg \Delta H_{\text{fus}}$ pour la plupart des substances</li>
+            <li>Sur une courbe de chauffage : plateau = changement de phase</li>
+            <li>Pente de la courbe inversement proportionnelle à la capacité calorifique</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>Résumé créé selon le modèle du polycopié EPFL</p>
+        <p>Dr. Arne Seitz - BioImaging & Optics Platform (BIOP)</p>
+        <p>École Polytechnique Fédérale de Lausanne (EPFL)</p>
+    </footer>
+</body>
+</html>

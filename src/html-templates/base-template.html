@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: {'[+]': ['mhchem']}
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    <!-- Pour les formules chimiques -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/mhchem.js" async></script>
+</head>
+<body>
+    {{CONTENT}}
+
+    <footer>
+        <p>Résumé créé selon le modèle du polycopié EPFL</p>
+        <p>Dr. Arne Seitz - BioImaging & Optics Platform (BIOP)</p>
+        <p>École Polytechnique Fédérale de Lausanne (EPFL)</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaine 5 - Lois des Gaz</title>
+    <link rel="stylesheet" href="../src/html-templates/styles.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: {'[+]': ['mhchem']}
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+    <!-- PAGE DE COUVERTURE -->
+    <div class="cover-page">
+        <h1 class="cover-title">POLYCOPIÉ DE CHIMIE GÉNÉRALE</h1>
+
+        <!-- Atom Diagram SVG -->
+        <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="10" fill="#1e3a8a"/>
+            <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <ellipse cx="100" cy="100" rx="30" ry="80" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <circle cx="180" cy="100" r="6" fill="#ea580c"/>
+            <circle cx="20" cy="100" r="6" fill="#ea580c"/>
+            <circle cx="100" cy="180" r="6" fill="#ea580c"/>
+            <circle cx="100" cy="20" r="6" fill="#ea580c"/>
+        </svg>
+
+        <h2 class="cover-subtitle">Semaine 5</h2>
+        <h2 class="cover-subtitle">Lois des Gaz</h2>
+
+        <p class="cover-author">Dr. Arne Seitz</p>
+        <p class="cover-institution">BioImaging & Optics Platform (BIOP)</p>
+        <p class="cover-institution">École Polytechnique Fédérale de Lausanne (EPFL)</p>
+        <p class="cover-date">31 octobre 2025</p>
+    </div>
+
+    <!-- TABLE DES MATIÈRES -->
+    <div class="page-break"></div>
+    <h1>Table des Matières</h1>
+    <div class="toc">
+        <div class="toc-item"><span class="toc-title">1. Loi de Boyle-Mariotte</span><span class="toc-page">3</span></div>
+        <div class="toc-item"><span class="toc-title">2. Loi de Charles</span><span class="toc-page">4</span></div>
+        <div class="toc-item"><span class="toc-title">3. Loi d'Avogadro</span><span class="toc-page">5</span></div>
+        <div class="toc-item"><span class="toc-title">4. Loi des Gaz Parfaits</span><span class="toc-page">6</span></div>
+        <div class="toc-item"><span class="toc-title">5. Loi de Dalton</span><span class="toc-page">7</span></div>
+        <div class="toc-item"><span class="toc-title">6. Théorie Cinétique des Gaz</span><span class="toc-page">8</span></div>
+        <div class="toc-item"><span class="toc-title">7. Distribution de Maxwell-Boltzmann</span><span class="toc-page">9</span></div>
+        <div class="toc-item"><span class="toc-title">8. Gaz Réels</span><span class="toc-page">10</span></div>
+        <div class="toc-item"><span class="toc-title">9. Formulaire Récapitulatif</span><span class="toc-page">11</span></div>
+    </div>
+
+    <!-- SECTION 1: LOI DE BOYLE-MARIOTTE -->
+    <div class="page-break"></div>
+    <h1>1. LOI DE BOYLE-MARIOTTE</h1>
+
+    <h2>1.1 Énoncé</h2>
+    <div class="info-box">
+        <div class="box-title">Principe fondamental</div>
+        <p>À température constante, le volume d'un gaz est inversement proportionnel à sa pression.</p>
+    </div>
+
+    <div class="formula-box">
+        <div class="box-title">Formule mathématique</div>
+        <div class="math-display">
+            $$PV = \text{constante}$$
+        </div>
+        <p class="text-center">ou de manière équivalente :</p>
+        <div class="math-display">
+            $$P_1 V_1 = P_2 V_2$$
+        </div>
+    </div>
+
+    <h2>1.2 Interprétation Moléculaire</h2>
+    <div class="info-box">
+        <p><strong>Pourquoi cette loi fonctionne-t-elle ?</strong></p>
+        <ul>
+            <li>La pression provient des collisions des molécules contre les parois</li>
+            <li>Si on diminue le volume, les molécules sont plus confinées</li>
+            <li>Plus de collisions par unité de surface → pression augmente</li>
+            <li>À température constante, l'énergie cinétique moyenne reste identique</li>
+        </ul>
+    </div>
+
+    <h2>1.3 Exemple Numérique</h2>
+    <div class="example-box">
+        <div class="box-title">Exemple : Compression d'air</div>
+        <p><strong>Données :</strong></p>
+        <ul>
+            <li>Volume initial : $V_1 = 2.0$ L</li>
+            <li>Pression initiale : $P_1 = 1.0$ atm</li>
+            <li>Volume final : $V_2 = 0.5$ L</li>
+        </ul>
+        <p><strong>Calculer</strong> : $P_2$ = ?</p>
+
+        <p><strong>Solution :</strong></p>
+        <div class="math-display">
+            $$P_2 = \frac{P_1 V_1}{V_2} = \frac{(1.0)(2.0)}{0.5} = 4.0 \text{ atm}$$
+        </div>
+        <p><strong>Interprétation :</strong> En réduisant le volume de 4 fois, la pression quadruple.</p>
+    </div>
+
+    <!-- SECTION 2: LOI DE CHARLES -->
+    <div class="page-break"></div>
+    <h1>2. LOI DE CHARLES</h1>
+
+    <h2>2.1 Énoncé</h2>
+    <div class="info-box">
+        <div class="box-title">Principe fondamental</div>
+        <p>À pression constante, le volume d'un gaz est directement proportionnel à sa température absolue.</p>
+    </div>
+
+    <div class="formula-box">
+        <div class="box-title">Formule mathématique</div>
+        <div class="math-display">
+            $$\frac{V}{T} = \text{constante}$$
+        </div>
+        <p class="text-center">ou de manière équivalente :</p>
+        <div class="math-display">
+            $$\frac{V_1}{T_1} = \frac{V_2}{T_2}$$
+        </div>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">⚠️ Point crucial</div>
+        <p>La température <strong>DOIT être en Kelvin</strong> pour que cette loi fonctionne !</p>
+        <div class="math-display">
+            $$T(\text{K}) = T(°\text{C}) + 273.15$$
+        </div>
+    </div>
+
+    <h2>2.2 Interprétation Moléculaire</h2>
+    <div class="info-box">
+        <p><strong>Pourquoi cette loi fonctionne-t-elle ?</strong></p>
+        <ul>
+            <li>Augmenter $T$ → augmente l'énergie cinétique moyenne des molécules</li>
+            <li>Molécules se déplacent plus vite → collisions plus fortes</li>
+            <li>À pression constante, le volume doit augmenter pour compenser</li>
+            <li>Le gaz se dilate pour maintenir la même force par unité de surface</li>
+        </ul>
+    </div>
+
+    <h2>2.3 Exemple Numérique</h2>
+    <div class="example-box">
+        <div class="box-title">Exemple : Ballon d'air chaud</div>
+        <p><strong>Données :</strong></p>
+        <ul>
+            <li>Volume initial : $V_1 = 10.0$ L à $T_1 = 25$°C</li>
+            <li>Température finale : $T_2 = 100$°C</li>
+        </ul>
+        <p><strong>Calculer :</strong> $V_2$ = ?</p>
+
+        <p><strong>Solution :</strong></p>
+        <p>1. Conversion en Kelvin :</p>
+        <div class="math-display">
+            $$T_1 = 25 + 273 = 298 \text{ K}$$
+            $$T_2 = 100 + 273 = 373 \text{ K}$$
+        </div>
+
+        <p>2. Application de la loi de Charles :</p>
+        <div class="math-display">
+            $$V_2 = V_1 \times \frac{T_2}{T_1} = 10.0 \times \frac{373}{298} = 12.5 \text{ L}$$
+        </div>
+    </div>
+
+    <!-- SECTION 3: LOI D'AVOGADRO -->
+    <div class="page-break"></div>
+    <h1>3. LOI D'AVOGADRO</h1>
+
+    <h2>3.1 Énoncé</h2>
+    <div class="info-box">
+        <div class="box-title">Principe fondamental</div>
+        <p>À température et pression constantes, le volume d'un gaz est directement proportionnel au nombre de moles.</p>
+    </div>
+
+    <div class="formula-box">
+        <div class="box-title">Formule mathématique</div>
+        <div class="math-display">
+            $$\frac{V}{n} = \text{constante}$$
+        </div>
+        <p class="text-center">ou de manière équivalente :</p>
+        <div class="math-display">
+            $$\frac{V_1}{n_1} = \frac{V_2}{n_2}$$
+        </div>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Volume molaire standard</div>
+        <p>À conditions normales de température et de pression (CNTP) :</p>
+        <ul>
+            <li>$T = 273.15$ K (0°C)</li>
+            <li>$P = 1$ atm (101.325 kPa)</li>
+            <li>$V_m = 22.4$ L/mol</li>
+        </ul>
+        <p><strong>Toute substance gazeuse occupe 22.4 L par mole aux CNTP !</strong></p>
+    </div>
+
+    <!-- SECTION 4: LOI DES GAZ PARFAITS -->
+    <div class="page-break"></div>
+    <h1>4. LOI DES GAZ PARFAITS</h1>
+
+    <h2>4.1 Équation d'État</h2>
+    <div class="formula-box">
+        <div class="box-title">Équation des gaz parfaits</div>
+        <div class="math-display">
+            $$PV = nRT$$
+        </div>
+        <p><strong>Où :</strong></p>
+        <ul>
+            <li>$P$ = pression (atm, bar, Pa)</li>
+            <li>$V$ = volume (L, m³)</li>
+            <li>$n$ = nombre de moles (mol)</li>
+            <li>$R$ = constante des gaz parfaits</li>
+            <li>$T$ = température absolue (K)</li>
+        </ul>
+    </div>
+
+    <h2>4.2 Constante des Gaz Parfaits $R$</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Valeur de $R$</th>
+                <th>Unités</th>
+                <th>Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>$0.08206$</td>
+                <td>L·atm·K⁻¹·mol⁻¹</td>
+                <td>Calculs avec L et atm</td>
+            </tr>
+            <tr>
+                <td>$8.314$</td>
+                <td>J·K⁻¹·mol⁻¹</td>
+                <td>Calculs énergétiques</td>
+            </tr>
+            <tr>
+                <td>$8.314$</td>
+                <td>L·kPa·K⁻¹·mol⁻¹</td>
+                <td>Calculs avec kPa</td>
+            </tr>
+            <tr>
+                <td>$62.36$</td>
+                <td>L·mmHg·K⁻¹·mol⁻¹</td>
+                <td>Calculs avec mmHg</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4.3 Forme Alternative : Masse Volumique</h2>
+    <div class="formula-box">
+        <div class="box-title">Densité d'un gaz</div>
+        <p>En combinant $PV = nRT$ et $n = \frac{m}{M}$ :</p>
+        <div class="math-display">
+            $$\rho = \frac{m}{V} = \frac{PM}{RT}$$
+        </div>
+        <p><strong>Où :</strong> $M$ = masse molaire (g/mol)</p>
+    </div>
+
+    <!-- SECTION 5: LOI DE DALTON -->
+    <div class="page-break"></div>
+    <h1>5. LOI DE DALTON DES PRESSIONS PARTIELLES</h1>
+
+    <h2>5.1 Énoncé</h2>
+    <div class="info-box">
+        <div class="box-title">Principe fondamental</div>
+        <p>La pression totale d'un mélange de gaz est égale à la somme des pressions partielles de chaque gaz composant.</p>
+    </div>
+
+    <div class="formula-box">
+        <div class="box-title">Pression totale</div>
+        <div class="math-display">
+            $$P_{\text{total}} = P_1 + P_2 + P_3 + \cdots + P_n$$
+        </div>
+        <div class="math-display">
+            $$P_{\text{total}} = \sum_{i} P_i$$
+        </div>
+    </div>
+
+    <h2>5.2 Pression Partielle</h2>
+    <div class="formula-box">
+        <div class="box-title">Définition</div>
+        <p>La pression partielle d'un gaz est la pression qu'il exercerait s'il occupait seul le volume total :</p>
+        <div class="math-display">
+            $$P_i = \chi_i P_{\text{total}}$$
+        </div>
+        <p><strong>Où :</strong> $\chi_i = \frac{n_i}{n_{\text{total}}}$ = fraction molaire</p>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Exemple : Air atmosphérique</div>
+        <p><strong>Composition de l'air sec :</strong></p>
+        <ul>
+            <li>$\ce{N2}$ : 78.08%</li>
+            <li>$\ce{O2}$ : 20.95%</li>
+            <li>$\ce{Ar}$ : 0.93%</li>
+            <li>$\ce{CO2}$ : 0.04%</li>
+        </ul>
+
+        <p><strong>À $P_{\text{total}} = 1$ atm :</strong></p>
+        <div class="math-display">
+            $$P_{\ce{N2}} = 0.7808 \times 1 = 0.7808 \text{ atm}$$
+            $$P_{\ce{O2}} = 0.2095 \times 1 = 0.2095 \text{ atm}$$
+        </div>
+    </div>
+
+    <!-- SECTION 6: THÉORIE CINÉTIQUE -->
+    <div class="page-break"></div>
+    <h1>6. THÉORIE CINÉTIQUE DES GAZ</h1>
+
+    <h2>6.1 Postulats de Base</h2>
+    <div class="info-box">
+        <div class="box-title">Hypothèses fondamentales</div>
+        <ol>
+            <li>Les molécules de gaz sont en mouvement constant et aléatoire</li>
+            <li>Le volume des molécules est négligeable par rapport au volume total</li>
+            <li>Les collisions sont parfaitement élastiques (pas de perte d'énergie)</li>
+            <li>Il n'y a pas de forces d'attraction ou de répulsion entre les molécules</li>
+            <li>L'énergie cinétique moyenne est proportionnelle à la température absolue</li>
+        </ol>
+    </div>
+
+    <h2>6.2 Énergie Cinétique et Température</h2>
+    <div class="formula-box">
+        <div class="box-title">Énergie cinétique moyenne</div>
+        <div class="math-display">
+            $$\overline{E_k} = \frac{3}{2} k_B T$$
+        </div>
+        <p><strong>Où :</strong></p>
+        <ul>
+            <li>$\overline{E_k}$ = énergie cinétique moyenne par molécule</li>
+            <li>$k_B = 1.381 \times 10^{-23}$ J/K = constante de Boltzmann</li>
+            <li>$T$ = température absolue (K)</li>
+        </ul>
+    </div>
+
+    <h2>6.3 Vitesse Quadratique Moyenne</h2>
+    <div class="formula-box">
+        <div class="box-title">Vitesse RMS (Root Mean Square)</div>
+        <div class="math-display">
+            $$v_{\text{rms}} = \sqrt{\frac{3RT}{M}} = \sqrt{\frac{3k_B T}{m}}$$
+        </div>
+        <p><strong>Où :</strong></p>
+        <ul>
+            <li>$M$ = masse molaire (kg/mol)</li>
+            <li>$m$ = masse d'une molécule (kg)</li>
+        </ul>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Conclusion importante</div>
+        <p>À la même température, les molécules légères se déplacent plus vite que les molécules lourdes !</p>
+        <p><strong>Exemple :</strong> À 25°C, $\ce{H2}$ se déplace ~4 fois plus vite que $\ce{O2}$</p>
+    </div>
+
+    <!-- SECTION 7: DISTRIBUTION DE MAXWELL-BOLTZMANN -->
+    <div class="page-break"></div>
+    <h1>7. DISTRIBUTION DE MAXWELL-BOLTZMANN</h1>
+
+    <h2>7.1 Concept</h2>
+    <div class="info-box">
+        <p>Les molécules d'un gaz n'ont <strong>pas toutes la même vitesse</strong>. La distribution de Maxwell-Boltzmann décrit la probabilité qu'une molécule ait une certaine vitesse.</p>
+    </div>
+
+    <div class="formula-box">
+        <div class="box-title">Fonction de distribution</div>
+        <div class="math-display">
+            $$f(v) = 4\pi n \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-\frac{mv^2}{2k_B T}}$$
+        </div>
+    </div>
+
+    <h2>7.2 Vitesses Caractéristiques</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Type de vitesse</th>
+                <th>Formule</th>
+                <th>Signification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vitesse la plus probable</td>
+                <td>$v_p = \sqrt{\frac{2RT}{M}}$</td>
+                <td>Maximum de la courbe</td>
+            </tr>
+            <tr>
+                <td>Vitesse moyenne</td>
+                <td>$\overline{v} = \sqrt{\frac{8RT}{\pi M}}$</td>
+                <td>Valeur moyenne arithmétique</td>
+            </tr>
+            <tr>
+                <td>Vitesse quadratique moyenne</td>
+                <td>$v_{\text{rms}} = \sqrt{\frac{3RT}{M}}$</td>
+                <td>Racine de la moyenne des carrés</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="important-box">
+        <div class="box-title">Relation entre les vitesses</div>
+        <div class="math-display">
+            $$v_p < \overline{v} < v_{\text{rms}}$$
+        </div>
+    </div>
+
+    <h2>7.3 Effet de la Température</h2>
+    <div class="info-box">
+        <p><strong>Quand $T$ augmente :</strong></p>
+        <ul>
+            <li>La courbe s'aplatit et s'élargit</li>
+            <li>Le maximum se déplace vers des vitesses plus élevées</li>
+            <li>La proportion de molécules à haute vitesse augmente</li>
+            <li>Important pour les réactions chimiques (énergie d'activation)</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 8: GAZ RÉELS -->
+    <div class="page-break"></div>
+    <h1>8. GAZ RÉELS ET ÉQUATION DE VAN DER WAALS</h1>
+
+    <h2>8.1 Limitations du Modèle des Gaz Parfaits</h2>
+    <div class="warning-box">
+        <div class="box-title">⚠️ Quand le modèle échoue</div>
+        <p>Le modèle des gaz parfaits fonctionne bien dans ces conditions :</p>
+        <ul>
+            <li>Haute température (molécules rapides)</li>
+            <li>Basse pression (molécules éloignées)</li>
+        </ul>
+        <p><strong>Mais échoue quand :</strong></p>
+        <ul>
+            <li>Pression élevée → molécules proches → interactions importantes</li>
+            <li>Température basse → molécules lentes → forces d'attraction significatives</li>
+            <li>Près du point de liquéfaction</li>
+        </ul>
+    </div>
+
+    <h2>8.2 Équation de Van der Waals</h2>
+    <div class="formula-box">
+        <div class="box-title">Correction pour gaz réels</div>
+        <div class="math-display">
+            $$\left(P + \frac{an^2}{V^2}\right)(V - nb) = nRT$$
+        </div>
+        <p><strong>Corrections :</strong></p>
+        <ul>
+            <li>$\frac{an^2}{V^2}$ : correction de pression (forces d'attraction)</li>
+            <li>$nb$ : correction de volume (volume propre des molécules)</li>
+        </ul>
+    </div>
+
+    <h2>8.3 Constantes de Van der Waals</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Gaz</th>
+                <th>$a$ (L²·atm·mol⁻²)</th>
+                <th>$b$ (L·mol⁻¹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>He</td>
+                <td>0.0346</td>
+                <td>0.0238</td>
+            </tr>
+            <tr>
+                <td>$\ce{H2}$</td>
+                <td>0.2452</td>
+                <td>0.0265</td>
+            </tr>
+            <tr>
+                <td>$\ce{N2}$</td>
+                <td>1.370</td>
+                <td>0.0387</td>
+            </tr>
+            <tr>
+                <td>$\ce{O2}$</td>
+                <td>1.382</td>
+                <td>0.0319</td>
+            </tr>
+            <tr>
+                <td>$\ce{CO2}$</td>
+                <td>3.658</td>
+                <td>0.0429</td>
+            </tr>
+            <tr>
+                <td>$\ce{H2O}$</td>
+                <td>5.537</td>
+                <td>0.0305</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <p><strong>Interprétation des constantes :</strong></p>
+        <ul>
+            <li><strong>$a$ élevé</strong> : forces d'attraction importantes ($\ce{H2O}$ > $\ce{CO2}$ > $\ce{N2}$)</li>
+            <li><strong>$b$ élevé</strong> : molécules volumineuses</li>
+        </ul>
+    </div>
+
+    <!-- FORMULAIRE RÉCAPITULATIF -->
+    <div class="page-break"></div>
+    <h1>9. FORMULAIRE RÉCAPITULATIF</h1>
+
+    <h2>9.1 Lois des Gaz</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Loi</th>
+                <th>Formule</th>
+                <th>Conditions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Boyle-Mariotte</td>
+                <td>$P_1V_1 = P_2V_2$</td>
+                <td>$T$, $n$ constants</td>
+            </tr>
+            <tr>
+                <td>Charles</td>
+                <td>$\frac{V_1}{T_1} = \frac{V_2}{T_2}$</td>
+                <td>$P$, $n$ constants</td>
+            </tr>
+            <tr>
+                <td>Gay-Lussac</td>
+                <td>$\frac{P_1}{T_1} = \frac{P_2}{T_2}$</td>
+                <td>$V$, $n$ constants</td>
+            </tr>
+            <tr>
+                <td>Avogadro</td>
+                <td>$\frac{V_1}{n_1} = \frac{V_2}{n_2}$</td>
+                <td>$T$, $P$ constants</td>
+            </tr>
+            <tr>
+                <td>Gaz parfaits</td>
+                <td>$PV = nRT$</td>
+                <td>Toutes conditions</td>
+            </tr>
+            <tr>
+                <td>Dalton</td>
+                <td>$P_{\text{total}} = \sum P_i$</td>
+                <td>Mélanges de gaz</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>9.2 Théorie Cinétique</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Grandeur</th>
+                <th>Formule</th>
+                <th>Unités</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Énergie cinétique moyenne</td>
+                <td>$\overline{E_k} = \frac{3}{2}k_BT$</td>
+                <td>J</td>
+            </tr>
+            <tr>
+                <td>Vitesse quadratique moyenne</td>
+                <td>$v_{\text{rms}} = \sqrt{\frac{3RT}{M}}$</td>
+                <td>m/s</td>
+            </tr>
+            <tr>
+                <td>Vitesse la plus probable</td>
+                <td>$v_p = \sqrt{\frac{2RT}{M}}$</td>
+                <td>m/s</td>
+            </tr>
+            <tr>
+                <td>Vitesse moyenne</td>
+                <td>$\overline{v} = \sqrt{\frac{8RT}{\pi M}}$</td>
+                <td>m/s</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>9.3 Constantes Importantes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Constante</th>
+                <th>Symbole</th>
+                <th>Valeur</th>
+                <th>Unités</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Constante des gaz</td>
+                <td>$R$</td>
+                <td>$8.314$</td>
+                <td>J·K⁻¹·mol⁻¹</td>
+            </tr>
+            <tr>
+                <td>Constante des gaz</td>
+                <td>$R$</td>
+                <td>$0.08206$</td>
+                <td>L·atm·K⁻¹·mol⁻¹</td>
+            </tr>
+            <tr>
+                <td>Constante de Boltzmann</td>
+                <td>$k_B$</td>
+                <td>$1.381 \times 10^{-23}$</td>
+                <td>J·K⁻¹</td>
+            </tr>
+            <tr>
+                <td>Nombre d'Avogadro</td>
+                <td>$N_A$</td>
+                <td>$6.022 \times 10^{23}$</td>
+                <td>mol⁻¹</td>
+            </tr>
+            <tr>
+                <td>Volume molaire (CNTP)</td>
+                <td>$V_m$</td>
+                <td>$22.4$</td>
+                <td>L/mol</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>9.4 Conversions Utiles</h2>
+    <div class="info-box">
+        <p><strong>Température :</strong></p>
+        <div class="math-display">
+            $$T(\text{K}) = T(°\text{C}) + 273.15$$
+        </div>
+
+        <p><strong>Pression :</strong></p>
+        <ul>
+            <li>1 atm = 101.325 kPa = 760 mmHg = 760 Torr = 1.01325 bar</li>
+        </ul>
+
+        <p><strong>Volume :</strong></p>
+        <ul>
+            <li>1 L = 1 dm³ = 1000 cm³ = 1000 mL</li>
+            <li>1 m³ = 1000 L</li>
+        </ul>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Conseils pour la résolution de problèmes</div>
+        <ol>
+            <li><strong>Toujours</strong> convertir la température en Kelvin</li>
+            <li>Vérifier la cohérence des unités avec la valeur de $R$ utilisée</li>
+            <li>Identifier les variables constantes et celles qui changent</li>
+            <li>Pour les mélanges, calculer les fractions molaires en premier</li>
+            <li>Pour les gaz réels, utiliser Van der Waals à haute pression ou basse température</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>Résumé créé selon le modèle du polycopié EPFL</p>
+        <p>Dr. Arne Seitz - BioImaging & Optics Platform (BIOP)</p>
+        <p>École Polytechnique Fédérale de Lausanne (EPFL)</p>
+    </footer>
+</body>
+</html>

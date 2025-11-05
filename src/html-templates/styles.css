@@ -1,0 +1,432 @@
+/* ============================================
+   STYLES POUR PDF A4 - POLYCOPIÉ CHIMIE EPFL
+   ============================================ */
+
+/* Configuration page A4 pour impression */
+@page {
+  size: A4;
+  margin: 20mm 15mm;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  .no-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Reset et configuration de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #333;
+  background: white;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 20mm 15mm;
+}
+
+/* Couleurs EPFL */
+:root {
+  --epfl-primary: #1e3a8a;
+  --epfl-red: #dc2626;
+  --epfl-orange: #ea580c;
+  --epfl-blue-light: #eff6ff;
+  --epfl-red-light: #fef2f2;
+  --epfl-orange-light: #fff7ed;
+  --epfl-gray: #6b7280;
+  --epfl-gray-light: #f3f4f6;
+}
+
+/* ============================================
+   TYPOGRAPHIE
+   ============================================ */
+
+h1 {
+  font-size: 24pt;
+  font-weight: bold;
+  color: var(--epfl-primary);
+  margin-top: 10mm;
+  margin-bottom: 6mm;
+  padding-bottom: 3mm;
+  border-bottom: 3px solid var(--epfl-primary);
+  page-break-after: avoid;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: bold;
+  color: var(--epfl-primary);
+  margin-top: 8mm;
+  margin-bottom: 4mm;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 14pt;
+  font-weight: bold;
+  color: var(--epfl-primary);
+  margin-top: 6mm;
+  margin-bottom: 3mm;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #374151;
+  margin-top: 4mm;
+  margin-bottom: 2mm;
+  page-break-after: avoid;
+}
+
+p {
+  margin-bottom: 3mm;
+  text-align: justify;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* ============================================
+   PAGE DE COUVERTURE
+   ============================================ */
+
+.cover-page {
+  height: 257mm; /* A4 height minus margins */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  page-break-after: always;
+}
+
+.cover-title {
+  font-size: 28pt;
+  font-weight: bold;
+  color: var(--epfl-primary);
+  margin-bottom: 15mm;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cover-subtitle {
+  font-size: 22pt;
+  font-weight: bold;
+  color: var(--epfl-primary);
+  margin: 5mm 0;
+}
+
+.cover-author {
+  font-size: 14pt;
+  color: var(--epfl-gray);
+  margin-top: 20mm;
+}
+
+.cover-institution {
+  font-size: 12pt;
+  color: var(--epfl-gray);
+  margin-top: 3mm;
+}
+
+.cover-date {
+  font-size: 12pt;
+  color: var(--epfl-gray);
+  margin-top: 2mm;
+}
+
+/* ============================================
+   TABLE DES MATIÈRES
+   ============================================ */
+
+.toc {
+  margin: 10mm 0;
+  page-break-after: always;
+}
+
+.toc-item {
+  padding: 2mm 0;
+  border-bottom: 1px dotted #d1d5db;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toc-item:last-child {
+  border-bottom: none;
+}
+
+.toc-title {
+  font-weight: 500;
+}
+
+.toc-page {
+  color: var(--epfl-gray);
+}
+
+/* ============================================
+   ENCADRÉS (BOXES)
+   ============================================ */
+
+.box {
+  margin: 5mm 0;
+  padding: 4mm;
+  border-radius: 2mm;
+  border-left: 4px solid;
+  page-break-inside: avoid;
+}
+
+.box-title {
+  font-weight: bold;
+  font-size: 11pt;
+  margin-bottom: 2mm;
+}
+
+/* Encadré formule (bleu) */
+.formula-box {
+  background-color: var(--epfl-blue-light);
+  border-left-color: var(--epfl-primary);
+}
+
+.formula-box .formula {
+  font-family: 'Courier New', monospace;
+  font-size: 12pt;
+  text-align: center;
+  padding: 2mm 0;
+}
+
+/* Encadré important (rouge) */
+.important-box {
+  background-color: var(--epfl-red-light);
+  border-left-color: var(--epfl-red);
+}
+
+/* Encadré exemple (orange) */
+.example-box {
+  background-color: var(--epfl-orange-light);
+  border-left-color: var(--epfl-orange);
+}
+
+/* Encadré information (bleu clair) */
+.info-box {
+  background-color: #f0f9ff;
+  border-left-color: #0284c7;
+}
+
+/* Encadré avertissement (jaune) */
+.warning-box {
+  background-color: #fffbeb;
+  border-left-color: #f59e0b;
+}
+
+/* ============================================
+   TABLEAUX
+   ============================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5mm 0;
+  page-break-inside: avoid;
+}
+
+thead {
+  background-color: var(--epfl-primary);
+  color: white;
+}
+
+th {
+  padding: 3mm;
+  text-align: left;
+  font-weight: bold;
+  border: 1px solid #d1d5db;
+}
+
+td {
+  padding: 2.5mm;
+  border: 1px solid #d1d5db;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--epfl-gray-light);
+}
+
+tbody tr:hover {
+  background-color: #e5e7eb;
+}
+
+/* ============================================
+   LISTES
+   ============================================ */
+
+ul, ol {
+  margin: 3mm 0 3mm 8mm;
+}
+
+li {
+  margin-bottom: 1.5mm;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ul ul {
+  list-style-type: circle;
+  margin-left: 5mm;
+}
+
+/* ============================================
+   FORMULES MATHÉMATIQUES (MathJax)
+   ============================================ */
+
+.math-display {
+  text-align: center;
+  margin: 4mm 0;
+  overflow-x: auto;
+}
+
+.math-inline {
+  display: inline;
+}
+
+/* Assurer que MathJax ne casse pas les pages */
+.MJXc-display {
+  page-break-inside: avoid;
+}
+
+/* ============================================
+   DIAGRAMMES ET IMAGES
+   ============================================ */
+
+.diagram-container {
+  text-align: center;
+  margin: 5mm 0;
+  page-break-inside: avoid;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.diagram-title {
+  font-size: 10pt;
+  color: var(--epfl-gray);
+  margin-top: 2mm;
+  font-style: italic;
+}
+
+figure {
+  margin: 5mm 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+figcaption {
+  font-size: 10pt;
+  color: var(--epfl-gray);
+  margin-top: 2mm;
+  font-style: italic;
+}
+
+/* ============================================
+   EN-TÊTES ET PIEDS DE PAGE
+   ============================================ */
+
+header {
+  border-bottom: 2px solid var(--epfl-primary);
+  padding-bottom: 3mm;
+  margin-bottom: 5mm;
+}
+
+footer {
+  border-top: 1px solid #d1d5db;
+  padding-top: 3mm;
+  margin-top: 8mm;
+  font-size: 9pt;
+  color: var(--epfl-gray);
+  text-align: center;
+}
+
+/* ============================================
+   UTILITAIRES
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-small {
+  margin-top: 2mm;
+}
+
+.mt-medium {
+  margin-top: 4mm;
+}
+
+.mt-large {
+  margin-top: 8mm;
+}
+
+.mb-small {
+  margin-bottom: 2mm;
+}
+
+.mb-medium {
+  margin-bottom: 4mm;
+}
+
+.mb-large {
+  margin-bottom: 8mm;
+}
+
+/* Éviter les orphelins et veuves */
+p, li, td, th {
+  orphans: 3;
+  widows: 3;
+}
+
+/* ============================================
+   RESPONSIVE (pour visualisation navigateur)
+   ============================================ */
+
+@media screen {
+  body {
+    background: #f5f5f5;
+    box-shadow: 0 0 10mm rgba(0,0,0,0.1);
+    margin: 10mm auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    max-width: 100%;
+    padding: 5mm;
+    margin: 0;
+  }
+}
