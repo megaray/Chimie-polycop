@@ -3,12 +3,21 @@
    ============================================ */
 
 /* Configuration page A4 pour impression */
+
+.mermaid svg {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 @page {
   size: A4;
   margin: 20mm 15mm;
 }
 
 @media print {
+
+
   body {
     margin: 0;
     padding: 0;
@@ -43,8 +52,8 @@ body {
 
 /* Couleurs EPFL */
 :root {
-  --epfl-primary: #1e3a8a;
-  --epfl-red: #dc2626;
+  --epfl-primary: #ff0000;
+  --epfl-red: #000000;
   --epfl-orange: #ea580c;
   --epfl-blue-light: #eff6ff;
   --epfl-red-light: #fef2f2;
