@@ -6,7 +6,7 @@
     <title>Semaine 5 - Lois des Gaz</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- MathJax Configuration -->
+    <!-- MathJax Configuration with mhchem -->
     <script>
         window.MathJax = {
             tex: {
@@ -25,21 +25,78 @@
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    <!-- Mermaid.js for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#eff6ff',
+                primaryTextColor: '#1e3a8a',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#2563eb',
+                secondaryColor: '#fff7ed',
+                tertiaryColor: '#fef2f2'
+            }
+        });
+    </script>
+
+    <style>
+        .mermaid {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .diagram-container {
+            page-break-inside: avoid;
+            margin: 20px 0;
+        }
+        .visual-concept {
+            background: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
     <!-- PAGE DE COUVERTURE -->
     <div class="cover-page">
         <h1 class="cover-title">POLYCOPIÉ DE CHIMIE GÉNÉRALE</h1>
 
-        <!-- Atom Diagram SVG -->
-        <svg width="200" height="200" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="10" fill="#1e3a8a"/>
-            <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="#dc2626" stroke-width="2"/>
-            <ellipse cx="100" cy="100" rx="30" ry="80" fill="none" stroke="#dc2626" stroke-width="2"/>
-            <circle cx="180" cy="100" r="6" fill="#ea580c"/>
-            <circle cx="20" cy="100" r="6" fill="#ea580c"/>
-            <circle cx="100" cy="180" r="6" fill="#ea580c"/>
-            <circle cx="100" cy="20" r="6" fill="#ea580c"/>
+        <!-- Atom Diagram SVG avec particules -->
+        <svg width="250" height="250" viewBox="0 0 250 250">
+            <!-- Noyau central -->
+            <circle cx="125" cy="125" r="15" fill="#1e3a8a"/>
+            <text x="125" y="130" text-anchor="middle" fill="white" font-size="12" font-weight="bold">+</text>
+            
+            <!-- Orbites -->
+            <ellipse cx="125" cy="125" rx="100" ry="40" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,5"/>
+            <ellipse cx="125" cy="125" rx="40" ry="100" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,5"/>
+            <ellipse cx="125" cy="125" rx="80" ry="80" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5,5"/>
+            
+            <!-- Électrons avec mouvement -->
+            <circle cx="225" cy="125" r="8" fill="#ea580c"/>
+            <text x="225" y="128" text-anchor="middle" fill="white" font-size="10" font-weight="bold">e⁻</text>
+            
+            <circle cx="25" cy="125" r="8" fill="#ea580c"/>
+            <text x="25" y="128" text-anchor="middle" fill="white" font-size="10" font-weight="bold">e⁻</text>
+            
+            <circle cx="125" cy="225" r="8" fill="#ea580c"/>
+            <text x="125" y="228" text-anchor="middle" fill="white" font-size="10" font-weight="bold">e⁻</text>
+            
+            <circle cx="125" cy="25" r="8" fill="#ea580c"/>
+            <text x="125" y="28" text-anchor="middle" fill="white" font-size="10" font-weight="bold">e⁻</text>
+            
+            <!-- Flèches de mouvement -->
+            <path d="M 220 115 Q 215 110 210 115" fill="none" stroke="#ea580c" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#ea580c"/>
+                </marker>
+            </defs>
         </svg>
 
         <h2 class="cover-subtitle">Semaine 5</h2>
@@ -87,7 +144,100 @@
         </div>
     </div>
 
+    <!-- NOUVEAU: Diagramme Mermaid pour visualiser la compression -->
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Compression d'un Gaz</h3>
+        <div class="mermaid">
+graph LR
+    A["Volume GRAND<br/>V = 2L<br/>P = 1 atm<br/>🎈🎈🎈🎈"] -->|Compression| B["Volume PETIT<br/>V = 1L<br/>P = 2 atm<br/>🎈🎈"]
+    style A fill:#eff6ff,stroke:#2563eb,stroke-width:3px
+    style B fill:#fef2f2,stroke:#dc2626,stroke-width:3px
+        </div>
+        <p class="text-center"><strong>Plus le volume diminue → Plus la pression augmente</strong></p>
+    </div>
+
+    <!-- Graphique P vs V -->
+    <div class="diagram-container">
+        <svg width="400" height="300" viewBox="0 0 400 300">
+            <!-- Axes -->
+            <line x1="50" y1="250" x2="350" y2="250" stroke="#333" stroke-width="2"/>
+            <line x1="50" y1="250" x2="50" y2="50" stroke="#333" stroke-width="2"/>
+            
+            <!-- Labels -->
+            <text x="200" y="285" text-anchor="middle" font-size="16" fill="#333">Volume (L)</text>
+            <text x="20" y="150" text-anchor="middle" font-size="16" fill="#333" transform="rotate(-90 20 150)">Pression (atm)</text>
+            
+            <!-- Courbe hyperbolique -->
+            <path d="M 80,100 Q 150,120 200,160 T 320,230" fill="none" stroke="#2563eb" stroke-width="3"/>
+            
+            <!-- Points -->
+            <circle cx="120" cy="110" r="6" fill="#dc2626"/>
+            <text x="120" y="95" text-anchor="middle" font-size="12" fill="#dc2626">P₁V₁</text>
+            
+            <circle cx="240" cy="180" r="6" fill="#dc2626"/>
+            <text x="240" y="165" text-anchor="middle" font-size="12" fill="#dc2626">P₂V₂</text>
+            
+            <!-- Annotation -->
+            <text x="280" y="120" font-size="14" fill="#1e3a8a" font-style="italic">PV = cte</text>
+        </svg>
+        <p class="diagram-title">Figure 1.1 : Relation inverse entre Pression et Volume (Loi de Boyle)</p>
+    </div>
+
     <h2>1.2 Interprétation Moléculaire</h2>
+    
+    <!-- SVG avec molécules en mouvement -->
+    <div class="diagram-container">
+        <svg width="600" height="250" viewBox="0 0 600 250">
+            <!-- Container 1: Grand volume -->
+            <rect x="20" y="20" width="250" height="200" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+            <text x="145" y="15" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">Volume Grand (V₁)</text>
+            <text x="145" y="240" text-anchor="middle" font-size="12" fill="#dc2626">P = faible</text>
+            
+            <!-- Molécules espacées -->
+            <circle cx="60" cy="60" r="8" fill="#ea580c"/>
+            <circle cx="150" cy="100" r="8" fill="#ea580c"/>
+            <circle cx="230" cy="150" r="8" fill="#ea580c"/>
+            <circle cx="100" cy="180" r="8" fill="#ea580c"/>
+            <circle cx="200" cy="70" r="8" fill="#ea580c"/>
+            
+            <!-- Flèches de vitesse -->
+            <path d="M 68 60 L 85 60" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M 150 92 L 150 75" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+            
+            <!-- Flèche de transformation -->
+            <path d="M 290 120 L 310 120" stroke="#1e3a8a" stroke-width="4" marker-end="url(#arrow-big)"/>
+            <text x="300" y="115" font-size="16" font-weight="bold" fill="#1e3a8a">→</text>
+            <text x="280" y="145" font-size="11" fill="#666">Compression</text>
+            
+            <!-- Container 2: Petit volume -->
+            <rect x="330" y="50" width="120" height="140" fill="#fef2f2" stroke="#dc2626" stroke-width="3"/>
+            <text x="390" y="45" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">Volume Petit (V₂)</text>
+            <text x="390" y="205" text-anchor="middle" font-size="12" fill="#dc2626">P = élevée</text>
+            
+            <!-- Molécules compressées -->
+            <circle cx="350" cy="80" r="8" fill="#ea580c"/>
+            <circle cx="390" cy="90" r="8" fill="#ea580c"/>
+            <circle cx="430" cy="100" r="8" fill="#ea580c"/>
+            <circle cx="370" cy="130" r="8" fill="#ea580c"/>
+            <circle cx="410" cy="150" r="8" fill="#ea580c"/>
+            
+            <!-- Plus de flèches (plus de collisions) -->
+            <path d="M 358 80 L 375 80" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M 398 90 L 415 90" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M 422 100 L 422 85" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+            
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#666"/>
+                </marker>
+                <marker id="arrow-big" markerWidth="15" markerHeight="15" refX="14" refY="7" orient="auto">
+                    <polygon points="0 0, 15 7, 0 14" fill="#1e3a8a"/>
+                </marker>
+            </defs>
+        </svg>
+        <p class="diagram-title">Figure 1.2 : Compression = Plus de collisions par unité de surface = Pression augmente</p>
+    </div>
+
     <div class="info-box">
         <p><strong>Pourquoi cette loi fonctionne-t-elle ?</strong></p>
         <ul>
@@ -145,18 +295,19 @@
         </div>
     </div>
 
-    <h2>2.2 Interprétation Moléculaire</h2>
-    <div class="info-box">
-        <p><strong>Pourquoi cette loi fonctionne-t-elle ?</strong></p>
-        <ul>
-            <li>Augmenter $T$ → augmente l'énergie cinétique moyenne des molécules</li>
-            <li>Molécules se déplacent plus vite → collisions plus fortes</li>
-            <li>À pression constante, le volume doit augmenter pour compenser</li>
-            <li>Le gaz se dilate pour maintenir la même force par unité de surface</li>
-        </ul>
+    <!-- Diagramme température-volume -->
+    <div class="visual-concept">
+        <h3>🔥 Effet de la Température sur le Volume</h3>
+        <div class="mermaid">
+graph LR
+    A["Froid ❄️<br/>T = 273 K<br/>V = petit<br/>Molécules lentes"] -->|Chauffage +| B["Chaud 🔥<br/>T = 373 K<br/>V = grand<br/>Molécules rapides"]
+    style A fill:#e0f2fe,stroke:#0284c7,stroke-width:3px
+    style B fill:#fee2e2,stroke:#dc2626,stroke-width:3px
+        </div>
+        <p class="text-center"><strong>Plus haute température → Molécules plus rapides → Volume augmente</strong></p>
     </div>
 
-    <h2>2.3 Exemple Numérique</h2>
+    <h2>2.2 Exemple Numérique</h2>
     <div class="example-box">
         <div class="box-title">Exemple : Ballon d'air chaud</div>
         <p><strong>Données :</strong></p>
@@ -194,10 +345,6 @@
         <div class="math-display">
             $$\frac{V}{n} = \text{constante}$$
         </div>
-        <p class="text-center">ou de manière équivalente :</p>
-        <div class="math-display">
-            $$\frac{V_1}{n_1} = \frac{V_2}{n_2}$$
-        </div>
     </div>
 
     <div class="important-box">
@@ -209,6 +356,45 @@
             <li>$V_m = 22.4$ L/mol</li>
         </ul>
         <p><strong>Toute substance gazeuse occupe 22.4 L par mole aux CNTP !</strong></p>
+    </div>
+
+    <!-- Visualisation avec différents gaz -->
+    <div class="diagram-container">
+        <svg width="600" height="200" viewBox="0 0 600 200">
+            <!-- Box 1 -->
+            <rect x="20" y="30" width="160" height="140" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="100" y="55" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">H₂</text>
+            <text x="100" y="75" text-anchor="middle" font-size="11" fill="#666">22.4 L</text>
+            <circle cx="60" cy="110" r="6" fill="#ea580c"/>
+            <circle cx="100" cy="110" r="6" fill="#ea580c"/>
+            <circle cx="140" cy="110" r="6" fill="#ea580c"/>
+            <circle cx="80" cy="140" r="6" fill="#ea580c"/>
+            <circle cx="120" cy="140" r="6" fill="#ea580c"/>
+            <text x="100" y="185" text-anchor="middle" font-size="11" fill="#333">1 mole</text>
+            
+            <!-- Box 2 -->
+            <rect x="220" y="30" width="160" height="140" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="300" y="55" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">O₂</text>
+            <text x="300" y="75" text-anchor="middle" font-size="11" fill="#666">22.4 L</text>
+            <circle cx="260" cy="110" r="8" fill="#dc2626"/>
+            <circle cx="300" cy="110" r="8" fill="#dc2626"/>
+            <circle cx="340" cy="110" r="8" fill="#dc2626"/>
+            <circle cx="280" cy="140" r="8" fill="#dc2626"/>
+            <circle cx="320" cy="140" r="8" fill="#dc2626"/>
+            <text x="300" y="185" text-anchor="middle" font-size="11" fill="#333">1 mole</text>
+            
+            <!-- Box 3 -->
+            <rect x="420" y="30" width="160" height="140" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="500" y="55" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">CO₂</text>
+            <text x="500" y="75" text-anchor="middle" font-size="11" fill="#666">22.4 L</text>
+            <circle cx="460" cy="110" r="10" fill="#16a34a"/>
+            <circle cx="500" cy="110" r="10" fill="#16a34a"/>
+            <circle cx="540" cy="110" r="10" fill="#16a34a"/>
+            <circle cx="480" cy="140" r="10" fill="#16a34a"/>
+            <circle cx="520" cy="140" r="10" fill="#16a34a"/>
+            <text x="500" y="185" text-anchor="middle" font-size="11" fill="#333">1 mole</text>
+        </svg>
+        <p class="diagram-title">Figure 3.1 : Principe d'Avogadro - Même volume pour 1 mole de n'importe quel gaz (CNTP)</p>
     </div>
 
     <!-- SECTION 4: LOI DES GAZ PARFAITS -->
@@ -229,6 +415,27 @@
             <li>$R$ = constante des gaz parfaits</li>
             <li>$T$ = température absolue (K)</li>
         </ul>
+    </div>
+
+    <!-- Diagramme relationnel -->
+    <div class="visual-concept">
+        <h3>🔗 Relations entre Variables</h3>
+        <div class="mermaid">
+graph TD
+    A[PV = nRT] --> B[Augmente P]
+    A --> C[Augmente V]
+    A --> D[Augmente T]
+    A --> E[Augmente n]
+    B -.-> |T,n,V constants| F[Compression]
+    C -.-> |P,n,T constants| G[Expansion]
+    D -.-> |P,n,V constants| H[Chauffage]
+    E -.-> |P,T,V constants| I[Ajoute molécules]
+    style A fill:#fef2f2,stroke:#dc2626,stroke-width:4px
+    style B fill:#eff6ff,stroke:#2563eb
+    style C fill:#eff6ff,stroke:#2563eb
+    style D fill:#eff6ff,stroke:#2563eb
+    style E fill:#eff6ff,stroke:#2563eb
+        </div>
     </div>
 
     <h2>4.2 Constante des Gaz Parfaits $R$</h2>
@@ -256,23 +463,8 @@
                 <td>L·kPa·K⁻¹·mol⁻¹</td>
                 <td>Calculs avec kPa</td>
             </tr>
-            <tr>
-                <td>$62.36$</td>
-                <td>L·mmHg·K⁻¹·mol⁻¹</td>
-                <td>Calculs avec mmHg</td>
-            </tr>
         </tbody>
     </table>
-
-    <h2>4.3 Forme Alternative : Masse Volumique</h2>
-    <div class="formula-box">
-        <div class="box-title">Densité d'un gaz</div>
-        <p>En combinant $PV = nRT$ et $n = \frac{m}{M}$ :</p>
-        <div class="math-display">
-            $$\rho = \frac{m}{V} = \frac{PM}{RT}$$
-        </div>
-        <p><strong>Où :</strong> $M$ = masse molaire (g/mol)</p>
-    </div>
 
     <!-- SECTION 5: LOI DE DALTON -->
     <div class="page-break"></div>
@@ -287,37 +479,84 @@
     <div class="formula-box">
         <div class="box-title">Pression totale</div>
         <div class="math-display">
-            $$P_{\text{total}} = P_1 + P_2 + P_3 + \cdots + P_n$$
+            $$P_{\text{total}} = P_1 + P_2 + P_3 + \cdots = \sum_{i} P_i$$
         </div>
         <div class="math-display">
-            $$P_{\text{total}} = \sum_{i} P_i$$
+            $$P_i = \chi_i P_{\text{total}} \quad \text{où} \quad \chi_i = \frac{n_i}{n_{\text{total}}}$$
         </div>
     </div>
 
-    <h2>5.2 Pression Partielle</h2>
-    <div class="formula-box">
-        <div class="box-title">Définition</div>
-        <p>La pression partielle d'un gaz est la pression qu'il exercerait s'il occupait seul le volume total :</p>
-        <div class="math-display">
-            $$P_i = \chi_i P_{\text{total}}$$
-        </div>
-        <p><strong>Où :</strong> $\chi_i = \frac{n_i}{n_{\text{total}}}$ = fraction molaire</p>
+    <!-- Visualisation mélange de gaz -->
+    <div class="diagram-container">
+        <svg width="600" height="280" viewBox="0 0 600 280">
+            <!-- Container principal -->
+            <rect x="320" y="30" width="260" height="220" fill="#f0f9ff" stroke="#1e3a8a" stroke-width="3"/>
+            <text x="450" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">Mélange</text>
+            <text x="450" y="265" text-anchor="middle" font-size="13" fill="#dc2626">P_total = P_N₂ + P_O₂ + P_Ar</text>
+            
+            <!-- Gaz N₂ (bleu) -->
+            <circle cx="350" cy="80" r="8" fill="#2563eb"/>
+            <circle cx="420" cy="90" r="8" fill="#2563eb"/>
+            <circle cx="480" cy="70" r="8" fill="#2563eb"/>
+            <circle cx="550" cy="100" r="8" fill="#2563eb"/>
+            <circle cx="380" cy="130" r="8" fill="#2563eb"/>
+            <circle cx="500" cy="140" r="8" fill="#2563eb"/>
+            <circle cx="450" cy="160" r="8" fill="#2563eb"/>
+            <circle cx="360" cy="180" r="8" fill="#2563eb"/>
+            
+            <!-- Gaz O₂ (rouge) -->
+            <circle cx="400" cy="60" r="7" fill="#dc2626"/>
+            <circle cx="530" cy="130" r="7" fill="#dc2626"/>
+            <circle cx="410" cy="200" r="7" fill="#dc2626"/>
+            
+            <!-- Gaz Ar (vert) -->
+            <circle cx="470" cy="110" r="6" fill="#16a34a"/>
+            
+            <!-- Containers individuels à gauche -->
+            <rect x="20" y="40" width="80" height="60" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+            <text x="60" y="35" text-anchor="middle" font-size="12" fill="#2563eb">N₂</text>
+            <circle cx="40" cy="60" r="6" fill="#2563eb"/>
+            <circle cx="60" cy="70" r="6" fill="#2563eb"/>
+            <circle cx="80" cy="80" r="6" fill="#2563eb"/>
+            <text x="60" y="120" text-anchor="middle" font-size="11" fill="#666">P_N₂ = 0.78 atm</text>
+            
+            <rect x="120" y="40" width="80" height="60" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+            <text x="160" y="35" text-anchor="middle" font-size="12" fill="#dc2626">O₂</text>
+            <circle cx="140" cy="60" r="6" fill="#dc2626"/>
+            <circle cx="170" cy="75" r="6" fill="#dc2626"/>
+            <text x="160" y="120" text-anchor="middle" font-size="11" fill="#666">P_O₂ = 0.21 atm</text>
+            
+            <rect x="220" y="40" width="60" height="60" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+            <text x="250" y="35" text-anchor="middle" font-size="12" fill="#16a34a">Ar</text>
+            <circle cx="250" cy="70" r="5" fill="#16a34a"/>
+            <text x="250" y="120" text-anchor="middle" font-size="11" fill="#666">P_Ar = 0.01 atm</text>
+            
+            <!-- Flèches -->
+            <path d="M 105 150 Q 200 190 320 150" fill="none" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow-dalton)"/>
+            <path d="M 165 150 Q 230 200 320 170" fill="none" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow-dalton)"/>
+            <path d="M 255 150 Q 280 210 320 190" fill="none" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow-dalton)"/>
+            
+            <text x="220" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">+</text>
+            
+            <defs>
+                <marker id="arrow-dalton" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#1e3a8a"/>
+                </marker>
+            </defs>
+        </svg>
+        <p class="diagram-title">Figure 5.1 : Loi de Dalton - La pression totale est la somme des pressions partielles</p>
     </div>
 
     <div class="example-box">
         <div class="box-title">Exemple : Air atmosphérique</div>
-        <p><strong>Composition de l'air sec :</strong></p>
-        <ul>
-            <li>$\ce{N2}$ : 78.08%</li>
-            <li>$\ce{O2}$ : 20.95%</li>
-            <li>$\ce{Ar}$ : 0.93%</li>
-            <li>$\ce{CO2}$ : 0.04%</li>
-        </ul>
+        <p><strong>Composition de l'air sec avec formules chimiques mhchem :</strong></p>
+        <div class="math-display">
+            $$\ce{N2}$$ : 78.08% $$\quad$$ $$\ce{O2}$$ : 20.95% $$\quad$$ $$\ce{Ar}$$ : 0.93% $$\quad$$ $$\ce{CO2}$$ : 0.04%
+        </div>
 
         <p><strong>À $P_{\text{total}} = 1$ atm :</strong></p>
         <div class="math-display">
-            $$P_{\ce{N2}} = 0.7808 \times 1 = 0.7808 \text{ atm}$$
-            $$P_{\ce{O2}} = 0.2095 \times 1 = 0.2095 \text{ atm}$$
+            $$P_{\ce{N2}} = 0.7808 \text{ atm} \quad P_{\ce{O2}} = 0.2095 \text{ atm}$$
         </div>
     </div>
 
@@ -337,40 +576,39 @@
         </ol>
     </div>
 
-    <h2>6.2 Énergie Cinétique et Température</h2>
+    <!-- Diagramme collisions -->
+    <div class="visual-concept">
+        <h3>⚡ Collisions Moléculaires</h3>
+        <div class="mermaid">
+sequenceDiagram
+    participant M1 as Molécule 1
+    participant M2 as Molécule 2
+    participant P as Paroi
+    M1->>M2: Collision élastique
+    Note over M1,M2: Transfert d'énergie
+    M2->>P: Impact sur paroi
+    Note over M2,P: Génère PRESSION
+    P-->>M2: Rebond (élastique)
+    M2->>M1: Nouvelle collision
+        </div>
+    </div>
+
     <div class="formula-box">
         <div class="box-title">Énergie cinétique moyenne</div>
         <div class="math-display">
             $$\overline{E_k} = \frac{3}{2} k_B T$$
         </div>
-        <p><strong>Où :</strong></p>
-        <ul>
-            <li>$\overline{E_k}$ = énergie cinétique moyenne par molécule</li>
-            <li>$k_B = 1.381 \times 10^{-23}$ J/K = constante de Boltzmann</li>
-            <li>$T$ = température absolue (K)</li>
-        </ul>
+        <p><strong>Où :</strong> $k_B = 1.381 \times 10^{-23}$ J/K (constante de Boltzmann)</p>
     </div>
 
-    <h2>6.3 Vitesse Quadratique Moyenne</h2>
     <div class="formula-box">
-        <div class="box-title">Vitesse RMS (Root Mean Square)</div>
+        <div class="box-title">Vitesse quadratique moyenne (RMS)</div>
         <div class="math-display">
-            $$v_{\text{rms}} = \sqrt{\frac{3RT}{M}} = \sqrt{\frac{3k_B T}{m}}$$
+            $$v_{\text{rms}} = \sqrt{\frac{3RT}{M}}$$
         </div>
-        <p><strong>Où :</strong></p>
-        <ul>
-            <li>$M$ = masse molaire (kg/mol)</li>
-            <li>$m$ = masse d'une molécule (kg)</li>
-        </ul>
     </div>
 
-    <div class="important-box">
-        <div class="box-title">Conclusion importante</div>
-        <p>À la même température, les molécules légères se déplacent plus vite que les molécules lourdes !</p>
-        <p><strong>Exemple :</strong> À 25°C, $\ce{H2}$ se déplace ~4 fois plus vite que $\ce{O2}$</p>
-    </div>
-
-    <!-- SECTION 7: DISTRIBUTION DE MAXWELL-BOLTZMANN -->
+    <!-- SECTION 7: DISTRIBUTION MAXWELL-BOLTZMANN -->
     <div class="page-break"></div>
     <h1>7. DISTRIBUTION DE MAXWELL-BOLTZMANN</h1>
 
@@ -379,11 +617,47 @@
         <p>Les molécules d'un gaz n'ont <strong>pas toutes la même vitesse</strong>. La distribution de Maxwell-Boltzmann décrit la probabilité qu'une molécule ait une certaine vitesse.</p>
     </div>
 
-    <div class="formula-box">
-        <div class="box-title">Fonction de distribution</div>
-        <div class="math-display">
-            $$f(v) = 4\pi n \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-\frac{mv^2}{2k_B T}}$$
-        </div>
+    <!-- Graphique distribution -->
+    <div class="diagram-container">
+        <svg width="500" height="350" viewBox="0 0 500 350">
+            <!-- Axes -->
+            <line x1="50" y1="300" x2="450" y2="300" stroke="#333" stroke-width="2"/>
+            <line x1="50" y1="300" x2="50" y2="50" stroke="#333" stroke-width="2"/>
+            
+            <!-- Labels -->
+            <text x="250" y="335" text-anchor="middle" font-size="16" fill="#333">Vitesse (m/s)</text>
+            <text x="20" y="175" text-anchor="middle" font-size="16" fill="#333" transform="rotate(-90 20 175)">Nombre de molécules</text>
+            
+            <!-- Courbe T = 300K (bleu) -->
+            <path d="M 60,290 Q 120,180 150,150 Q 200,130 280,180 Q 350,240 420,290" 
+                  fill="none" stroke="#2563eb" stroke-width="3"/>
+            <text x="380" y="170" font-size="13" fill="#2563eb" font-weight="bold">T = 300 K</text>
+            
+            <!-- Courbe T = 600K (rouge) -->
+            <path d="M 70,285 Q 150,200 180,180 Q 250,160 330,200 Q 390,250 440,285" 
+                  fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="5,5"/>
+            <text x="400" y="220" font-size="13" fill="#dc2626" font-weight="bold">T = 600 K</text>
+            
+            <!-- Vitesse la plus probable v_p -->
+            <line x1="150" y1="300" x2="150" y2="150" stroke="#16a34a" stroke-width="2" stroke-dasharray="3,3"/>
+            <text x="150" y="145" text-anchor="middle" font-size="11" fill="#16a34a">v_p</text>
+            
+            <!-- Vitesse moyenne v̄ -->
+            <line x1="200" y1="300" x2="200" y2="130" stroke="#ea580c" stroke-width="2" stroke-dasharray="3,3"/>
+            <text x="200" y="125" text-anchor="middle" font-size="11" fill="#ea580c">v̄</text>
+            
+            <!-- Vitesse RMS v_rms -->
+            <line x1="230" y1="300" x2="230" y2="140" stroke="#9333ea" stroke-width="2" stroke-dasharray="3,3"/>
+            <text x="230" y="135" text-anchor="middle" font-size="11" fill="#9333ea">v_rms</text>
+            
+            <!-- Annotations -->
+            <text x="130" y="80" font-size="12" fill="#1e3a8a">← Plus de molécules</text>
+            <text x="130" y="95" font-size="12" fill="#1e3a8a">lentes à T élevée</text>
+            
+            <text x="330" y="270" font-size="12" fill="#dc2626">Plus haute T →</text>
+            <text x="330" y="285" font-size="12" fill="#dc2626">Courbe élargie →</text>
+        </svg>
+        <p class="diagram-title">Figure 7.1 : Distribution de Maxwell-Boltzmann à deux températures</p>
     </div>
 
     <h2>7.2 Vitesses Caractéristiques</h2>
@@ -404,12 +678,12 @@
             <tr>
                 <td>Vitesse moyenne</td>
                 <td>$\overline{v} = \sqrt{\frac{8RT}{\pi M}}$</td>
-                <td>Valeur moyenne arithmétique</td>
+                <td>Moyenne arithmétique</td>
             </tr>
             <tr>
-                <td>Vitesse quadratique moyenne</td>
+                <td>Vitesse RMS</td>
                 <td>$v_{\text{rms}} = \sqrt{\frac{3RT}{M}}$</td>
-                <td>Racine de la moyenne des carrés</td>
+                <td>Racine carrée de la moyenne des carrés</td>
             </tr>
         </tbody>
     </table>
@@ -419,17 +693,6 @@
         <div class="math-display">
             $$v_p < \overline{v} < v_{\text{rms}}$$
         </div>
-    </div>
-
-    <h2>7.3 Effet de la Température</h2>
-    <div class="info-box">
-        <p><strong>Quand $T$ augmente :</strong></p>
-        <ul>
-            <li>La courbe s'aplatit et s'élargit</li>
-            <li>Le maximum se déplace vers des vitesses plus élevées</li>
-            <li>La proportion de molécules à haute vitesse augmente</li>
-            <li>Important pour les réactions chimiques (énergie d'activation)</li>
-        </ul>
     </div>
 
     <!-- SECTION 8: GAZ RÉELS -->
@@ -452,6 +715,24 @@
         </ul>
     </div>
 
+    <!-- Comparaison gaz parfait vs réel -->
+    <div class="visual-concept">
+        <h3>🔬 Gaz Parfait vs Gaz Réel</h3>
+        <div class="mermaid">
+graph TB
+    A[GAZ PARFAIT] --> B[Pas de volume propre]
+    A --> C[Pas d'interactions]
+    A --> D[Collisions élastiques]
+    
+    E[GAZ RÉEL] --> F[Molécules ont un volume]
+    E --> G[Forces d'attraction présentes]
+    E --> H[Comportement dévie à haute P]
+    
+    style A fill:#eff6ff,stroke:#2563eb,stroke-width:3px
+    style E fill:#fef2f2,stroke:#dc2626,stroke-width:3px
+        </div>
+    </div>
+
     <h2>8.2 Équation de Van der Waals</h2>
     <div class="formula-box">
         <div class="box-title">Correction pour gaz réels</div>
@@ -465,6 +746,55 @@
         </ul>
     </div>
 
+    <!-- Diagramme corrections Van der Waals -->
+    <div class="diagram-container">
+        <svg width="600" height="250" viewBox="0 0 600 250">
+            <!-- Gaz parfait -->
+            <rect x="20" y="20" width="250" height="200" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="145" y="45" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">GAZ PARFAIT</text>
+            <text x="145" y="65" text-anchor="middle" font-size="12" fill="#666">PV = nRT</text>
+            
+            <!-- Points représentant molécules -->
+            <circle cx="60" cy="110" r="3" fill="#2563eb"/>
+            <circle cx="110" cy="130" r="3" fill="#2563eb"/>
+            <circle cx="180" cy="100" r="3" fill="#2563eb"/>
+            <circle cx="220" cy="150" r="3" fill="#2563eb"/>
+            <circle cx="140" cy="180" r="3" fill="#2563eb"/>
+            
+            <text x="145" y="230" text-anchor="middle" font-size="11" fill="#666">• Volume = 0</text>
+            <text x="145" y="245" text-anchor="middle" font-size="11" fill="#666">• Pas d'interactions</text>
+            
+            <!-- Flèche -->
+            <path d="M 290 120 L 310 120" stroke="#333" stroke-width="3" marker-end="url(#arrow-vdw)"/>
+            
+            <!-- Gaz réel -->
+            <rect x="330" y="20" width="250" height="200" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+            <text x="455" y="45" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">GAZ RÉEL</text>
+            <text x="455" y="65" text-anchor="middle" font-size="12" fill="#666">(P + a...)(V - b...) = nRT</text>
+            
+            <!-- Molécules avec volume -->
+            <circle cx="370" cy="110" r="8" fill="#dc2626"/>
+            <circle cx="420" cy="130" r="8" fill="#dc2626"/>
+            <circle cx="490" cy="100" r="8" fill="#dc2626"/>
+            <circle cx="530" cy="150" r="8" fill="#dc2626"/>
+            <circle cx="450" cy="180" r="8" fill="#dc2626"/>
+            
+            <!-- Forces d'attraction (lignes pointillées) -->
+            <line x1="370" y1="110" x2="420" y2="130" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="420" y1="130" x2="450" y2="180" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+            
+            <text x="455" y="230" text-anchor="middle" font-size="11" fill="#666">• Volume = nb</text>
+            <text x="455" y="245" text-anchor="middle" font-size="11" fill="#666">• Forces = a/V²</text>
+            
+            <defs>
+                <marker id="arrow-vdw" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#333"/>
+                </marker>
+            </defs>
+        </svg>
+        <p class="diagram-title">Figure 8.1 : Différences entre gaz parfait (points) et gaz réel (sphères avec interactions)</p>
+    </div>
+
     <h2>8.3 Constantes de Van der Waals</h2>
     <table>
         <thead>
@@ -472,49 +802,42 @@
                 <th>Gaz</th>
                 <th>$a$ (L²·atm·mol⁻²)</th>
                 <th>$b$ (L·mol⁻¹)</th>
+                <th>Formule</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>He</td>
+                <td>Hélium</td>
                 <td>0.0346</td>
                 <td>0.0238</td>
+                <td>$\ce{He}$</td>
             </tr>
             <tr>
-                <td>$\ce{H2}$</td>
+                <td>Hydrogène</td>
                 <td>0.2452</td>
                 <td>0.0265</td>
+                <td>$\ce{H2}$</td>
             </tr>
             <tr>
-                <td>$\ce{N2}$</td>
+                <td>Azote</td>
                 <td>1.370</td>
                 <td>0.0387</td>
+                <td>$\ce{N2}$</td>
             </tr>
             <tr>
-                <td>$\ce{O2}$</td>
-                <td>1.382</td>
-                <td>0.0319</td>
-            </tr>
-            <tr>
-                <td>$\ce{CO2}$</td>
+                <td>Dioxyde de carbone</td>
                 <td>3.658</td>
                 <td>0.0429</td>
+                <td>$\ce{CO2}$</td>
             </tr>
             <tr>
-                <td>$\ce{H2O}$</td>
+                <td>Eau</td>
                 <td>5.537</td>
                 <td>0.0305</td>
+                <td>$\ce{H2O}$</td>
             </tr>
         </tbody>
     </table>
-
-    <div class="info-box">
-        <p><strong>Interprétation des constantes :</strong></p>
-        <ul>
-            <li><strong>$a$ élevé</strong> : forces d'attraction importantes ($\ce{H2O}$ > $\ce{CO2}$ > $\ce{N2}$)</li>
-            <li><strong>$b$ élevé</strong> : molécules volumineuses</li>
-        </ul>
-    </div>
 
     <!-- FORMULAIRE RÉCAPITULATIF -->
     <div class="page-break"></div>
@@ -541,11 +864,6 @@
                 <td>$P$, $n$ constants</td>
             </tr>
             <tr>
-                <td>Gay-Lussac</td>
-                <td>$\frac{P_1}{T_1} = \frac{P_2}{T_2}$</td>
-                <td>$V$, $n$ constants</td>
-            </tr>
-            <tr>
                 <td>Avogadro</td>
                 <td>$\frac{V_1}{n_1} = \frac{V_2}{n_2}$</td>
                 <td>$T$, $P$ constants</td>
@@ -559,6 +877,11 @@
                 <td>Dalton</td>
                 <td>$P_{\text{total}} = \sum P_i$</td>
                 <td>Mélanges de gaz</td>
+            </tr>
+            <tr>
+                <td>Van der Waals</td>
+                <td>$(P + \frac{an^2}{V^2})(V - nb) = nRT$</td>
+                <td>Gaz réels</td>
             </tr>
         </tbody>
     </table>
@@ -579,13 +902,8 @@
                 <td>J</td>
             </tr>
             <tr>
-                <td>Vitesse quadratique moyenne</td>
+                <td>Vitesse RMS</td>
                 <td>$v_{\text{rms}} = \sqrt{\frac{3RT}{M}}$</td>
-                <td>m/s</td>
-            </tr>
-            <tr>
-                <td>Vitesse la plus probable</td>
-                <td>$v_p = \sqrt{\frac{2RT}{M}}$</td>
                 <td>m/s</td>
             </tr>
             <tr>
@@ -626,12 +944,6 @@
                 <td>J·K⁻¹</td>
             </tr>
             <tr>
-                <td>Nombre d'Avogadro</td>
-                <td>$N_A$</td>
-                <td>$6.022 \times 10^{23}$</td>
-                <td>mol⁻¹</td>
-            </tr>
-            <tr>
                 <td>Volume molaire (CNTP)</td>
                 <td>$V_m$</td>
                 <td>$22.4$</td>
@@ -639,25 +951,6 @@
             </tr>
         </tbody>
     </table>
-
-    <h2>9.4 Conversions Utiles</h2>
-    <div class="info-box">
-        <p><strong>Température :</strong></p>
-        <div class="math-display">
-            $$T(\text{K}) = T(°\text{C}) + 273.15$$
-        </div>
-
-        <p><strong>Pression :</strong></p>
-        <ul>
-            <li>1 atm = 101.325 kPa = 760 mmHg = 760 Torr = 1.01325 bar</li>
-        </ul>
-
-        <p><strong>Volume :</strong></p>
-        <ul>
-            <li>1 L = 1 dm³ = 1000 cm³ = 1000 mL</li>
-            <li>1 m³ = 1000 L</li>
-        </ul>
-    </div>
 
     <div class="important-box">
         <div class="box-title">Conseils pour la résolution de problèmes</div>

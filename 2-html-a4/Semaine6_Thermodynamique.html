@@ -18,10 +18,28 @@
             },
             svg: {
                 fontCache: 'global'
-            }
+            },
+            loader: {load: ['[tex]/mhchem']}
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    <!-- Mermaid.js for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#eff6ff',
+                primaryTextColor: '#1e3a8a',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#dc2626',
+                secondaryColor: '#fef2f2',
+                tertiaryColor: '#fff7ed'
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- PAGE DE COUVERTURE -->
@@ -29,13 +47,27 @@
         <h1 class="cover-title">POLYCOPIÉ DE CHIMIE GÉNÉRALE</h1>
 
         <svg width="200" height="200" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="10" fill="#1e3a8a"/>
-            <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="#dc2626" stroke-width="2"/>
-            <ellipse cx="100" cy="100" rx="30" ry="80" fill="none" stroke="#dc2626" stroke-width="2"/>
-            <circle cx="180" cy="100" r="6" fill="#ea580c"/>
-            <circle cx="20" cy="100" r="6" fill="#ea580c"/>
-            <circle cx="100" cy="180" r="6" fill="#ea580c"/>
-            <circle cx="100" cy="20" r="6" fill="#ea580c"/>
+            <!-- Flamme centrale (combustion) -->
+            <defs>
+                <linearGradient id="flame" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ea580c;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+                </linearGradient>
+                <marker id="heat-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
+                </marker>
+            </defs>
+
+            <!-- Flamme -->
+            <path d="M 100 140 Q 80 120, 85 100 Q 88 80, 100 60 Q 112 80, 115 100 Q 120 120, 100 140 Z" fill="url(#flame)" opacity="0.8"/>
+
+            <!-- Flèches de chaleur sortante -->
+            <path d="M 100 60 L 100 30" stroke="#dc2626" stroke-width="3" marker-end="url(#heat-arrow)"/>
+            <text x="105" y="45" font-size="16" fill="#dc2626" font-weight="bold">Q</text>
+
+            <!-- Base (combustible) -->
+            <rect x="70" y="140" width="60" height="20" fill="#1e3a8a" opacity="0.6"/>
+            <text x="100" y="155" font-size="12" fill="white" text-anchor="middle" font-weight="bold">ΔH</text>
         </svg>
 
         <h2 class="cover-subtitle">Semaine 6</h2>
@@ -79,6 +111,30 @@
         </ul>
     </div>
 
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Échanges d'Énergie Système/Environnement</h3>
+        <div class="mermaid">
+flowchart LR
+    subgraph Environnement
+        E1[Chaleur q]
+        E2[Travail w]
+    end
+
+    subgraph Système
+        S[Énergie Interne U]
+    end
+
+    E1 -->|q > 0<br/>Endothermique<br/>🔥➡️| S
+    E2 -->|w > 0<br/>Compression<br/>⬇️| S
+    S -->|q < 0<br/>Exothermique<br/>🌡️➡️| E1
+    S -->|w < 0<br/>Expansion<br/>⬆️| E2
+
+    style Système fill:#eff6ff,stroke:#2563eb,stroke-width:3px
+    style Environnement fill:#fef2f2,stroke:#dc2626,stroke-width:2px
+    style S fill:#dbeafe,stroke:#1e3a8a,stroke-width:2px
+        </div>
+    </div>
+
     <div class="info-box">
         <div class="box-title">Conventions de signes</div>
         <table>
@@ -114,6 +170,63 @@
         <div class="box-title">Pourquoi l'enthalpie ?</div>
         <p>L'enthalpie est plus pratique que l'énergie interne car la plupart des réactions chimiques se déroulent à <strong>pression constante</strong> (pression atmosphérique).</p>
         <p>$\Delta H$ correspond directement à la chaleur échangée à pression constante !</p>
+    </div>
+
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Diagramme Énergétique</h3>
+        <svg width="600" height="300" viewBox="0 0 600 300">
+            <defs>
+                <marker id="arrow-energy" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#1e3a8a" />
+                </marker>
+            </defs>
+
+            <!-- Axes -->
+            <line x1="50" y1="250" x2="550" y2="250" stroke="#666" stroke-width="2"/>
+            <text x="300" y="280" font-size="14" fill="#666" text-anchor="middle">Progression de la réaction →</text>
+
+            <line x1="50" y1="250" x2="50" y2="30" stroke="#666" stroke-width="2"/>
+            <text x="25" y="140" font-size="14" fill="#666" text-anchor="middle" transform="rotate(-90 25 140)">Enthalpie (H) →</text>
+
+            <!-- Réaction EXOTHERMIQUE -->
+            <text x="170" y="25" font-size="16" fill="#dc2626" font-weight="bold">EXOTHERMIQUE (ΔH < 0)</text>
+
+            <!-- Réactifs haut -->
+            <rect x="80" y="70" width="120" height="40" fill="#2563eb" opacity="0.7"/>
+            <text x="140" y="95" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Réactifs</text>
+            <text x="140" y="65" font-size="12" fill="#1e3a8a">H₁</text>
+
+            <!-- Produits bas -->
+            <rect x="250" y="160" width="120" height="40" fill="#16a34a" opacity="0.7"/>
+            <text x="310" y="185" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Produits</text>
+            <text x="310" y="155" font-size="12" fill="#1e3a8a">H₂</text>
+
+            <!-- Flèche ΔH -->
+            <path d="M 210 90 L 210 180" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-energy)" stroke-dasharray="5,5"/>
+            <text x="220" y="140" font-size="14" fill="#dc2626" font-weight="bold">ΔH < 0</text>
+            <text x="220" y="155" font-size="12" fill="#dc2626">Énergie libérée 🔥</text>
+
+            <!-- Courbe de transition -->
+            <path d="M 200 90 Q 225 100, 250 180" stroke="#ea580c" stroke-width="2" fill="none"/>
+
+            <!-- Réaction ENDOTHERMIQUE -->
+            <text x="480" y="25" font-size="16" fill="#2563eb" font-weight="bold">ENDOTHERMIQUE (ΔH > 0)</text>
+
+            <!-- Réactifs bas -->
+            <rect x="400" y="160" width="120" height="40" fill="#2563eb" opacity="0.7"/>
+            <text x="460" y="185" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Réactifs</text>
+            <text x="460" y="155" font-size="12" fill="#1e3a8a">H₁</text>
+
+            <!-- Produits haut -->
+            <rect x="400" y="70" width="120" height="40" fill="#16a34a" opacity="0.7"/>
+            <text x="460" y="95" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Produits</text>
+            <text x="460" y="65" font-size="12" fill="#1e3a8a">H₂</text>
+
+            <!-- Flèche ΔH -->
+            <path d="M 535 180 L 535 90" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-energy)" stroke-dasharray="5,5"/>
+            <text x="430" y="140" font-size="14" fill="#2563eb" font-weight="bold">ΔH > 0</text>
+            <text x="420" y="155" font-size="12" fill="#2563eb">Énergie absorbée ❄️</text>
+        </svg>
     </div>
 
     <h2>2.2 Variations d'Enthalpie</h2>
@@ -182,6 +295,54 @@
         </tbody>
     </table>
 
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Degrés de Liberté Moléculaires</h3>
+        <svg width="600" height="200" viewBox="0 0 600 200">
+            <!-- Monoatomique -->
+            <text x="100" y="30" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">MONOATOMIQUE</text>
+            <circle cx="100" cy="100" r="15" fill="#ea580c"/>
+            <text x="100" y="105" font-size="12" fill="white" font-weight="bold">He</text>
+            <!-- Flèches translation (3 degrés) -->
+            <path d="M 100 100 L 140 100" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-energy)"/>
+            <path d="M 100 100 L 100 60" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-energy)"/>
+            <path d="M 100 100 L 70 130" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-energy)"/>
+            <text x="100" y="170" font-size="12" fill="#1e3a8a" text-anchor="middle">3 translations</text>
+            <text x="100" y="185" font-size="11" fill="#666" text-anchor="middle">Cᵥ = 3/2 R</text>
+
+            <!-- Diatomique -->
+            <text x="300" y="30" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">DIATOMIQUE</text>
+            <circle cx="280" cy="100" r="12" fill="#2563eb"/>
+            <circle cx="320" cy="100" r="12" fill="#2563eb"/>
+            <line x1="292" y1="100" x2="308" y2="100" stroke="#666" stroke-width="3"/>
+            <text x="300" y="105" font-size="10" fill="white" font-weight="bold">N₂</text>
+            <!-- Flèches translation et rotation -->
+            <path d="M 300 100 L 340 100" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-energy)"/>
+            <path d="M 300 100 L 300 60" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-energy)"/>
+            <!-- Rotation -->
+            <ellipse cx="300" cy="100" rx="35" ry="25" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="3,3"/>
+            <text x="300" y="145" font-size="9" fill="#16a34a">rotation</text>
+            <text x="300" y="170" font-size="12" fill="#1e3a8a" text-anchor="middle">3 trans. + 2 rot.</text>
+            <text x="300" y="185" font-size="11" fill="#666" text-anchor="middle">Cᵥ = 5/2 R</text>
+
+            <!-- Polyatomique -->
+            <text x="500" y="30" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">POLYATOMIQUE</text>
+            <!-- Molécule H2O -->
+            <circle cx="500" cy="100" r="14" fill="#dc2626"/>
+            <text x="500" y="105" font-size="10" fill="white" font-weight="bold">O</text>
+            <circle cx="470" cy="120" r="10" fill="#dbeafe"/>
+            <text x="470" y="124" font-size="9" fill="#1e3a8a">H</text>
+            <circle cx="530" cy="120" r="10" fill="#dbeafe"/>
+            <text x="530" y="124" font-size="9" fill="#1e3a8a">H</text>
+            <line x1="490" y1="107" x2="476" y2="115" stroke="#666" stroke-width="2"/>
+            <line x1="510" y1="107" x2="524" y2="115" stroke="#666" stroke-width="2"/>
+            <!-- Rotation 3D -->
+            <ellipse cx="500" cy="110" rx="45" ry="30" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="3,3"/>
+            <text x="500" y="160" font-size="9" fill="#16a34a">3 rotations</text>
+            <text x="500" y="170" font-size="12" fill="#1e3a8a" text-anchor="middle">3 trans. + 3 rot.</text>
+            <text x="500" y="185" font-size="11" fill="#666" text-anchor="middle">Cᵥ = 3R</text>
+        </svg>
+    </div>
+
     <!-- SECTION 4 -->
     <div class="page-break"></div>
     <h1>4. ENTHALPIE DES CHANGEMENTS PHYSIQUES</h1>
@@ -213,6 +374,41 @@
         <p>À 0°C : $\Delta H_{\text{fus}} = 6.0$ kJ/mol</p>
     </div>
 
+    <div class="visual-concept">
+        <h3>💡 Visualisation : États de la Matière et Transitions</h3>
+        <div class="mermaid">
+stateDiagram-v2
+    direction LR
+
+    [*] --> Solide
+    Solide --> Liquide: Fusion<br/>ΔH_fus = +6.0 kJ/mol<br/>🧊➡️💧
+    Liquide --> Vapeur: Vaporisation<br/>ΔH_vap = +40.7 kJ/mol<br/>💧➡️☁️
+    Solide --> Vapeur: Sublimation<br/>ΔH_sub = +46.7 kJ/mol<br/>🧊➡️☁️
+
+    Vapeur --> Liquide: Condensation<br/>ΔH = -40.7 kJ/mol<br/>☁️➡️💧
+    Liquide --> Solide: Solidification<br/>ΔH = -6.0 kJ/mol<br/>💧➡️🧊
+    Vapeur --> Solide: Déposition<br/>ΔH = -46.7 kJ/mol<br/>☁️➡️🧊
+
+    note right of Solide
+        Particules en positions fixes
+        Liaisons fortes
+        Faible énergie cinétique
+    end note
+
+    note right of Liquide
+        Particules mobiles
+        Liaisons flexibles
+        Énergie cinétique moyenne
+    end note
+
+    note right of Vapeur
+        Particules libres
+        Pas de liaisons
+        Grande énergie cinétique
+    end note
+        </div>
+    </div>
+
     <div class="important-box">
         <div class="box-title">Pourquoi $\Delta H_{\text{vap}} \gg \Delta H_{\text{fus}}$ ?</div>
         <ul>
@@ -220,6 +416,38 @@
             <li><strong>Fusion :</strong> molécules restent proches, forces intermoléculaires similaires au solide</li>
         </ul>
     </div>
+
+    <svg width="600" height="180" viewBox="0 0 600 180">
+        <!-- SOLIDE -->
+        <text x="100" y="25" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">SOLIDE</text>
+        <rect x="20" y="40" width="160" height="120" fill="#dbeafe" stroke="#2563eb" stroke-width="3" rx="5"/>
+        <!-- Molécules ordonnées -->
+        <circle cx="60" cy="70" r="8" fill="#2563eb"/><circle cx="90" cy="70" r="8" fill="#2563eb"/><circle cx="120" cy="70" r="8" fill="#2563eb"/><circle cx="150" cy="70" r="8" fill="#2563eb"/>
+        <circle cx="60" cy="100" r="8" fill="#2563eb"/><circle cx="90" cy="100" r="8" fill="#2563eb"/><circle cx="120" cy="100" r="8" fill="#2563eb"/><circle cx="150" cy="100" r="8" fill="#2563eb"/>
+        <circle cx="60" cy="130" r="8" fill="#2563eb"/><circle cx="90" cy="130" r="8" fill="#2563eb"/><circle cx="120" cy="130" r="8" fill="#2563eb"/><circle cx="150" cy="130" r="8" fill="#2563eb"/>
+        <text x="100" y="175" font-size="11" fill="#666" text-anchor="middle">Structure ordonnée</text>
+
+        <!-- LIQUIDE -->
+        <text x="300" y="25" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">LIQUIDE</text>
+        <rect x="220" y="40" width="160" height="120" fill="#fef2f2" stroke="#dc2626" stroke-width="3" rx="5"/>
+        <!-- Molécules désordonnées mais proches -->
+        <circle cx="250" cy="65" r="8" fill="#dc2626"/><circle cx="285" cy="75" r="8" fill="#dc2626"/><circle cx="320" cy="70" r="8" fill="#dc2626"/><circle cx="355" cy="80" r="8" fill="#dc2626"/>
+        <circle cx="245" cy="100" r="8" fill="#dc2626"/><circle cx="280" cy="105" r="8" fill="#dc2626"/><circle cx="315" cy="95" r="8" fill="#dc2626"/><circle cx="350" cy="110" r="8" fill="#dc2626"/>
+        <circle cx="255" cy="135" r="8" fill="#dc2626"/><circle cx="290" cy="130" r="8" fill="#dc2626"/><circle cx="325" cy="140" r="8" fill="#dc2626"/><circle cx="360" cy="145" r="8" fill="#dc2626"/>
+        <text x="300" y="175" font-size="11" fill="#666" text-anchor="middle">Molécules mobiles</text>
+
+        <!-- GAZ -->
+        <text x="500" y="25" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">GAZ/VAPEUR</text>
+        <rect x="420" y="40" width="160" height="120" fill="#fff7ed" stroke="#ea580c" stroke-width="3" rx="5"/>
+        <!-- Molécules très espacées -->
+        <circle cx="450" cy="60" r="8" fill="#ea580c"/><circle cx="530" cy="75" r="8" fill="#ea580c"/>
+        <circle cx="470" cy="110" r="8" fill="#ea580c"/><circle cx="550" cy="130" r="8" fill="#ea580c"/>
+        <circle cx="490" cy="145" r="8" fill="#ea580c"/>
+        <!-- Flèches de mouvement -->
+        <path d="M 458 60 L 475 60" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-energy)"/>
+        <path d="M 538 75 L 545 90" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-energy)"/>
+        <text x="500" y="175" font-size="11" fill="#666" text-anchor="middle">Molécules libres</text>
+    </svg>
 
     <h2>4.3 Enthalpie de Sublimation</h2>
     <div class="formula-box">
@@ -234,7 +462,7 @@
         <ul>
             <li>Givre qui disparaît par temps froid et sec</li>
             <li>Glace sèche ($\ce{CO2}$ solide)</li>
-            <li>Iode solide</li>
+            <li>Iode solide ($\ce{I2}$)</li>
         </ul>
     </div>
 
@@ -248,6 +476,24 @@
         <div class="math-display">
             $$\ce{CH4(g) + 2 O2(g) -> CO2(g) + 2 H2O(l)}$$
             $$\Delta H = -890 \text{ kJ}$$
+        </div>
+    </div>
+
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Combustion du Méthane</h3>
+        <div class="mermaid">
+sequenceDiagram
+    participant R as Réactifs
+    participant E as État de Transition<br/>⚡ Énergie d'activation
+    participant P as Produits
+
+    Note over R: CH₄(g) + 2O₂(g)<br/>État initial<br/>H₁
+    R->>E: Apport d'énergie 🔥<br/>Collision réactive
+    Note over E: Liaisons se brisent<br/>et se forment<br/>Instable
+    E->>P: Libération d'énergie ⬇️<br/>Exothermique
+    Note over P: CO₂(g) + 2H₂O(l)<br/>État final<br/>H₂ < H₁<br/>ΔH = -890 kJ
+
+    Note right of P: Énergie libérée<br/>sous forme de<br/>chaleur et lumière 🔥
         </div>
     </div>
 
@@ -334,6 +580,93 @@
         </ul>
     </div>
 
+    <div class="visual-concept">
+        <h3>💡 Visualisation : Courbe de Chauffage de l'Eau</h3>
+        <svg width="650" height="400" viewBox="0 0 650 400">
+            <defs>
+                <marker id="axis-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#1e3a8a" />
+                </marker>
+            </defs>
+
+            <!-- Axes -->
+            <line x1="60" y1="350" x2="620" y2="350" stroke="#1e3a8a" stroke-width="3" marker-end="url(#axis-arrow)"/>
+            <text x="340" y="380" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Énergie fournie (q) →</text>
+
+            <line x1="60" y1="350" x2="60" y2="30" stroke="#1e3a8a" stroke-width="3" marker-end="url(#axis-arrow)"/>
+            <text x="35" y="190" font-size="14" fill="#1e3a8a" font-weight="bold" text-anchor="middle" transform="rotate(-90 35 190)">Température (°C) →</text>
+
+            <!-- Courbe de chauffage -->
+            <!-- 1. Chauffage du solide -->
+            <line x1="80" y1="330" x2="150" y2="250" stroke="#2563eb" stroke-width="4"/>
+            <text x="115" y="310" font-size="12" fill="#2563eb" font-weight="bold">1. Glace</text>
+            <text x="115" y="325" font-size="10" fill="#666">T ↑</text>
+
+            <!-- 2. Fusion (plateau) -->
+            <line x1="150" y1="250" x2="280" y2="250" stroke="#dc2626" stroke-width="4"/>
+            <text x="215" y="240" font-size="12" fill="#dc2626" font-weight="bold">2. FUSION</text>
+            <text x="215" y="255" font-size="10" fill="#666">T = 0°C</text>
+            <text x="215" y="268" font-size="9" fill="#dc2626">ΔH_fus = 6.0 kJ/mol</text>
+            <!-- Marqueur température -->
+            <line x1="55" y1="250" x2="65" y2="250" stroke="#1e3a8a" stroke-width="2"/>
+            <text x="45" y="255" font-size="11" fill="#1e3a8a" text-anchor="end">0</text>
+
+            <!-- 3. Chauffage du liquide -->
+            <line x1="280" y1="250" x2="370" y2="150" stroke="#2563eb" stroke-width="4"/>
+            <text x="325" y="185" font-size="12" fill="#2563eb" font-weight="bold">3. Eau liquide</text>
+            <text x="325" y="200" font-size="10" fill="#666">T ↑</text>
+
+            <!-- 4. Vaporisation (plateau long) -->
+            <line x1="370" y1="150" x2="550" y2="150" stroke="#ea580c" stroke-width="4"/>
+            <text x="460" y="140" font-size="12" fill="#ea580c" font-weight="bold">4. VAPORISATION</text>
+            <text x="460" y="155" font-size="10" fill="#666">T = 100°C</text>
+            <text x="460" y="168" font-size="9" fill="#ea580c">ΔH_vap = 40.7 kJ/mol (LONG!)</text>
+            <!-- Marqueur température -->
+            <line x1="55" y1="150" x2="65" y2="150" stroke="#1e3a8a" stroke-width="2"/>
+            <text x="45" y="155" font-size="11" fill="#1e3a8a" text-anchor="end">100</text>
+
+            <!-- 5. Chauffage de la vapeur -->
+            <line x1="550" y1="150" x2="600" y2="80" stroke="#2563eb" stroke-width="4"/>
+            <text x="575" y="100" font-size="12" fill="#2563eb" font-weight="bold">5. Vapeur</text>
+            <text x="575" y="115" font-size="10" fill="#666">T ↑</text>
+
+            <!-- Annotations des pentes -->
+            <text x="115" y="270" font-size="9" fill="#16a34a">Pente raide<br/>C faible</text>
+            <text x="325" y="220" font-size="9" fill="#16a34a">Pente douce<br/>C élevée</text>
+            <text x="575" y="135" font-size="9" fill="#16a34a">Pente raide<br/>C faible</text>
+
+            <!-- États de la matière (dessins) -->
+            <!-- Glace -->
+            <g transform="translate(90, 285)">
+                <rect width="40" height="30" fill="#dbeafe" stroke="#2563eb" stroke-width="1" rx="2"/>
+                <circle cx="10" cy="10" r="3" fill="#2563eb"/>
+                <circle cx="20" cy="10" r="3" fill="#2563eb"/>
+                <circle cx="30" cy="10" r="3" fill="#2563eb"/>
+                <circle cx="10" cy="20" r="3" fill="#2563eb"/>
+                <circle cx="20" cy="20" r="3" fill="#2563eb"/>
+                <circle cx="30" cy="20" r="3" fill="#2563eb"/>
+            </g>
+
+            <!-- Liquide -->
+            <g transform="translate(305, 180)">
+                <rect width="40" height="30" fill="#fef2f2" stroke="#dc2626" stroke-width="1" rx="2"/>
+                <circle cx="8" cy="8" r="3" fill="#dc2626"/>
+                <circle cx="22" cy="12" r="3" fill="#dc2626"/>
+                <circle cx="32" cy="10" r="3" fill="#dc2626"/>
+                <circle cx="12" cy="22" r="3" fill="#dc2626"/>
+                <circle cx="28" cy="24" r="3" fill="#dc2626"/>
+            </g>
+
+            <!-- Vapeur -->
+            <g transform="translate(555, 100)">
+                <rect width="40" height="30" fill="#fff7ed" stroke="#ea580c" stroke-width="1" rx="2"/>
+                <circle cx="10" cy="8" r="3" fill="#ea580c"/>
+                <circle cx="30" cy="12" r="3" fill="#ea580c"/>
+                <circle cx="15" cy="24" r="3" fill="#ea580c"/>
+            </g>
+        </svg>
+    </div>
+
     <h3>Régions de la courbe</h3>
     <ol>
         <li><strong>Chauffage du solide (Pente raide)</strong>
@@ -342,7 +675,7 @@
                 <li>Température augmente</li>
             </ul>
         </li>
-        
+
         <li><strong>Fusion (Plateau horizontal)</strong>
             <ul>
                 <li>Température constante</li>
@@ -350,14 +683,14 @@
                 <li>Durée du plateau $\propto \Delta H_{\text{fus}}$</li>
             </ul>
         </li>
-        
+
         <li><strong>Chauffage du liquide (Pente moins raide)</strong>
             <ul>
                 <li>Molécules se déplacent librement</li>
                 <li>Pente plus faible → capacité calorifique plus élevée</li>
             </ul>
         </li>
-        
+
         <li><strong>Vaporisation (Plateau horizontal long)</strong>
             <ul>
                 <li>Température constante</li>
@@ -365,7 +698,7 @@
                 <li>Durée du plateau $\propto \Delta H_{\text{vap}}$ (beaucoup plus long)</li>
             </ul>
         </li>
-        
+
         <li><strong>Chauffage de la vapeur (Pente raide)</strong>
             <ul>
                 <li>Molécules libres</li>

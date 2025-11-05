@@ -1,0 +1,45 @@
+<!-- EXAMPLE: How to add Mermaid diagrams -->
+
+<!-- Simple Flowchart -->
+<div class="diagram-container">
+    <div class="mermaid">
+    graph LR
+        A[Start] --> B{Decision}
+        B -->|Yes| C[Result 1]
+        B -->|No| D[Result 2]
+    </div>
+    <p class="diagram-title">Figure : Example Flowchart</p>
+</div>
+
+<!-- Sequence Diagram -->
+<div class="diagram-container">
+    <div class="mermaid">
+    sequenceDiagram
+        participant A as Molecule A
+        participant B as Molecule B
+        A->>B: Collision
+        B->>A: Energy Transfer
+    </div>
+    <p class="diagram-title">Figure : Molecular Collision</p>
+</div>
+
+<!-- State Diagram -->
+<div class="diagram-container">
+    <div class="mermaid">
+    stateDiagram-v2
+        [*] --> Solid
+        Solid --> Liquid: Fusion (ΔH_fus)
+        Liquid --> Gas: Vaporization (ΔH_vap)
+        Gas --> [*]
+    </div>
+    <p class="diagram-title">Figure : Phase Transitions</p>
+</div>
+
+<!-- Chemical Formulas with mhchem -->
+<div class="formula-box">
+    <div class="math-display">
+        $$\ce{CH4(g) + 2 O2(g) -> CO2(g) + 2 H2O(l)}$$
+        $$\ce{H2SO4 <=> 2H+ + SO4^2-}$$
+        $$\ce{Fe^2+ ->[oxidation] Fe^3+}$$
+    </div>
+</div>
