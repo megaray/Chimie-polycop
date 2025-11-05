@@ -194,3 +194,156 @@ export const PeriodicTableSimple = () => (
     <Text x="112" y="135" fontSize="10" fontWeight="bold" fill={colors.text}>f</Text>
   </Svg>
 );
+
+// Courbe de chauffage (Thermodynamique)
+export const HeatingCurveDiagram = () => (
+  <Svg width="280" height="180" viewBox="0 0 280 180">
+    {/* Axes */}
+    <Line x1="30" y1="160" x2="260" y2="160" stroke={colors.text} strokeWidth="2" />
+    <Line x1="30" y1="160" x2="30" y2="20" stroke={colors.text} strokeWidth="2" />
+
+    {/* Courbe de chauffage */}
+    {/* Solide */}
+    <Line x1="30" y1="140" x2="60" y2="100" stroke={colors.schemaBlue} strokeWidth="3" />
+    {/* Fusion (plateau) */}
+    <Line x1="60" y1="100" x2="90" y2="100" stroke={colors.schemaRed} strokeWidth="3" />
+    {/* Liquide */}
+    <Line x1="90" y1="100" x2="140" y2="60" stroke={colors.schemaBlue} strokeWidth="3" />
+    {/* Vaporisation (plateau) */}
+    <Line x1="140" y1="60" x2="200" y2="60" stroke={colors.schemaRed} strokeWidth="3" />
+    {/* Vapeur */}
+    <Line x1="200" y1="60" x2="230" y2="30" stroke={colors.schemaBlue} strokeWidth="3" />
+
+    {/* Labels des phases */}
+    <Text x="35" y="125" fontSize="9" fill={colors.text}>Solide</Text>
+    <Text x="95" y="80" fontSize="9" fill={colors.text}>Liquide</Text>
+    <Text x="205" y="45" fontSize="9" fill={colors.text}>Vapeur</Text>
+
+    {/* Labels des transitions */}
+    <Text x="65" y="95" fontSize="8" fill={colors.schemaRed}>Fusion</Text>
+    <Text x="155" y="55" fontSize="8" fill={colors.schemaRed}>Vaporisation</Text>
+
+    {/* Axes labels */}
+    <Text x="120" y="178" fontSize="10" fill={colors.text}>Chaleur ajoutée (q)</Text>
+    <Text x="5" y="90" fontSize="10" fill={colors.text}>T</Text>
+  </Svg>
+);
+
+// Diagramme ΔG = ΔH - TΔS (Thermodynamique)
+export const GibbsEnergyDiagram = () => (
+  <Svg width="280" height="140" viewBox="0 0 280 140">
+    {/* Formule centrale */}
+    <Rect x="80" y="40" width="120" height="40" fill={colors.formulaBg} stroke={colors.formulaBorder} strokeWidth="2" />
+    <Text x="105" y="65" fontSize="16" fontWeight="bold" fill={colors.primary}>ΔG = ΔH - TΔS</Text>
+
+    {/* ΔG < 0 (spontané) */}
+    <Rect x="10" y="100" width="80" height="30" fill={colors.schemaGreen} opacity="0.3" stroke={colors.schemaGreen} strokeWidth="2" />
+    <Text x="20" y="120" fontSize="10" fill={colors.text}>ΔG &lt; 0</Text>
+    <Text x="15" y="130" fontSize="8" fill={colors.text}>Spontané</Text>
+
+    {/* ΔG = 0 (équilibre) */}
+    <Rect x="100" y="100" width="80" height="30" fill={colors.schemaYellow} opacity="0.3" stroke={colors.schemaYellow} strokeWidth="2" />
+    <Text x="115" y="120" fontSize="10" fill={colors.text}>ΔG = 0</Text>
+    <Text x="110" y="130" fontSize="8" fill={colors.text}>Équilibre</Text>
+
+    {/* ΔG > 0 (non spontané) */}
+    <Rect x="190" y="100" width="80" height="30" fill={colors.schemaRed} opacity="0.3" stroke={colors.schemaRed} strokeWidth="2" />
+    <Text x="205" y="120" fontSize="10" fill={colors.text}>ΔG &gt; 0</Text>
+    <Text x="195" y="130" fontSize="8" fill={colors.text}>Non spontané</Text>
+
+    {/* Titre */}
+    <Text x="70" y="20" fontSize="12" fontWeight="bold" fill={colors.primary}>Critère de Spontanéité</Text>
+  </Svg>
+);
+
+// Diagramme ATP/ADP (Thermodynamique - Biologie)
+export const ATPCycleDiagram = () => (
+  <Svg width="250" height="150" viewBox="0 0 250 150">
+    {/* ATP */}
+    <Circle cx="60" cy="60" r="35" fill={colors.schemaGreen} opacity="0.3" stroke={colors.schemaGreen} strokeWidth="2" />
+    <Text x="45" y="65" fontSize="12" fontWeight="bold" fill={colors.text}>ATP</Text>
+
+    {/* ADP */}
+    <Circle cx="190" cy="60" r="35" fill={colors.schemaRed} opacity="0.3" stroke={colors.schemaRed} strokeWidth="2" />
+    <Text x="175" y="65" fontSize="12" fontWeight="bold" fill={colors.text}>ADP</Text>
+
+    {/* Flèche ATP -> ADP (hydrolyse) */}
+    <Path d="M 95 50 L 155 50" stroke={colors.schemaRed} strokeWidth="3" />
+    <Path d="M 155 50 L 150 45 L 150 55 Z" fill={colors.schemaRed} />
+    <Text x="105" y="45" fontSize="9" fill={colors.schemaRed}>Hydrolyse</Text>
+    <Text x="105" y="70" fontSize="8" fill={colors.text}>-30 kJ/mol</Text>
+
+    {/* Flèche ADP -> ATP (synthèse) */}
+    <Path d="M 155 80 L 95 80" stroke={colors.schemaGreen} strokeWidth="3" />
+    <Path d="M 95 80 L 100 75 L 100 85 Z" fill={colors.schemaGreen} />
+    <Text x="105" y="95" fontSize="9" fill={colors.schemaGreen}>Synthèse</Text>
+    <Text x="105" y="110" fontSize="8" fill={colors.text}>+30 kJ/mol</Text>
+
+    {/* Glucose */}
+    <Text x="80" y="135" fontSize="10" fill={colors.schemaYellow}>Glucose → Énergie</Text>
+  </Svg>
+);
+
+// Jonction p-n (Semiconducteurs)
+export const PNJunctionDiagram = () => (
+  <Svg width="280" height="160" viewBox="0 0 280 160">
+    {/* Type p */}
+    <Rect x="10" y="40" width="120" height="80" fill={colors.schemaRed} opacity="0.2" stroke={colors.schemaRed} strokeWidth="2" />
+    <Text x="45" y="30" fontSize="14" fontWeight="bold" fill={colors.schemaRed}>Type p</Text>
+    <Text x="35" y="85" fontSize="10" fill={colors.text}>Trous (○)</Text>
+    {/* Trous */}
+    <Circle cx="40" cy="60" r="5" fill="none" stroke={colors.schemaRed} strokeWidth="2" />
+    <Circle cx="70" cy="60" r="5" fill="none" stroke={colors.schemaRed} strokeWidth="2" />
+    <Circle cx="100" cy="60" r="5" fill="none" stroke={colors.schemaRed} strokeWidth="2" />
+    <Circle cx="40" cy="100" r="5" fill="none" stroke={colors.schemaRed} strokeWidth="2" />
+    <Circle cx="70" cy="100" r="5" fill="none" stroke={colors.schemaRed} strokeWidth="2" />
+    <Circle cx="100" cy="100" r="5" fill="none" stroke={colors.schemaRed} strokeWidth="2" />
+
+    {/* Type n */}
+    <Rect x="150" y="40" width="120" height="80" fill={colors.schemaBlue} opacity="0.2" stroke={colors.schemaBlue} strokeWidth="2" />
+    <Text x="185" y="30" fontSize="14" fontWeight="bold" fill={colors.schemaBlue}>Type n</Text>
+    <Text x="165" y="85" fontSize="10" fill={colors.text}>Électrons (•)</Text>
+    {/* Électrons */}
+    <Circle cx="170" cy="60" r="4" fill={colors.schemaBlue} />
+    <Circle cx="200" cy="60" r="4" fill={colors.schemaBlue} />
+    <Circle cx="230" cy="60" r="4" fill={colors.schemaBlue} />
+    <Circle cx="170" cy="100" r="4" fill={colors.schemaBlue} />
+    <Circle cx="200" cy="100" r="4" fill={colors.schemaBlue} />
+    <Circle cx="230" cy="100" r="4" fill={colors.schemaBlue} />
+
+    {/* Jonction */}
+    <Line x1="135" y1="40" x2="135" y2="120" stroke={colors.text} strokeWidth="2" strokeDasharray="5,5" />
+    <Text x="110" y="145" fontSize="9" fill={colors.text}>Jonction p-n</Text>
+  </Svg>
+);
+
+// Tendances périodiques (flèches)
+export const PeriodicTrendsDiagram = () => (
+  <Svg width="250" height="180" viewBox="0 0 250 180">
+    {/* Grille du tableau */}
+    <Rect x="40" y="40" width="180" height="100" fill="none" stroke={colors.tableBorder} strokeWidth="1" />
+
+    {/* Flèche rayon atomique (↓ vers le bas) */}
+    <Path d="M 30 50 L 30 120" stroke={colors.schemaBlue} strokeWidth="3" />
+    <Path d="M 30 120 L 25 110 L 35 110 Z" fill={colors.schemaBlue} />
+    <Text x="5" y="90" fontSize="10" fill={colors.schemaBlue}>r ↑</Text>
+
+    {/* Flèche rayon atomique (← vers la gauche) */}
+    <Path d="M 200 25 L 60 25" stroke={colors.schemaBlue} strokeWidth="3" />
+    <Path d="M 60 25 L 70 20 L 70 30 Z" fill={colors.schemaBlue} />
+    <Text x="120" y="20" fontSize="10" fill={colors.schemaBlue}>r ↓</Text>
+
+    {/* Flèche électronégativité (→ vers la droite) */}
+    <Path d="M 60 155 L 200 155" stroke={colors.schemaRed} strokeWidth="3" />
+    <Path d="M 200 155 L 190 150 L 190 160 Z" fill={colors.schemaRed} />
+    <Text x="115" y="170" fontSize="10" fill={colors.schemaRed}>χ ↑</Text>
+
+    {/* Flèche électronégativité (↑ vers le haut) */}
+    <Path d="M 230 120 L 230 50" stroke={colors.schemaRed} strokeWidth="3" />
+    <Path d="M 230 50 L 225 60 L 235 60 Z" fill={colors.schemaRed} />
+    <Text x="235" y="90" fontSize="10" fill={colors.schemaRed}>χ ↑</Text>
+
+    {/* Labels */}
+    <Text x="80" y="95" fontSize="12" fill={colors.text}>Tableau Périodique</Text>
+  </Svg>
+);
