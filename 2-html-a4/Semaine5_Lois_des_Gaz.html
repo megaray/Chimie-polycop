@@ -46,9 +46,6 @@
         });
     </script>
 
-    <!-- ChemDoodle Web Components -->
-    <link rel="stylesheet" href="https://web.chemdoodle.com/install/ChemDoodleWeb.css" type="text/css">
-    <script type="text/javascript" src="https://web.chemdoodle.com/install/ChemDoodleWeb.js" defer></script>
 
     <style>
         .mermaid {
@@ -66,24 +63,6 @@
             margin: 20px 0;
             border-radius: 8px;
         }
-        .chemdoodle-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 20px 0;
-            gap: 15px;
-        }
-        .molecule-box {
-            text-align: center;
-            padding: 10px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .molecule-box canvas {
-            margin: 10px auto;
-        }
-        .molecule-label {
             font-weight: bold;
             color: #1e3a8a;
             margin-top: 5px;
@@ -595,168 +574,132 @@ graph TD
             Visualisations 2D des principales molécules gazeuses
         </p>
 
-        <div class="chemdoodle-container">
-            <div class="molecule-box">
-                <canvas id="mol_n2" width="150" height="150"></canvas>
-                <div class="molecule-label">$\ce{N2}$ - Diazote</div>
-                <div style="font-size: 12px; color: #666;">78.08% de l'air</div>
-            </div>
+        <svg width="650" height="500" viewBox="0 0 650 500">
+            <!-- Titre -->
+            <text x="325" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a8a">Composants de l'Air et Gaz Importants</text>
 
-            <div class="molecule-box">
-                <canvas id="mol_o2" width="150" height="150"></canvas>
-                <div class="molecule-label">$\ce{O2}$ - Dioxygène</div>
-                <div style="font-size: 12px; color: #666;">20.95% de l'air</div>
-            </div>
+            <!-- N2 - Diazote -->
+            <g transform="translate(80,60)">
+                <rect x="0" y="0" width="140" height="120" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="8"/>
+                <circle cx="45" cy="60" r="22" fill="#2563eb" opacity="0.3"/>
+                <text x="45" y="67" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e3a8a">N</text>
+                <line x1="67" y1="60" x2="73" y2="60" stroke="#1e3a8a" stroke-width="3"/>
+                <line x1="67" y1="56" x2="73" y2="56" stroke="#1e3a8a" stroke-width="3"/>
+                <line x1="67" y1="64" x2="73" y2="64" stroke="#1e3a8a" stroke-width="3"/>
+                <circle cx="95" cy="60" r="22" fill="#2563eb" opacity="0.3"/>
+                <text x="95" y="67" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e3a8a">N</text>
+                <text x="70" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">N₂ - Diazote</text>
+                <text x="70" y="113" text-anchor="middle" font-size="11" fill="#666">78.08% de l'air</text>
+            </g>
 
-            <div class="molecule-box">
-                <canvas id="mol_co2" width="150" height="150"></canvas>
-                <div class="molecule-label">$\ce{CO2}$ - Dioxyde de carbone</div>
-                <div style="font-size: 12px; color: #666;">0.04% de l'air</div>
-            </div>
+            <!-- O2 - Dioxygène -->
+            <g transform="translate(255,60)">
+                <rect x="0" y="0" width="140" height="120" fill="#fef2f2" stroke="#dc2626" stroke-width="2" rx="8"/>
+                <circle cx="45" cy="60" r="22" fill="#dc2626" opacity="0.3"/>
+                <text x="45" y="67" text-anchor="middle" font-size="22" font-weight="bold" fill="#dc2626">O</text>
+                <line x1="67" y1="58" x2="73" y2="58" stroke="#dc2626" stroke-width="3"/>
+                <line x1="67" y1="62" x2="73" y2="62" stroke="#dc2626" stroke-width="3"/>
+                <circle cx="95" cy="60" r="22" fill="#dc2626" opacity="0.3"/>
+                <text x="95" y="67" text-anchor="middle" font-size="22" font-weight="bold" fill="#dc2626">O</text>
+                <text x="70" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#dc2626">O₂ - Dioxygène</text>
+                <text x="70" y="113" text-anchor="middle" font-size="11" fill="#666">20.95% de l'air</text>
+            </g>
 
-            <div class="molecule-box">
-                <canvas id="mol_ar" width="150" height="150"></canvas>
-                <div class="molecule-label">Ar - Argon</div>
-                <div style="font-size: 12px; color: #666;">0.93% de l'air</div>
-            </div>
-        </div>
+            <!-- CO2 - Dioxyde de carbone -->
+            <g transform="translate(430,60)">
+                <rect x="0" y="0" width="165" height="120" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" rx="8"/>
+                <circle cx="30" cy="60" r="18" fill="#16a34a" opacity="0.3"/>
+                <text x="30" y="66" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">O</text>
+                <line x1="48" y1="58" x2="60" y2="58" stroke="#16a34a" stroke-width="3"/>
+                <line x1="48" y1="62" x2="60" y2="62" stroke="#16a34a" stroke-width="3"/>
+                <circle cx="78" cy="60" r="22" fill="#16a34a" opacity="0.3"/>
+                <text x="78" y="67" text-anchor="middle" font-size="22" font-weight="bold" fill="#16a34a">C</text>
+                <line x1="100" y1="58" x2="112" y2="58" stroke="#16a34a" stroke-width="3"/>
+                <line x1="100" y1="62" x2="112" y2="62" stroke="#16a34a" stroke-width="3"/>
+                <circle cx="130" cy="60" r="18" fill="#16a34a" opacity="0.3"/>
+                <text x="130" y="66" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">O</text>
+                <text x="82" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#16a34a">CO₂ - Dioxyde de C</text>
+                <text x="82" y="113" text-anchor="middle" font-size="11" fill="#666">0.04% de l'air</text>
+            </g>
 
-        <div class="chemdoodle-container" style="margin-top: 20px;">
-            <div class="molecule-box">
-                <canvas id="mol_ch4" width="150" height="150"></canvas>
-                <div class="molecule-label">$\ce{CH4}$ - Méthane</div>
-                <div style="font-size: 12px; color: #666;">Gaz naturel</div>
-            </div>
+            <!-- Ar - Argon -->
+            <g transform="translate(80,210)">
+                <rect x="0" y="0" width="140" height="120" fill="#fff7ed" stroke="#ea580c" stroke-width="2" rx="8"/>
+                <circle cx="70" cy="60" r="28" fill="#ea580c" opacity="0.3"/>
+                <text x="70" y="70" text-anchor="middle" font-size="26" font-weight="bold" fill="#ea580c">Ar</text>
+                <text x="70" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#ea580c">Ar - Argon</text>
+                <text x="70" y="113" text-anchor="middle" font-size="11" fill="#666">0.93% (gaz noble)</text>
+            </g>
 
-            <div class="molecule-box">
-                <canvas id="mol_h2o" width="150" height="150"></canvas>
-                <div class="molecule-label">$\ce{H2O}$ - Eau (vapeur)</div>
-                <div style="font-size: 12px; color: #666;">Variable (0-4%)</div>
-            </div>
+            <!-- CH4 - Méthane -->
+            <g transform="translate(255,210)">
+                <rect x="0" y="0" width="140" height="120" fill="#f5f3ff" stroke="#6366f1" stroke-width="2" rx="8"/>
+                <circle cx="70" cy="50" r="20" fill="#6366f1" opacity="0.3"/>
+                <text x="70" y="56" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e3a8a">C</text>
+                <line x1="70" y1="50" x2="70" y2="28" stroke="#666" stroke-width="2"/>
+                <line x1="70" y1="50" x2="92" y2="65" stroke="#666" stroke-width="2"/>
+                <line x1="70" y1="50" x2="48" y2="65" stroke="#666" stroke-width="2"/>
+                <line x1="70" y1="50" x2="70" y2="72" stroke="#666" stroke-width="2"/>
+                <circle cx="70" cy="28" r="10" fill="#e0e7ff"/>
+                <text x="70" y="32" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="92" cy="65" r="10" fill="#e0e7ff"/>
+                <text x="92" y="69" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="48" cy="65" r="10" fill="#e0e7ff"/>
+                <text x="48" y="69" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="70" cy="72" r="10" fill="#e0e7ff"/>
+                <text x="70" y="76" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a8a">H</text>
+                <text x="70" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#6366f1">CH₄ - Méthane</text>
+                <text x="70" y="113" text-anchor="middle" font-size="11" fill="#666">Gaz naturel</text>
+            </g>
 
-            <div class="molecule-box">
-                <canvas id="mol_h2" width="150" height="150"></canvas>
-                <div class="molecule-label">$\ce{H2}$ - Dihydrogène</div>
-                <div style="font-size: 12px; color: #666;">Gaz le plus léger</div>
-            </div>
-        </div>
+            <!-- H2O - Eau -->
+            <g transform="translate(430,210)">
+                <rect x="0" y="0" width="165" height="120" fill="#ecfeff" stroke="#0ea5e9" stroke-width="2" rx="8"/>
+                <circle cx="82" cy="50" r="22" fill="#0ea5e9" opacity="0.3"/>
+                <text x="82" y="57" text-anchor="middle" font-size="22" font-weight="bold" fill="#0284c7">O</text>
+                <line x1="82" y1="50" x2="60" y2="70" stroke="#0ea5e9" stroke-width="3"/>
+                <line x1="82" y1="50" x2="104" y2="70" stroke="#0ea5e9" stroke-width="3"/>
+                <circle cx="60" cy="70" r="14" fill="#e0f2fe"/>
+                <text x="60" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#0284c7">H</text>
+                <circle cx="104" cy="70" r="14" fill="#e0f2fe"/>
+                <text x="104" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#0284c7">H</text>
+                <path d="M 64 63 Q 82 56 100 63" fill="none" stroke="#0284c7" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="82" y="60" text-anchor="middle" font-size="8" fill="#0284c7">104.5°</text>
+                <text x="82" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#0ea5e9">H₂O - Eau</text>
+                <text x="82" y="113" text-anchor="middle" font-size="11" fill="#666">Variable (0-4%)</text>
+            </g>
+
+            <!-- H2 - Dihydrogène -->
+            <g transform="translate(80,360)">
+                <rect x="0" y="0" width="140" height="120" fill="#faf5ff" stroke="#7c3aed" stroke-width="2" rx="8"/>
+                <circle cx="50" cy="60" r="20" fill="#ede9fe"/>
+                <text x="50" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#7c3aed">H</text>
+                <line x1="70" y1="60" x2="70" y2="60" stroke="#7c3aed" stroke-width="3"/>
+                <circle cx="90" cy="60" r="20" fill="#ede9fe"/>
+                <text x="90" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#7c3aed">H</text>
+                <text x="70" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#7c3aed">H₂ - Dihydrogène</text>
+                <text x="70" y="113" text-anchor="middle" font-size="11" fill="#666">Gaz le plus léger</text>
+            </g>
+
+            <!-- Légende des liaisons -->
+            <g transform="translate(255,360)">
+                <rect x="0" y="0" width="340" height="120" fill="#f8fafc" stroke="#64748b" stroke-width="2" rx="8" stroke-dasharray="5,5"/>
+                <text x="170" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">Types de Liaisons</text>
+
+                <line x1="30" y1="50" x2="70" y2="50" stroke="#1e3a8a" stroke-width="2"/>
+                <text x="90" y="53" font-size="11" fill="#333">Liaison simple (H-H)</text>
+
+                <line x1="30" y1="72" x2="70" y2="72" stroke="#dc2626" stroke-width="2"/>
+                <line x1="30" y1="76" x2="70" y2="76" stroke="#dc2626" stroke-width="2"/>
+                <text x="90" y="77" font-size="11" fill="#333">Liaison double (O=O)</text>
+
+                <line x1="30" y1="96" x2="70" y2="96" stroke="#16a34a" stroke-width="2"/>
+                <line x1="30" y1="100" x2="70" y2="100" stroke="#16a34a" stroke-width="2"/>
+                <line x1="30" y1="104" x2="70" y2="104" stroke="#16a34a" stroke-width="2"/>
+                <text x="90" y="103" font-size="11" fill="#333">Liaison triple (N≡N)</text>
+            </g>
+        </svg>
     </div>
-
-    <script>
-    // Fonction pour initialiser ChemDoodle quand il est prêt
-    function initChemDoodle() {
-        if (typeof ChemDoodle === 'undefined') {
-            // Réessayer après 100ms si ChemDoodle n'est pas encore chargé
-            setTimeout(initChemDoodle, 100);
-            return;
-        }
-
-        try {
-            // Configuration par défaut
-            ChemDoodle.DEFAULT_STYLES.bonds_width_2D = 2;
-            ChemDoodle.DEFAULT_STYLES.bonds_saturationWidth_2D = 4;
-            ChemDoodle.DEFAULT_STYLES.bonds_hashSpacing_2D = 4;
-            ChemDoodle.DEFAULT_STYLES.atoms_font_size_2D = 14;
-            ChemDoodle.DEFAULT_STYLES.atoms_font_families_2D = ['Arial', 'Helvetica', 'sans-serif'];
-            ChemDoodle.DEFAULT_STYLES.atoms_displayTerminalCarbonLabels_2D = true;
-
-            // N2 - Triple liaison
-            var n2Canvas = new ChemDoodle.ViewerCanvas('mol_n2', 150, 150);
-            var n2 = new ChemDoodle.structures.Molecule();
-            var n1 = new ChemDoodle.structures.Atom('N', -0.65, 0);
-            var n2_atom = new ChemDoodle.structures.Atom('N', 0.65, 0);
-            n2.atoms.push(n1);
-            n2.atoms.push(n2_atom);
-            var bond_n2 = new ChemDoodle.structures.Bond(n1, n2_atom, 3);
-            n2.bonds.push(bond_n2);
-            n2Canvas.loadMolecule(n2);
-
-            // O2 - Double liaison
-            var o2Canvas = new ChemDoodle.ViewerCanvas('mol_o2', 150, 150);
-            var o2 = new ChemDoodle.structures.Molecule();
-            var o1 = new ChemDoodle.structures.Atom('O', -0.65, 0);
-            var o2_atom = new ChemDoodle.structures.Atom('O', 0.65, 0);
-            o2.atoms.push(o1);
-            o2.atoms.push(o2_atom);
-            var bond_o2 = new ChemDoodle.structures.Bond(o1, o2_atom, 2);
-            o2.bonds.push(bond_o2);
-            o2Canvas.loadMolecule(o2);
-
-            // CO2 - Linéaire
-            var co2Canvas = new ChemDoodle.ViewerCanvas('mol_co2', 150, 150);
-            var co2 = new ChemDoodle.structures.Molecule();
-            var o_left = new ChemDoodle.structures.Atom('O', -1.3, 0);
-            var c = new ChemDoodle.structures.Atom('C', 0, 0);
-            var o_right = new ChemDoodle.structures.Atom('O', 1.3, 0);
-            co2.atoms.push(o_left);
-            co2.atoms.push(c);
-            co2.atoms.push(o_right);
-            co2.bonds.push(new ChemDoodle.structures.Bond(o_left, c, 2));
-            co2.bonds.push(new ChemDoodle.structures.Bond(c, o_right, 2));
-            co2Canvas.loadMolecule(co2);
-
-            // Ar - Atome seul
-            var arCanvas = new ChemDoodle.ViewerCanvas('mol_ar', 150, 150);
-            var ar = new ChemDoodle.structures.Molecule();
-            ar.atoms.push(new ChemDoodle.structures.Atom('Ar', 0, 0));
-            arCanvas.loadMolecule(ar);
-
-            // CH4 - Tétraédrique (représentation 2D)
-            var ch4Canvas = new ChemDoodle.ViewerCanvas('mol_ch4', 150, 150);
-            var ch4 = new ChemDoodle.structures.Molecule();
-            var c_ch4 = new ChemDoodle.structures.Atom('C', 0, 0);
-            var h1 = new ChemDoodle.structures.Atom('H', 0, 1);
-            var h2 = new ChemDoodle.structures.Atom('H', 1, 0);
-            var h3 = new ChemDoodle.structures.Atom('H', 0, -1);
-            var h4 = new ChemDoodle.structures.Atom('H', -1, 0);
-            ch4.atoms.push(c_ch4);
-            ch4.atoms.push(h1);
-            ch4.atoms.push(h2);
-            ch4.atoms.push(h3);
-            ch4.atoms.push(h4);
-            ch4.bonds.push(new ChemDoodle.structures.Bond(c_ch4, h1));
-            ch4.bonds.push(new ChemDoodle.structures.Bond(c_ch4, h2));
-            ch4.bonds.push(new ChemDoodle.structures.Bond(c_ch4, h3));
-            ch4.bonds.push(new ChemDoodle.structures.Bond(c_ch4, h4));
-            ch4Canvas.loadMolecule(ch4);
-
-            // H2O - Coudée
-            var h2oCanvas = new ChemDoodle.ViewerCanvas('mol_h2o', 150, 150);
-            var h2o = new ChemDoodle.structures.Molecule();
-            var o_h2o = new ChemDoodle.structures.Atom('O', 0, 0);
-            var h_left = new ChemDoodle.structures.Atom('H', -0.8, -0.6);
-            var h_right = new ChemDoodle.structures.Atom('H', 0.8, -0.6);
-            h2o.atoms.push(o_h2o);
-            h2o.atoms.push(h_left);
-            h2o.atoms.push(h_right);
-            h2o.bonds.push(new ChemDoodle.structures.Bond(o_h2o, h_left));
-            h2o.bonds.push(new ChemDoodle.structures.Bond(o_h2o, h_right));
-            h2oCanvas.loadMolecule(h2o);
-
-            // H2 - Simple liaison
-            var h2Canvas = new ChemDoodle.ViewerCanvas('mol_h2', 150, 150);
-            var h2 = new ChemDoodle.structures.Molecule();
-            var h1_h2 = new ChemDoodle.structures.Atom('H', -0.4, 0);
-            var h2_h2 = new ChemDoodle.structures.Atom('H', 0.4, 0);
-            h2.atoms.push(h1_h2);
-            h2.atoms.push(h2_h2);
-            h2.bonds.push(new ChemDoodle.structures.Bond(h1_h2, h2_h2));
-            h2Canvas.loadMolecule(h2);
-
-            console.log('ChemDoodle molecules loaded successfully');
-        } catch (error) {
-            console.error('Error initializing ChemDoodle:', error);
-        }
-    }
-
-    // Démarrer l'initialisation après le chargement du DOM
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initChemDoodle);
-    } else {
-        initChemDoodle();
-    }
-    </script>
-
     <!-- SECTION 6: THÉORIE CINÉTIQUE -->
     <div class="page-break"></div>
     <h1>6. THÉORIE CINÉTIQUE DES GAZ</h1>
