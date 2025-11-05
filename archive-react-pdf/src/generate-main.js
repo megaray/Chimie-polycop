@@ -5,6 +5,8 @@ const path = require('path');
 
 // Import documents
 const Week5GasLaws = require('./documents/Week5_GasLaws.js').default;
+const Week6Thermodynamics = require('./documents/Week6_Thermodynamics.js').default;
+const Week7Materials = require('./documents/Week7_Materials.js').default;
 
 const OUTPUT_DIR = path.join(__dirname, '../output');
 
@@ -25,6 +27,22 @@ async function generatePDFs() {
       path.join(OUTPUT_DIR, 'Semaine5_Lois_des_Gaz.pdf')
     );
     console.log('✅ Semaine5_Lois_des_Gaz.pdf généré avec succès!\n');
+
+    // Week 6 - Thermodynamics
+    console.log('📄 Génération de Semaine6_Thermodynamique.pdf...');
+    await ReactPDF.render(
+      React.createElement(Week6Thermodynamics),
+      path.join(OUTPUT_DIR, 'Semaine6_Thermodynamique.pdf')
+    );
+    console.log('✅ Semaine6_Thermodynamique.pdf généré avec succès!\n');
+
+    // Week 7 - Materials
+    console.log('📄 Génération de Semaine7_Materiaux.pdf...');
+    await ReactPDF.render(
+      React.createElement(Week7Materials),
+      path.join(OUTPUT_DIR, 'Semaine7_Materiaux.pdf')
+    );
+    console.log('✅ Semaine7_Materiaux.pdf généré avec succès!\n');
 
     console.log('🎉 Tous les PDFs ont été générés avec succès!');
     console.log(`📁 Les PDFs sont disponibles dans le dossier: ${OUTPUT_DIR}`);

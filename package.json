@@ -9,12 +9,16 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^3.1.14",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "react": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
+    "@babel/node": "^7.28.0",
+    "@babel/preset-env": "^7.22.15",
     "@babel/preset-react": "^7.22.15",
     "@babel/register": "^7.22.15",
-    "@babel/preset-env": "^7.22.15"
+    "esbuild": "^0.25.12"
   }
 }

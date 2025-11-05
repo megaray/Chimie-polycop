@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaine 7 - Matériaux</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: {'[+]': ['mhchem']}
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+    <!-- COVER PAGE -->
+    <div class="cover-page">
+        <h1 class="cover-title">POLYCOPIÉ DE CHIMIE GÉNÉRALE</h1>
+        <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="10" fill="#1e3a8a"/>
+            <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <ellipse cx="100" cy="100" rx="30" ry="80" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <circle cx="180" cy="100" r="6" fill="#ea580c"/>
+            <circle cx="20" cy="100" r="6" fill="#ea580c"/>
+            <circle cx="100" cy="180" r="6" fill="#ea580c"/>
+            <circle cx="100" cy="20" r="6" fill="#ea580c"/>
+        </svg>
+        <h2 class="cover-subtitle">Semaine 7</h2>
+        <h2 class="cover-subtitle">Matériaux</h2>
+        <p class="cover-author">Dr. Arne Seitz</p>
+        <p class="cover-institution">BioImaging & Optics Platform (BIOP)</p>
+        <p class="cover-institution">École Polytechnique Fédérale de Lausanne (EPFL)</p>
+        <p class="cover-date">31 octobre 2025</p>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="page-break"></div>
+    <h1>Table des Matières</h1>
+    <div class="toc">
+        <div class="toc-item"><span class="toc-title">1. Rappel de Thermodynamique</span><span class="toc-page">3</span></div>
+        <div class="toc-item"><span class="toc-title">2. Énergie Libre et Vie</span><span class="toc-page">4</span></div>
+        <div class="toc-item"><span class="toc-title">3. Tableau Périodique</span><span class="toc-page">5</span></div>
+        <div class="toc-item"><span class="toc-title">4. Tendances Périodiques</span><span class="toc-page">6</span></div>
+        <div class="toc-item"><span class="toc-title">5. Propriétés Chimiques</span><span class="toc-page">8</span></div>
+        <div class="toc-item"><span class="toc-title">6. Classification Électrique</span><span class="toc-page">10</span></div>
+        <div class="toc-item"><span class="toc-title">7. Théorie des Bandes</span><span class="toc-page">11</span></div>
+        <div class="toc-item"><span class="toc-title">8. Semiconducteurs</span><span class="toc-page">12</span></div>
+        <div class="toc-item"><span class="toc-title">9. Supraconducteurs</span><span class="toc-page">14</span></div>
+        <div class="toc-item"><span class="toc-title">10. Formulaire</span><span class="toc-page">15</span></div>
+    </div>
+
+    <!-- SECTION 1: THERMODYNAMICS REMINDER -->
+    <div class="page-break"></div>
+    <h1>1. RAPPEL DE THERMODYNAMIQUE</h1>
+
+    <h2>1.1 Entropie</h2>
+    <div class="info-box">
+        <div class="box-title">Définition</div>
+        <p>L'entropie est une mesure du désordre d'un système. Pour qu'un processus soit spontané, l'entropie totale de l'univers (système + environs) doit augmenter.</p>
+    </div>
+
+    <h2>1.2 Énergie Libre de Gibbs</h2>
+    <div class="formula-box">
+        <div class="box-title">Formule fondamentale</div>
+        <div class="math-display">
+            $$\Delta G = \Delta H - T\Delta S$$
+        </div>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Critère de spontanéité</div>
+        <ul>
+            <li>$\Delta G < 0$ : Réaction spontanée</li>
+            <li>$\Delta G = 0$ : Équilibre</li>
+            <li>$\Delta G > 0$ : Réaction non spontanée</li>
+        </ul>
+    </div>
+
+    <table>
+        <thead>
+            <tr><th>$\Delta H$</th><th>$\Delta S$</th><th>Spontanéité</th><th>Conditions</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>< 0</td><td>> 0</td><td>Toujours spontané</td><td>À toute température</td></tr>
+            <tr><td>< 0</td><td>< 0</td><td>Spontané à basse T</td><td>T doit être faible</td></tr>
+            <tr><td>> 0</td><td>> 0</td><td>Spontané à haute T</td><td>T doit être élevée</td></tr>
+            <tr><td>> 0</td><td>< 0</td><td>Jamais spontané</td><td>À aucune température</td></tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 2: ENERGY AND LIFE -->
+    <div class="page-break"></div>
+    <h1>2. ÉNERGIE LIBRE ET VIE</h1>
+
+    <h2>2.1 Oxydation du Glucose</h2>
+    <div class="formula-box">
+        <div class="box-title">Réaction</div>
+        <div class="math-display">
+            $$\ce{C6H12O6(s) + 6 O2(g) -> 6 CO2(g) + 6 H2O(l)}$$
+            $$\Delta G = -2879 \text{ kJ·mol}^{-1}$$
+        </div>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Application pratique</div>
+        <ul>
+            <li>Construction de liens peptidiques : 17 kJ par mole</li>
+            <li>1 mole de glucose peut construire ≈ 170 moles de liens peptidiques</li>
+        </ul>
+    </div>
+
+    <h2>2.2 ATP/ADP : La Monnaie Énergétique</h2>
+    <div class="formula-box">
+        <div class="box-title">Cycle ATP/ADP</div>
+        <div class="math-display">
+            $$\ce{ATP -> ADP + P_i} \quad \Delta G \approx -30 \text{ kJ·mol}^{-1} \text{ (hydrolyse)}$$
+            $$\ce{ADP + P_i -> ATP} \quad \Delta G \approx +30 \text{ kJ·mol}^{-1} \text{ (synthèse)}$$
+        </div>
+    </div>
+
+    <div class="info-box">
+        <div class="box-title">Principe du couplage</div>
+        <ul>
+            <li>L'hydrolyse de l'ATP fournit l'énergie pour les réactions non spontanées</li>
+            <li>La combustion du glucose "recharge" l'ADP en ATP</li>
+            <li>≈ 80 moles d'ADP peuvent être rechargées par mole de glucose</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 3: PERIODIC TABLE -->
+    <div class="page-break"></div>
+    <h1>3. TABLEAU PÉRIODIQUE DES ÉLÉMENTS</h1>
+
+    <h2>3.1 Ordre de Remplissage des Orbitales</h2>
+    <div class="formula-box">
+        <div class="math-display">
+            $$1s \rightarrow 2s \rightarrow 2p \rightarrow 3s \rightarrow 3p \rightarrow 4s \rightarrow 3d \rightarrow 4p \rightarrow 5s \rightarrow 4d \rightarrow 5p$$
+        </div>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Règles fondamentales</div>
+        <ol>
+            <li>Principe d'Aufbau : remplissage par ordre d'énergie croissante</li>
+            <li>Principe d'exclusion de Pauli : max 2 électrons par orbitale</li>
+            <li>Règle de Hund : orbitales dégénérées remplies avec spins parallèles d'abord</li>
+        </ol>
+    </div>
+
+    <h2>3.2 Blocs du Tableau Périodique</h2>
+    <table>
+        <thead>
+            <tr><th>Bloc</th><th>Groupes</th><th>Configuration</th><th>Caractéristiques</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>s-block</td><td>1-2</td><td>$ns^1$ ou $ns^2$</td><td>Métaux alcalins, très réactifs</td></tr>
+            <tr><td>p-block</td><td>13-18</td><td>$ns^2np^{1-6}$</td><td>Métaux, métalloïdes, non-métaux</td></tr>
+            <tr><td>d-block</td><td>3-12</td><td>$(n-1)d^{1-10}ns^{1-2}$</td><td>Métaux de transition</td></tr>
+            <tr><td>f-block</td><td>-</td><td>$(n-2)f^{1-14}$</td><td>Lanthanides et actinides</td></tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 4: PERIODIC TRENDS -->
+    <div class="page-break"></div>
+    <h1>4. TENDANCES PÉRIODIQUES</h1>
+
+    <h2>4.1 Charge Nucléaire Effective ($Z_{\text{eff}}$)</h2>
+    <div class="info-box">
+        <div class="box-title">Concept</div>
+        <ul>
+            <li>Les électrons de valence subissent une charge nucléaire réduite</li>
+            <li>Les électrons de cœur "écrantent" la charge nucléaire</li>
+            <li>$Z_{\text{eff}}$ augmente de gauche à droite dans une période</li>
+            <li>$Z_{\text{eff}}$ diminue en descendant un groupe</li>
+        </ul>
+    </div>
+
+    <h2>4.2 Rayon Atomique</h2>
+    <div class="formula-box">
+        <div class="box-title">Tendances</div>
+        <p><strong>Augmente</strong> ↓ en descendant un groupe (plus de couches)</p>
+        <p><strong>Diminue</strong> → de gauche à droite ($Z_{\text{eff}}$ augmente)</p>
+    </div>
+
+    <div class="important-box">
+        <div class="box-title">Rayon ionique</div>
+        <ul>
+            <li>Cations : plus petits que l'atome neutre</li>
+            <li>Anions : plus grands que l'atome neutre</li>
+        </ul>
+    </div>
+
+    <h2>4.3 Contraction Lanthanide</h2>
+    <div class="info-box">
+        <div class="box-title">Définition</div>
+        <p>Diminution progressive des rayons atomiques des lanthanides due au remplissage des orbitales 4f.</p>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Conséquences</div>
+        <ul>
+            <li>Les éléments des Périodes 5 et 6 ont des rayons similaires</li>
+            <li>Densités plus élevées pour les éléments de Période 6</li>
+            <li>Exemple : Zr (160 pm) ≈ Hf (156 pm)</li>
+        </ul>
+    </div>
+
+    <h2>4.4 Énergie de Première Ionisation</h2>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\ce{M(g) -> M+(g) + e-} \quad I_1 > 0$$
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr><th>Propriété</th><th>Gauche → Droite</th><th>Haut → Bas</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Rayon atomique</td><td>Diminue</td><td>Augmente</td></tr>
+            <tr><td>Énergie d'ionisation</td><td>Augmente</td><td>Diminue</td></tr>
+            <tr><td>Électronégativité</td><td>Augmente</td><td>Diminue</td></tr>
+            <tr><td>Polarisabilité</td><td>Diminue</td><td>Augmente</td></tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 5: CHEMICAL PROPERTIES -->
+    <div class="page-break"></div>
+    <h1>5. PROPRIÉTÉS CHIMIQUES</h1>
+
+    <h2>5.1 Hydrures</h2>
+
+    <h3>A. Hydrures Salin</h3>
+    <div class="info-box">
+        <ul>
+            <li>Formés par les métaux des Groupes 1 et 2 (sauf Be)</li>
+            <li>Composés ioniques $\ce{M+H-}$</li>
+            <li>Solides cristallins</li>
+        </ul>
+    </div>
+
+    <div class="formula-box">
+        <div class="math-display">
+            $$\ce{2 K(s) + H2(g) ->[Δ] 2 KH(s)}$$
+        </div>
+    </div>
+
+    <h3>B. Hydrures Métalliques</h3>
+    <div class="info-box">
+        <ul>
+            <li>Formés par certains métaux du bloc d</li>
+            <li>Solides noirs, poudreux, conducteurs</li>
+            <li>Formule non stœchiométrique</li>
+            <li>Application : stockage de $\ce{H2}$</li>
+        </ul>
+    </div>
+
+    <h3>C. Hydrures Moléculaires</h3>
+    <table>
+        <thead>
+            <tr><th>Groupe</th><th>Formule générale</th><th>Exemples</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>14 (IV)</td><td>$\ce{CH4}$</td><td>Méthane</td></tr>
+            <tr><td>15 (V)</td><td>$\ce{NH3}$</td><td>Ammoniac</td></tr>
+            <tr><td>16 (VI)</td><td>$\ce{H2O}$</td><td>Eau</td></tr>
+            <tr><td>17 (VII)</td><td>$\ce{HF, HCl, HBr, HI}$</td><td>Halogénures</td></tr>
+        </tbody>
+    </table>
+
+    <h2>5.2 Oxydes</h2>
+
+    <h3>A. Oxydes Basiques</h3>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\ce{Na2O + H2O -> 2 NaOH}$$
+            $$\ce{CaO + H2O -> Ca(OH)2}$$
+        </div>
+    </div>
+
+    <h3>B. Oxydes Amphotères</h3>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\ce{Al2O3 + 6 HCl -> 2 AlCl3 + 3 H2O}$$
+            $$\ce{Al2O3 + 2 NaOH -> 2 NaAlO2 + H2O}$$
+        </div>
+    </div>
+
+    <h3>C. Oxydes Acides (Anhydrides)</h3>
+    <div class="formula-box">
+        <div class="math-display">
+            $$\ce{CO2 + H2O <=> H2CO3 <=> H+ + HCO3-}$$
+            $$\ce{SO3 + H2O -> H2SO4}$$
+            $$\ce{N2O5 + H2O -> 2 HNO3}$$
+        </div>
+    </div>
+
+    <!-- SECTION 6: ELECTRICAL CLASSIFICATION -->
+    <div class="page-break"></div>
+    <h1>6. CLASSIFICATION ÉLECTRIQUE DES SOLIDES</h1>
+
+    <table>
+        <thead>
+            <tr><th>Type</th><th>Résistance vs T</th><th>Conductivité</th><th>Exemples</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Conducteur</td><td>R augmente avec T</td><td>Élevée</td><td>Cu, Ag, Au</td></tr>
+            <tr><td>Semiconducteur</td><td>R diminue avec T</td><td>Intermédiaire</td><td>Si, Ge, GaAs</td></tr>
+            <tr><td>Isolant</td><td>R très élevée</td><td>Très faible</td><td>Diamond, $\ce{SiO2}$</td></tr>
+            <tr><td>Supraconducteur</td><td>R = 0 si T < $T_c$</td><td>Infinie</td><td>$\ce{YBa2Cu3O7}$</td></tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 7: BAND THEORY -->
+    <div class="page-break"></div>
+    <h1>7. THÉORIE DES BANDES</h1>
+
+    <h2>7.1 Formation des Bandes</h2>
+    <div class="info-box">
+        <div class="box-title">Principe</div>
+        <ul>
+            <li>$N$ orbitales atomiques → $N$ orbitales moléculaires</li>
+            <li>Dans un solide, $N \approx 10^{23}$</li>
+            <li>Les OM sont si proches qu'elles forment une bande quasi-continue</li>
+        </ul>
+    </div>
+
+    <h2>7.2 Bande Interdite (Band Gap)</h2>
+    <table>
+        <thead>
+            <tr><th>Matériau</th><th>$E_g$</th><th>Comportement</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Conducteur</td><td>0 ou chevauchement</td><td>Conduction facile</td></tr>
+            <tr><td>Semiconducteur</td><td>0.1 - 4 eV</td><td>Conduction thermique</td></tr>
+            <tr><td>Isolant</td><td>> 4 eV</td><td>Pas de conduction</td></tr>
+        </tbody>
+    </table>
+
+    <div class="example-box">
+        <div class="box-title">Exemples</div>
+        <ul>
+            <li>Si : $E_g = 1.1$ eV (semiconducteur)</li>
+            <li>GaAs : $E_g = 1.4$ eV (semiconducteur)</li>
+            <li>Diamond : $E_g = 5.5$ eV (isolant)</li>
+            <li>$\ce{SiO2}$ : $E_g = 9$ eV (isolant)</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 8: SEMICONDUCTORS -->
+    <div class="page-break"></div>
+    <h1>8. SEMICONDUCTEURS</h1>
+
+    <h2>8.1 Semiconducteurs Intrinsèques</h2>
+    <div class="info-box">
+        <div class="box-title">Définition</div>
+        <p>Semiconducteur pur où la conductivité provient uniquement de l'excitation thermique.</p>
+    </div>
+
+    <h2>8.2 Semiconducteurs Extrinsèques (Dopés)</h2>
+
+    <h3>A. Semiconducteur de type n</h3>
+    <div class="info-box">
+        <p><strong>Dopage :</strong> Élément du Groupe 15 (As, P, Sb) dans Si ou Ge</p>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Exemple : Si dopé avec As</div>
+        <ul>
+            <li>Si : 4 électrons de valence</li>
+            <li>As : 5 électrons de valence</li>
+            <li>1 électron "en trop" → facilement excité vers BC</li>
+            <li>Porteurs de charge : électrons (négatifs)</li>
+        </ul>
+    </div>
+
+    <h3>B. Semiconducteur de type p</h3>
+    <div class="info-box">
+        <p><strong>Dopage :</strong> Élément du Groupe 13 (B, Al, Ga, In) dans Si ou Ge</p>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Exemple : Si dopé avec In</div>
+        <ul>
+            <li>Si : 4 électrons de valence</li>
+            <li>In : 3 électrons de valence</li>
+            <li>1 électron "manquant" → crée un trou</li>
+            <li>Porteurs de charge : trous (positifs)</li>
+        </ul>
+    </div>
+
+    <h2>8.3 Jonction p-n</h2>
+    <div class="important-box">
+        <div class="box-title">Propriété fondamentale</div>
+        <p>Le courant ne peut circuler que dans un sens (rectification).</p>
+    </div>
+
+    <h3>Polarisation Directe (Forward Bias)</h3>
+    <div class="info-box">
+        <ul>
+            <li>Type p connecté au pôle positif</li>
+            <li>Type n connecté au pôle négatif</li>
+            <li>Recombinaison électron-trou → <strong>COURANT CIRCULE</strong></li>
+        </ul>
+    </div>
+
+    <h3>Polarisation Inverse (Reverse Bias)</h3>
+    <div class="info-box">
+        <ul>
+            <li>Type p connecté au pôle négatif</li>
+            <li>Type n connecté au pôle positif</li>
+            <li>La jonction s'élargit → <strong>PAS DE COURANT</strong></li>
+        </ul>
+    </div>
+
+    <h2>8.4 Applications</h2>
+
+    <h3>A. Diodes</h3>
+    <p>Rectification du courant (passage dans un seul sens)</p>
+
+    <h3>B. LED (Light-Emitting Diode)</h3>
+    <div class="formula-box">
+        <div class="box-title">Relation énergie-couleur</div>
+        <div class="math-display">
+            $$E_g = h\nu = \frac{hc}{\lambda}$$
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr><th>Matériau</th><th>$E_g$ (eV)</th><th>Couleur</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>GaN</td><td>3.4</td><td>UV/Bleu</td></tr>
+            <tr><td>GaP</td><td>2.3</td><td>Vert</td></tr>
+            <tr><td>GaAs</td><td>1.4</td><td>Infrarouge</td></tr>
+        </tbody>
+    </table>
+
+    <h3>C. Cellules Solaires (Photovoltaïques)</h3>
+    <div class="info-box">
+        <ul>
+            <li>Photon absorbé → création paire électron-trou</li>
+            <li>Champ électrique à la jonction sépare les charges</li>
+            <li>Courant électrique généré</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 9: SUPERCONDUCTORS -->
+    <div class="page-break"></div>
+    <h1>9. SUPRACONDUCTEURS</h1>
+
+    <h2>9.1 Supraconductivité</h2>
+    <div class="info-box">
+        <div class="box-title">Définition</div>
+        <p>Perte totale de résistance électrique en dessous d'une température critique $T_c$.</p>
+    </div>
+
+    <div class="example-box">
+        <div class="box-title">Historique des records de $T_c$</div>
+        <ul>
+            <li>1911 : Découverte (Hg, $T_c = 4$ K)</li>
+            <li>1988 : $T_c = 125$ K</li>
+            <li>2015 : $T_c = 138$ K</li>
+            <li>2020 : $T_c = 287$ K (mais à très haute pression)</li>
+        </ul>
+    </div>
+
+    <h2>9.2 Paires de Cooper</h2>
+    <div class="info-box">
+        <div class="box-title">Mécanisme</div>
+        <ol>
+            <li>Un électron distord le réseau cationique</li>
+            <li>Distortion attire un deuxième électron</li>
+            <li>Formation d'une paire d'électrons faiblement liée</li>
+            <li>À basse T, vibrations du réseau réduites</li>
+            <li>Paires de Cooper ne sont pas séparées → transport sans résistance</li>
+        </ol>
+    </div>
+
+    <h2>9.3 Applications</h2>
+    <div class="example-box">
+        <div class="box-title">Avantages potentiels</div>
+        <ul>
+            <li>Transport d'électricité sans perte</li>
+            <li>Aimants puissants (IRM, trains maglev)</li>
+            <li>Dispositifs électroniques ultra-rapides</li>
+            <li>Exemple : 25 kg de fil supraconducteur = 1800 kg de fil de cuivre</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <div class="box-title">Défis actuels</div>
+        <ul>
+            <li>Températures critiques encore trop basses</li>
+            <li>Matériaux fragiles</li>
+            <li>Coût de refroidissement élevé</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 10: FORMULARY -->
+    <div class="page-break"></div>
+    <h1>10. FORMULAIRE RÉCAPITULATIF</h1>
+
+    <h2>10.1 Thermodynamique</h2>
+    <table>
+        <thead>
+            <tr><th>Fonction</th><th>Formule</th><th>Application</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Énergie libre de Gibbs</td><td>$\Delta G = \Delta H - T\Delta S$</td><td>Critère de spontanéité</td></tr>
+            <tr><td>Spontanéité</td><td>$\Delta G < 0$</td><td>Réaction spontanée</td></tr>
+            <tr><td>Équilibre</td><td>$\Delta G = 0$</td><td>Système à l'équilibre</td></tr>
+        </tbody>
+    </table>
+
+    <h2>10.2 Tendances Périodiques</h2>
+    <table>
+        <thead>
+            <tr><th>Propriété</th><th>Gauche → Droite</th><th>Haut → Bas</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Rayon atomique</td><td>Diminue</td><td>Augmente</td></tr>
+            <tr><td>Énergie d'ionisation</td><td>Augmente</td><td>Diminue</td></tr>
+            <tr><td>Électronégativité</td><td>Augmente</td><td>Diminue</td></tr>
+            <tr><td>Polarisabilité</td><td>Diminue</td><td>Augmente</td></tr>
+        </tbody>
+    </table>
+
+    <h2>10.3 Hydrures et Oxydes</h2>
+    <table>
+        <thead>
+            <tr><th>Type</th><th>Caractère</th><th>Exemples</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Hydrures salin</td><td>Ionique $\ce{M+H-}$</td><td>NaH, $\ce{CaH2}$</td></tr>
+            <tr><td>Hydrures métalliques</td><td>Conducteur</td><td>$\ce{TiH2}$, PdH</td></tr>
+            <tr><td>Hydrures moléculaires</td><td>Covalent</td><td>$\ce{H2O}$, $\ce{NH3}$</td></tr>
+            <tr><td>Oxydes basiques</td><td>Forme bases</td><td>$\ce{Na2O}$, CaO</td></tr>
+            <tr><td>Oxydes amphotères</td><td>Acide et base</td><td>$\ce{Al2O3}$, ZnO</td></tr>
+            <tr><td>Oxydes acides</td><td>Forme acides</td><td>$\ce{CO2}$, $\ce{SO3}$</td></tr>
+        </tbody>
+    </table>
+
+    <h2>10.4 Classification Électrique</h2>
+    <table>
+        <thead>
+            <tr><th>Type</th><th>Band Gap</th><th>R vs T</th><th>Exemples</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Conducteur</td><td>0</td><td>R ↑ avec T</td><td>Cu, Ag, Au</td></tr>
+            <tr><td>Semiconducteur</td><td>0.1-4 eV</td><td>R ↓ avec T</td><td>Si, Ge, GaAs</td></tr>
+            <tr><td>Isolant</td><td>> 4 eV</td><td>R très élevée</td><td>Diamond, $\ce{SiO2}$</td></tr>
+            <tr><td>Supraconducteur</td><td>-</td><td>R = 0 si T < $T_c$</td><td>$\ce{YBa2Cu3O7}$</td></tr>
+        </tbody>
+    </table>
+
+    <h2>10.5 Semiconducteurs</h2>
+    <table>
+        <thead>
+            <tr><th>Type</th><th>Dopage</th><th>Porteurs</th><th>Exemple</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Intrinsèque</td><td>Aucun</td><td>$e^-$ et trous (égaux)</td><td>Si pur</td></tr>
+            <tr><td>Type n</td><td>Groupe 15</td><td>Électrons (excès)</td><td>Si:As</td></tr>
+            <tr><td>Type p</td><td>Groupe 13</td><td>Trous (déficit)</td><td>Si:In</td></tr>
+        </tbody>
+    </table>
+
+    <div class="important-box">
+        <div class="box-title">Conseils pour la résolution de problèmes</div>
+        <ol>
+            <li>Pour thermodynamique : identifier les signes de $\Delta H$ et $\Delta S$</li>
+            <li>Pour tendances périodiques : repérer la position dans le tableau</li>
+            <li>Pour semiconducteurs : identifier le type de dopage (n ou p)</li>
+            <li>Attention à la contraction lanthanide pour les éléments de Période 6</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>Résumé créé selon le modèle du polycopié EPFL</p>
+        <p>Dr. Arne Seitz - BioImaging & Optics Platform (BIOP)</p>
+        <p>École Polytechnique Fédérale de Lausanne (EPFL)</p>
+    </footer>
+</body>
+</html>
