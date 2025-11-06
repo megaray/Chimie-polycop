@@ -1,4 +1,10 @@
-# 📚 Fichiers HTML pour Génération PDF
+# 📚 Résumés en html 
+## Structure logique du site
+### Différentiation HTML/PDF
+
+**Présentation** Le site est codé de maniere a supporter plusieur type de render :
+1. **Render A4** Pour gérer les impression/sauvegarde au format PDF
+2. **Render WEB** Pour gérer la présentation au format WEB
 
 ## 🎯 Comment Générer les PDFs
 
