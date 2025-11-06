@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semaine 5 - Lois des Gaz</title>
     <link rel="stylesheet" href="styles.css">
-    <img src="icon/Logo_EPFL_2019.svg" width="182" height="53">
+
     <!-- MathJax Configuration with mhchem -->
     <script>
         window.MathJax = {
@@ -46,14 +46,38 @@
         });
     </script>
 
+
+    <style>
+        .mermaid {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .diagram-container {
+            page-break-inside: avoid;
+            margin: 20px 0;
+        }
+        .visual-concept {
+            background: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .visual-concept-title {
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
     <!-- PAGE DE COUVERTURE -->
     <div class="cover-page">
-        <h1 class="cover-title">RÉSUMÉ DE CHIMIE GÉNÉRALE</h1>
+        <img src="icon/Logo_EPFL_2019.svg" width="182" height="53" alt="Logo EPFL" style="size: inherit; position: relative; top: 0px; left: -450px;">
+        <h1 class="cover-title">POLYCOPIÉ DE CHIMIE GÉNÉRALE</h1>
 
         <!-- Atom Diagram SVG avec particules -->
-        <svg width="200" height="200" viewBox="0 0 250 250">
+        <svg width="250" height="250" viewBox="0 0 250 250">
             <!-- Noyau central -->
             <circle cx="125" cy="125" r="15" fill="#1e3a8a"/>
             <text x="125" y="130" text-anchor="middle" fill="white" font-size="12" font-weight="bold">+</text>
@@ -77,18 +101,20 @@
             <text x="125" y="28" text-anchor="middle" fill="white" font-size="10" font-weight="bold">e⁻</text>
             
             <!-- Flèches de mouvement -->
-            <path d="M 220 115 Q 215 110 210 115" fill="none" stroke="#ea580c" stroke-width="1" marker-end="url(#arrowhead)"/>
+            <path d="M 220 115 Q 215 110 210 115" fill="none" stroke="#ea580c" stroke-width="1.5" marker-end="url(#arrowhead)"/>
             <defs>
-                <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                    <polygon points="0 0, 6 3, 0 6" fill="#ea580c"/>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#ea580c"/>
                 </marker>
             </defs>
         </svg>
 
+        <h2 class="cover-subtitle">Semaine 5</h2>
         <h2 class="cover-subtitle">Lois des Gaz</h2>
 
-        <p class="cover-author">Louis Déglon</p>
-        <p class="cover-institution">SSV BA1</p>
+        <p class="cover-author">Dr. Arne Seitz</p>
+        <p class="cover-institution">BioImaging & Optics Platform (BIOP)</p>
+        <p class="cover-institution">École Polytechnique Fédérale de Lausanne (EPFL)</p>
         <p class="cover-date">31 octobre 2025</p>
     </div>
 
@@ -211,11 +237,11 @@ graph LR
             <path d="M 422 100 L 422 85" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
             
             <defs>
-                <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <polygon points="0 0, 6 3, 0 6" fill="#666"/>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#666"/>
                 </marker>
-                <marker id="arrow-big" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-                    <polygon points="0 0, 10 5, 0 10" fill="#1e3a8a"/>
+                <marker id="arrow-big" markerWidth="15" markerHeight="15" refX="14" refY="7" orient="auto">
+                    <polygon points="0 0, 15 7, 0 14" fill="#1e3a8a"/>
                 </marker>
             </defs>
         </svg>
@@ -523,8 +549,8 @@ graph TD
             <text x="220" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">+</text>
             
             <defs>
-                <marker id="arrow-dalton" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <polygon points="0 0, 6 3, 0 6" fill="#1e3a8a"/>
+                <marker id="arrow-dalton" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#1e3a8a"/>
                 </marker>
             </defs>
         </svg>
@@ -903,8 +929,8 @@ graph TB
             <text x="455" y="245" text-anchor="middle" font-size="11" fill="#666">• Forces = a/V²</text>
             
             <defs>
-                <marker id="arrow-vdw" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <polygon points="0 0, 6 3, 0 6" fill="#333"/>
+                <marker id="arrow-vdw" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="#333"/>
                 </marker>
             </defs>
         </svg>
