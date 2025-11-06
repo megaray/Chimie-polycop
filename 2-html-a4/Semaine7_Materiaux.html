@@ -1520,31 +1520,38 @@ graph LR
 
     <div class="visual-concept">
         <h3>    Visualisation : Jonction p-n et Diode</h3>
-        <div class="mermaid">
+                <div class="mermaid">
 graph TB
     subgraph Forward["⚡ POLARISATION DIRECTE (Courant passe)"]
-        PF[Type p<br/>🔴 Trous +]
+        
         NF[Type n<br/>🔵 Électrons -]
-        BattF[Batterie]
         PosF[+ Pôle positif]
+        BattF[Batterie]
         NegF[- Pôle négatif]
+        PF[Type p<br/>🔴 Trous +]
+        
 
         PosF -->|Connecté| PF
-        PF -->|Trous migrent →| NF
-        NF -->|Électrons migrent ←| PF
+        PF -.->|Trous migrent →| NF
+        NF -.->|Électrons migrent ←| PF
         NF -->|Connecté| NegF
         NegF --> BattF
         BattF --> PosF
     end
+    style Forward fill:#d1fae5,stroke:#16a34a,stroke-width:3px
+    style PF fill:#fecaca,stroke:#dc2626,stroke-width:2px
+    style NF fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
         </div>
         <div class="mermaid">
 graph TB
     subgraph Reverse["❌ POLARISATION INVERSE (Courant bloqué)"]
-        PR[Type p<br/>🔴 Trous +]
+        
         NR[Type n<br/>🔵 Électrons -]
+        PosR[+ Pôle positif]
         BattR[Batterie]
         NegR[- Pôle négatif]
-        PosR[+ Pôle positif]
+        PR[Type p<br/>🔴 Trous +]
+        
 
         NegR -->|Connecté| PR
         PR -.->|Trous attirés ←<br/>JONCTION S'ÉLARGIT| PR
@@ -1553,6 +1560,9 @@ graph TB
         PosR --> BattR
         BattR --> NegR
     end
+    style Reverse fill:#fee2e2,stroke:#dc2626,stroke-width:3px
+    style PR fill:#fecaca,stroke:#dc2626,stroke-width:2px
+    style NR fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
         </div>
         <div class="mermaid">
 graph TB
@@ -1561,13 +1571,9 @@ graph TB
         D2[Polarisation Inverse:<br/>🚫 PAS DE COURANT ✗]
     end
 
-    style Forward fill:#d1fae5,stroke:#16a34a,stroke-width:3px
-    style Reverse fill:#fee2e2,stroke:#dc2626,stroke-width:3px
+    
+    
     style Result fill:#eff6ff,stroke:#2563eb,stroke-width:2px
-    style PF fill:#fecaca,stroke:#dc2626,stroke-width:2px
-    style NF fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
-    style PR fill:#fecaca,stroke:#dc2626,stroke-width:2px
-    style NR fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
     style D1 fill:#d1fae5,stroke:#16a34a,stroke-width:2px
     style D2 fill:#fee2e2,stroke:#dc2626,stroke-width:2px
         </div>
