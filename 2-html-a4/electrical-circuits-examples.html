@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemples - Schémas de Circuits Électriques</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="electrical-components.js"></script>
+    <style>
+        .circuit-example {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        .circuit-example h3 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+        .circuit-code {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .circuit-code pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-page" style="min-height: 40vh;">
+        <h1 class="cover-title">Bibliothèque de Composants Électriques</h1>
+        <h2 class="cover-subtitle">Schémas de Circuits en SVG</h2>
+        <p class="cover-author">Documentation & Exemples</p>
+    </div>
+
+    <h1>1. Introduction</h1>
+
+    <div class="info-box">
+        <div class="box-title">À propos de cette bibliothèque</div>
+        <p>Cette bibliothèque permet de créer facilement des schémas de circuits électriques en utilisant du code JavaScript simple. Les composants sont générés en SVG et peuvent être assemblés pour créer des circuits complets.</p>
+        <p><strong>Fichier :</strong> <code>electrical-components.js</code></p>
+    </div>
+
+    <h2>1.1 Composants Disponibles</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Composant</th>
+                <th>Fonction</th>
+                <th>Utilisation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pile/Batterie</td>
+                <td><code>battery(x, y, label, vertical)</code></td>
+                <td>Source de tension</td>
+            </tr>
+            <tr>
+                <td>Résistance</td>
+                <td><code>resistor(x, y, label, vertical)</code></td>
+                <td>Résistance électrique</td>
+            </tr>
+            <tr>
+                <td>Ampèremètre</td>
+                <td><code>ammeter(x, y, label)</code></td>
+                <td>Mesure du courant</td>
+            </tr>
+            <tr>
+                <td>Voltmètre</td>
+                <td><code>voltmeter(x, y, label)</code></td>
+                <td>Mesure de tension</td>
+            </tr>
+            <tr>
+                <td>Interrupteur</td>
+                <td><code>switch(x, y, closed)</code></td>
+                <td>Interrompre le circuit</td>
+            </tr>
+            <tr>
+                <td>Lampe</td>
+                <td><code>bulb(x, y, label)</code></td>
+                <td>Charge lumineuse</td>
+            </tr>
+            <tr>
+                <td>Condensateur</td>
+                <td><code>capacitor(x, y, label, vertical)</code></td>
+                <td>Stockage d'énergie</td>
+            </tr>
+            <tr>
+                <td>Électrode</td>
+                <td><code>electrode(x, y, label, sign)</code></td>
+                <td>Pour électrochimie</td>
+            </tr>
+            <tr>
+                <td>Fil</td>
+                <td><code>wire(x1, y1, x2, y2)</code></td>
+                <td>Connexion</td>
+            </tr>
+            <tr>
+                <td>Flèche courant</td>
+                <td><code>current(x, y, angle, label)</code></td>
+                <td>Direction du courant</td>
+            </tr>
+            <tr>
+                <td>Nœud</td>
+                <td><code>node(x, y)</code></td>
+                <td>Point de jonction</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>2. Exemples de Circuits</h1>
+
+    <h2>2.1 Circuit Simple : Pile + Résistance</h2>
+
+    <div class="circuit-example">
+        <h3>Circuit de base avec une pile et une résistance</h3>
+
+        <div id="circuit1"></div>
+
+        <div class="circuit-code">
+            <strong>Code JavaScript :</strong>
+            <pre>
+const svg = ElectricalComponents.createCircuit('circuit1', 500, 250);
+let circuit = svg;
+
+// Pile en haut
+circuit += ElectricalComponents.battery(100, 100, '6V', false);
+
+// Fil droit
+circuit += ElectricalComponents.wire(150, 100, 250, 100);
+
+// Résistance à droite
+circuit += ElectricalComponents.resistor(250, 100, '100Ω', false);
+
+// Fils verticaux et horizontaux pour fermer le circuit
+circuit += ElectricalComponents.wire(310, 100, 350, 100);
+circuit += ElectricalComponents.wire(350, 100, 350, 180);
+circuit += ElectricalComponents.wire(350, 180, 70, 180);
+circuit += ElectricalComponents.wire(70, 180, 70, 100);
+
+// Flèche de courant
+circuit += ElectricalComponents.current(200, 140, 0, 'I');
+
+document.getElementById('circuit1').innerHTML = circuit + '</svg>';
+            </pre>
+        </div>
+    </div>
+
+    <h2>2.2 Circuit avec Ampoule et Interrupteur</h2>
+
+    <div class="circuit-example">
+        <h3>Circuit d'éclairage avec interrupteur</h3>
+
+        <div id="circuit2"></div>
+
+        <div class="circuit-code">
+            <strong>Code JavaScript :</strong>
+            <pre>
+const svg = ElectricalComponents.createCircuit('circuit2', 600, 300);
+let circuit = svg;
+
+// Pile à gauche (verticale)
+circuit += ElectricalComponents.battery(100, 100, '12V', true);
+
+// Fils et interrupteur en haut
+circuit += ElectricalComponents.wire(100, 55, 200, 55);
+circuit += ElectricalComponents.switch(200, 55, true);
+circuit += ElectricalComponents.wire(240, 55, 400, 55);
+
+// Ampoule à droite
+circuit += ElectricalComponents.bulb(400, 110, 'Lampe');
+
+// Fils pour fermer le circuit
+circuit += ElectricalComponents.wire(400, 145, 400, 220);
+circuit += ElectricalComponents.wire(400, 220, 100, 220);
+circuit += ElectricalComponents.wire(100, 220, 100, 145);
+
+// Flèche de courant
+circuit += ElectricalComponents.current(300, 55, 0, 'I');
+
+document.getElementById('circuit2').innerHTML = circuit + '</svg>';
+            </pre>
+        </div>
+    </div>
+
+    <h2>2.3 Circuit avec Ampèremètre et Voltmètre</h2>
+
+    <div class="circuit-example">
+        <h3>Mesure de courant et de tension</h3>
+
+        <div id="circuit3"></div>
+
+        <div class="circuit-code">
+            <strong>Code JavaScript :</strong>
+            <pre>
+const svg = ElectricalComponents.createCircuit('circuit3', 650, 350);
+let circuit = svg;
+
+// Pile à gauche
+circuit += ElectricalComponents.battery(80, 150, '9V', false);
+
+// Ampèremètre en série
+circuit += ElectricalComponents.wire(130, 150, 180, 150);
+circuit += ElectricalComponents.ammeter(220, 150, 'I = 0.09A');
+
+// Résistance
+circuit += ElectricalComponents.wire(260, 150, 320, 150);
+circuit += ElectricalComponents.resistor(320, 150, 'R = 100Ω', false);
+
+// Fermeture du circuit (bas)
+circuit += ElectricalComponents.wire(380, 150, 450, 150);
+circuit += ElectricalComponents.wire(450, 150, 450, 270);
+circuit += ElectricalComponents.wire(450, 270, 80, 270);
+circuit += ElectricalComponents.wire(80, 270, 80, 150);
+
+// Voltmètre en dérivation (parallèle à la résistance)
+circuit += ElectricalComponents.wire(320, 150, 320, 80);
+circuit += ElectricalComponents.voltmeter(400, 80, 'U = 9V');
+circuit += ElectricalComponents.wire(480, 80, 480, 150);
+circuit += ElectricalComponents.wire(480, 150, 450, 150);
+
+// Nœuds de connexion
+circuit += ElectricalComponents.node(320, 150);
+circuit += ElectricalComponents.node(450, 150);
+
+document.getElementById('circuit3').innerHTML = circuit + '</svg>';
+            </pre>
+        </div>
+    </div>
+
+    <h2>2.4 Cellule Électrochimique (Pile Daniell)</h2>
+
+    <div class="circuit-example">
+        <h3>Schéma pour électrochimie : Pile Zn/Cu</h3>
+
+        <div id="circuit4"></div>
+
+        <div class="circuit-code">
+            <strong>Code JavaScript :</strong>
+            <pre>
+const svg = ElectricalComponents.createCircuit('circuit4', 600, 400);
+let circuit = svg;
+
+// Électrode Zn (anode, -)
+circuit += ElectricalComponents.electrode(150, 180, 'Zn', '−');
+
+// Fil montant de Zn
+circuit += ElectricalComponents.wire(150, 160, 150, 100);
+
+// Résistance externe
+circuit += ElectricalComponents.wire(150, 100, 250, 100);
+circuit += ElectricalComponents.resistor(250, 100, 'R', false);
+circuit += ElectricalComponents.wire(310, 100, 450, 100);
+
+// Électrode Cu (cathode, +)
+circuit += ElectricalComponents.electrode(450, 180, 'Cu', '+');
+circuit += ElectricalComponents.wire(450, 160, 450, 100);
+
+// Solution (représentation symbolique)
+circuit += ElectricalComponents.label(150, 280, 'ZnSO₄', '#666');
+circuit += ElectricalComponents.label(450, 280, 'CuSO₄', '#666');
+
+// Pont salin (représenté par des pointillés)
+circuit += `<line x1="200" y1="240" x2="400" y2="240" stroke="#999" stroke-width="2" stroke-dasharray="5,5"/>`;
+circuit += ElectricalComponents.label(300, 230, 'Pont salin', '#999');
+
+// Flèche de courant
+circuit += ElectricalComponents.current(380, 100, 0, 'I');
+
+// Labels de réactions
+circuit += ElectricalComponents.label(150, 320, 'Zn → Zn²⁺ + 2e⁻', '#dc2626');
+circuit += ElectricalComponents.label(450, 320, 'Cu²⁺ + 2e⁻ → Cu', '#16a34a');
+
+document.getElementById('circuit4').innerHTML = circuit + '</svg>';
+            </pre>
+        </div>
+    </div>
+
+    <h2>2.5 Circuit RC (Charge d'un Condensateur)</h2>
+
+    <div class="circuit-example">
+        <h3>Circuit avec condensateur</h3>
+
+        <div id="circuit5"></div>
+
+        <div class="circuit-code">
+            <strong>Code JavaScript :</strong>
+            <pre>
+const svg = ElectricalComponents.createCircuit('circuit5', 550, 300);
+let circuit = svg;
+
+// Pile à gauche
+circuit += ElectricalComponents.battery(100, 120, '5V', true);
+
+// Interrupteur en haut
+circuit += ElectricalComponents.wire(100, 75, 180, 75);
+circuit += ElectricalComponents.switch(180, 75, true);
+circuit += ElectricalComponents.wire(220, 75, 300, 75);
+
+// Résistance
+circuit += ElectricalComponents.resistor(300, 75, '1kΩ', false);
+
+// Condensateur à droite (vertical)
+circuit += ElectricalComponents.wire(360, 75, 420, 75);
+circuit += ElectricalComponents.capacitor(420, 120, '100µF', true);
+
+// Fermeture du circuit
+circuit += ElectricalComponents.wire(420, 140, 420, 220);
+circuit += ElectricalComponents.wire(420, 220, 100, 220);
+circuit += ElectricalComponents.wire(100, 220, 100, 165);
+
+// Flèche de courant
+circuit += ElectricalComponents.current(250, 75, 0, 'I(t)');
+
+document.getElementById('circuit5').innerHTML = circuit + '</svg>';
+            </pre>
+        </div>
+    </div>
+
+    <h1>3. Guide d'Utilisation</h1>
+
+    <h2>3.1 Intégrer dans vos pages HTML</h2>
+
+    <div class="example-box">
+        <div class="box-title">Étapes d'intégration</div>
+        <ol>
+            <li>Inclure le fichier JavaScript dans votre page :
+                <div class="circuit-code">
+                    <pre>&lt;script src="electrical-components.js"&gt;&lt;/script&gt;</pre>
+                </div>
+            </li>
+            <li>Créer un conteneur pour le circuit :
+                <div class="circuit-code">
+                    <pre>&lt;div id="mon-circuit"&gt;&lt;/div&gt;</pre>
+                </div>
+            </li>
+            <li>Assembler le circuit avec JavaScript :
+                <div class="circuit-code">
+                    <pre>
+&lt;script&gt;
+    const svg = ElectricalComponents.createCircuit('mon-circuit', 600, 400);
+    let circuit = svg;
+
+    // Ajouter les composants
+    circuit += ElectricalComponents.battery(100, 150, '12V', false);
+    circuit += ElectricalComponents.resistor(200, 150, '220Ω', false);
+    // ... etc
+
+    // Fermer le SVG et injecter dans le DOM
+    document.getElementById('mon-circuit').innerHTML = circuit + '&lt;/svg&gt;';
+&lt;/script&gt;
+                    </pre>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <h2>3.2 Conseils de Positionnement</h2>
+
+    <div class="info-box">
+        <div class="box-title">Bonnes pratiques</div>
+        <ul>
+            <li><strong>Utilisez une grille mentale</strong> : Espacez les composants de 50-100 pixels pour une meilleure lisibilité</li>
+            <li><strong>Dessinez d'abord sur papier</strong> : Planifiez votre circuit avant de coder</li>
+            <li><strong>Commencez par les composants principaux</strong> : Pile, résistances, puis ajoutez les fils</li>
+            <li><strong>Utilisez des variables</strong> : Stockez les positions dans des variables pour faciliter les ajustements</li>
+            <li><strong>Testez progressivement</strong> : Ajoutez un composant à la fois et vérifiez le rendu</li>
+        </ul>
+    </div>
+
+    <h2>3.3 Personnalisation</h2>
+
+    <div class="warning-box">
+        <div class="box-title">Modifier les composants</div>
+        <p>Vous pouvez modifier l'apparence des composants en éditant le fichier <code>electrical-components.js</code> :</p>
+        <ul>
+            <li>Changer les couleurs (stroke, fill)</li>
+            <li>Ajuster les dimensions (stroke-width, tailles)</li>
+            <li>Ajouter de nouveaux composants en suivant le même modèle</li>
+        </ul>
+    </div>
+
+    <h1>4. Référence Rapide</h1>
+
+    <div class="formula-box">
+        <div class="box-title">Fonctions principales</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fonction</th>
+                    <th>Paramètres</th>
+                    <th>Retour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>createCircuit(id, width, height)</code></td>
+                    <td>ID, largeur, hauteur</td>
+                    <td>SVG de base</td>
+                </tr>
+                <tr>
+                    <td><code>battery(x, y, label, vertical)</code></td>
+                    <td>Position, étiquette, orientation</td>
+                    <td>SVG pile</td>
+                </tr>
+                <tr>
+                    <td><code>resistor(x, y, label, vertical)</code></td>
+                    <td>Position, valeur, orientation</td>
+                    <td>SVG résistance</td>
+                </tr>
+                <tr>
+                    <td><code>wire(x1, y1, x2, y2)</code></td>
+                    <td>Coordonnées début/fin</td>
+                    <td>SVG ligne</td>
+                </tr>
+                <tr>
+                    <td><code>current(x, y, angle, label)</code></td>
+                    <td>Position, angle, texte</td>
+                    <td>SVG flèche</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>Bibliothèque créée pour les résumés de Chimie Générale - EPFL</p>
+        <p>Composants en SVG pour schémas de circuits électriques</p>
+    </footer>
+
+    <script>
+        // Générer tous les circuits d'exemple au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Circuit 1: Simple pile + résistance
+            let svg1 = ElectricalComponents.createCircuit('circuit1', 500, 250);
+            let circuit1 = svg1;
+            circuit1 += ElectricalComponents.battery(100, 100, '6V', false);
+            circuit1 += ElectricalComponents.wire(150, 100, 250, 100);
+            circuit1 += ElectricalComponents.resistor(250, 100, '100Ω', false);
+            circuit1 += ElectricalComponents.wire(310, 100, 350, 100);
+            circuit1 += ElectricalComponents.wire(350, 100, 350, 180);
+            circuit1 += ElectricalComponents.wire(350, 180, 70, 180);
+            circuit1 += ElectricalComponents.wire(70, 180, 70, 100);
+            circuit1 += ElectricalComponents.current(200, 140, 0, 'I');
+            document.getElementById('circuit1').innerHTML = circuit1 + '</svg>';
+
+            // Circuit 2: Avec ampoule et interrupteur
+            let svg2 = ElectricalComponents.createCircuit('circuit2', 600, 300);
+            let circuit2 = svg2;
+            circuit2 += ElectricalComponents.battery(100, 100, '12V', true);
+            circuit2 += ElectricalComponents.wire(100, 55, 200, 55);
+            circuit2 += ElectricalComponents.switch(200, 55, true);
+            circuit2 += ElectricalComponents.wire(240, 55, 400, 55);
+            circuit2 += ElectricalComponents.bulb(400, 110, 'Lampe');
+            circuit2 += ElectricalComponents.wire(400, 145, 400, 220);
+            circuit2 += ElectricalComponents.wire(400, 220, 100, 220);
+            circuit2 += ElectricalComponents.wire(100, 220, 100, 145);
+            circuit2 += ElectricalComponents.current(300, 55, 0, 'I');
+            document.getElementById('circuit2').innerHTML = circuit2 + '</svg>';
+
+            // Circuit 3: Avec ampèremètre et voltmètre
+            let svg3 = ElectricalComponents.createCircuit('circuit3', 650, 350);
+            let circuit3 = svg3;
+            circuit3 += ElectricalComponents.battery(80, 150, '9V', false);
+            circuit3 += ElectricalComponents.wire(130, 150, 180, 150);
+            circuit3 += ElectricalComponents.ammeter(220, 150, 'I = 0.09A');
+            circuit3 += ElectricalComponents.wire(260, 150, 320, 150);
+            circuit3 += ElectricalComponents.resistor(320, 150, 'R = 100Ω', false);
+            circuit3 += ElectricalComponents.wire(380, 150, 450, 150);
+            circuit3 += ElectricalComponents.wire(450, 150, 450, 270);
+            circuit3 += ElectricalComponents.wire(450, 270, 80, 270);
+            circuit3 += ElectricalComponents.wire(80, 270, 80, 150);
+            circuit3 += ElectricalComponents.wire(320, 150, 320, 80);
+            circuit3 += ElectricalComponents.voltmeter(400, 80, 'U = 9V');
+            circuit3 += ElectricalComponents.wire(480, 80, 480, 150);
+            circuit3 += ElectricalComponents.wire(480, 150, 450, 150);
+            circuit3 += ElectricalComponents.node(320, 150);
+            circuit3 += ElectricalComponents.node(450, 150);
+            document.getElementById('circuit3').innerHTML = circuit3 + '</svg>';
+
+            // Circuit 4: Cellule électrochimique
+            let svg4 = ElectricalComponents.createCircuit('circuit4', 600, 400);
+            let circuit4 = svg4;
+            circuit4 += ElectricalComponents.electrode(150, 180, 'Zn', '−');
+            circuit4 += ElectricalComponents.wire(150, 160, 150, 100);
+            circuit4 += ElectricalComponents.wire(150, 100, 250, 100);
+            circuit4 += ElectricalComponents.resistor(250, 100, 'R', false);
+            circuit4 += ElectricalComponents.wire(310, 100, 450, 100);
+            circuit4 += ElectricalComponents.electrode(450, 180, 'Cu', '+');
+            circuit4 += ElectricalComponents.wire(450, 160, 450, 100);
+            circuit4 += ElectricalComponents.label(150, 280, 'ZnSO₄', '#666');
+            circuit4 += ElectricalComponents.label(450, 280, 'CuSO₄', '#666');
+            circuit4 += '<line x1="200" y1="240" x2="400" y2="240" stroke="#999" stroke-width="2" stroke-dasharray="5,5"/>';
+            circuit4 += ElectricalComponents.label(300, 230, 'Pont salin', '#999');
+            circuit4 += ElectricalComponents.current(380, 100, 0, 'I');
+            circuit4 += ElectricalComponents.label(150, 320, 'Zn → Zn²⁺ + 2e⁻', '#dc2626');
+            circuit4 += ElectricalComponents.label(450, 320, 'Cu²⁺ + 2e⁻ → Cu', '#16a34a');
+            document.getElementById('circuit4').innerHTML = circuit4 + '</svg>';
+
+            // Circuit 5: Circuit RC
+            let svg5 = ElectricalComponents.createCircuit('circuit5', 550, 300);
+            let circuit5 = svg5;
+            circuit5 += ElectricalComponents.battery(100, 120, '5V', true);
+            circuit5 += ElectricalComponents.wire(100, 75, 180, 75);
+            circuit5 += ElectricalComponents.switch(180, 75, true);
+            circuit5 += ElectricalComponents.wire(220, 75, 300, 75);
+            circuit5 += ElectricalComponents.resistor(300, 75, '1kΩ', false);
+            circuit5 += ElectricalComponents.wire(360, 75, 420, 75);
+            circuit5 += ElectricalComponents.capacitor(420, 120, '100µF', true);
+            circuit5 += ElectricalComponents.wire(420, 140, 420, 220);
+            circuit5 += ElectricalComponents.wire(420, 220, 100, 220);
+            circuit5 += ElectricalComponents.wire(100, 220, 100, 165);
+            circuit5 += ElectricalComponents.current(250, 75, 0, 'I(t)');
+            document.getElementById('circuit5').innerHTML = circuit5 + '</svg>';
+        });
+    </script>
+</body>
+</html>
