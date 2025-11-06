@@ -479,147 +479,137 @@ stateDiagram-v2
     </div>
 
     <div class="visual-concept">
-        <h3>🧪 Molécules de la Réaction de Combustion</h3>
+        <h3>🔥 Schéma de la Combustion du Méthane</h3>
         <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 15px;">
             $\ce{CH4(g) + 2O2(g) -> CO2(g) + 2H2O(l)}$ &nbsp;&nbsp; $\Delta H = -890$ kJ
         </p>
 
-        <svg width="700" height="400" viewBox="0 0 700 400">
-            <!-- Background sections -->
-            <rect x="10" y="10" width="320" height="180" fill="#fef2f2" stroke="#dc2626" stroke-width="3" rx="10"/>
-            <text x="170" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#dc2626">RÉACTIFS</text>
+        <svg width="800" height="350" viewBox="0 0 800 350">
+            <defs>
+                <!-- Dégradé pour la flamme -->
+                <radialGradient id="flame-gradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
+                    <stop offset="40%" style="stop-color:#fbbf24;stop-opacity:1" />
+                    <stop offset="70%" style="stop-color:#f97316;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.8" />
+                </radialGradient>
 
-            <rect x="370" y="10" width="320" height="180" fill="#f0fdf4" stroke="#16a34a" stroke-width="3" rx="10"/>
-            <text x="530" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">PRODUITS</text>
+                <!-- Flèche de réaction -->
+                <marker id="reaction-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#1e3a8a"/>
+                </marker>
 
-            <!-- CH4 - Méthane (Réactif) -->
-            <g transform="translate(60,70)">
-                <rect x="-40" y="-25" width="140" height="100" fill="white" stroke="#6366f1" stroke-width="2" rx="8"/>
-                <!-- Carbone central -->
-                <circle cx="30" cy="25" r="22" fill="#6366f1" opacity="0.3" stroke="#6366f1" stroke-width="2"/>
-                <text x="30" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e3a8a">C</text>
+                <!-- Flèche énergétique -->
+                <marker id="energy-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L7,3 z" fill="#dc2626"/>
+                </marker>
+            </defs>
 
-                <!-- 4 Hydrogènes -->
-                <line x1="30" y1="25" x2="30" y2="0" stroke="#666" stroke-width="2"/>
-                <circle cx="30" cy="0" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
-                <text x="30" y="5" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
+            <!-- Section RÉACTIFS (gauche) -->
+            <rect x="20" y="20" width="240" height="180" fill="#fef2f2" stroke="#dc2626" stroke-width="3" rx="12" opacity="0.3"/>
+            <text x="140" y="50" text-anchor="middle" font-size="20" font-weight="bold" fill="#dc2626">RÉACTIFS</text>
 
-                <line x1="30" y1="25" x2="55" y2="40" stroke="#666" stroke-width="2"/>
-                <circle cx="55" cy="40" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
-                <text x="55" y="45" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
-
-                <line x1="30" y1="25" x2="5" y2="40" stroke="#666" stroke-width="2"/>
-                <circle cx="5" cy="40" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
-                <text x="5" y="45" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
-
-                <line x1="30" y1="25" x2="30" y2="50" stroke="#666" stroke-width="2"/>
-                <circle cx="30" cy="50" r="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
-                <text x="30" y="55" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">H</text>
-
-                <text x="30" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#6366f1">CH₄ - Méthane</text>
-                <text x="30" y="93" text-anchor="middle" font-size="10" fill="#666">Combustible</text>
+            <!-- Molécule de CH4 simplifiée -->
+            <g transform="translate(70, 90)">
+                <circle cx="0" cy="0" r="25" fill="#6366f1" opacity="0.8"/>
+                <text x="0" y="7" text-anchor="middle" font-size="22" font-weight="bold" fill="white">C</text>
+                <!-- 4 petits H autour -->
+                <circle cx="-18" cy="-18" r="10" fill="#dbeafe"/>
+                <text x="-18" y="-13" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="18" cy="-18" r="10" fill="#dbeafe"/>
+                <text x="18" y="-13" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="-18" cy="18" r="10" fill="#dbeafe"/>
+                <text x="-18" y="23" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">H</text>
+                <circle cx="18" cy="18" r="10" fill="#dbeafe"/>
+                <text x="18" y="23" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">H</text>
+                <text x="0" y="50" text-anchor="middle" font-size="16" font-weight="bold" fill="#6366f1">CH₄</text>
+                <text x="0" y="67" text-anchor="middle" font-size="11" fill="#666">Méthane</text>
             </g>
 
-            <!-- O2 - Dioxygène (Réactif ×2) -->
-            <g transform="translate(220,70)">
-                <rect x="-35" y="-25" width="110" height="100" fill="white" stroke="#dc2626" stroke-width="2" rx="8"/>
-                <circle cx="10" cy="25" r="20" fill="#dc2626" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
-                <text x="10" y="31" text-anchor="middle" font-size="20" font-weight="bold" fill="#dc2626">O</text>
+            <!-- Signe + -->
+            <text x="155" y="125" text-anchor="middle" font-size="32" font-weight="bold" fill="#1e3a8a">+</text>
 
-                <!-- Double liaison -->
-                <line x1="30" y1="23" x2="50" y2="23" stroke="#dc2626" stroke-width="3"/>
-                <line x1="30" y1="27" x2="50" y2="27" stroke="#dc2626" stroke-width="3"/>
-
-                <circle cx="70" cy="25" r="20" fill="#dc2626" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
-                <text x="70" y="31" text-anchor="middle" font-size="20" font-weight="bold" fill="#dc2626">O</text>
-
-                <text x="40" y="60" text-anchor="middle" font-size="13" font-weight="bold" fill="#dc2626">O₂</text>
-                <text x="40" y="73" text-anchor="middle" font-size="11" fill="#666">Dioxygène</text>
-                <text x="40" y="86" text-anchor="middle" font-size="10" font-weight="bold" fill="#dc2626">(×2 molécules)</text>
+            <!-- Molécules de O2 (×2) -->
+            <g transform="translate(210, 105)">
+                <circle cx="-15" cy="0" r="18" fill="#dc2626" opacity="0.8"/>
+                <text x="-15" y="6" text-anchor="middle" font-size="18" font-weight="bold" fill="white">O</text>
+                <circle cx="15" cy="0" r="18" fill="#dc2626" opacity="0.8"/>
+                <text x="15" y="6" text-anchor="middle" font-size="18" font-weight="bold" fill="white">O</text>
+                <text x="0" y="35" text-anchor="middle" font-size="16" font-weight="bold" fill="#dc2626">2 O₂</text>
+                <text x="0" y="50" text-anchor="middle" font-size="11" fill="#666">Dioxygène</text>
             </g>
 
-            <!-- Flèche de réaction -->
-            <g transform="translate(350,100)">
-                <defs>
-                    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L5,3 z" fill="#ea580c"/>
-                    </marker>
-                </defs>
-                <line x1="0" y1="0" x2="40" y2="0" stroke="#ea580c" stroke-width="3" marker-end="url(#arrowhead)"/>
-                <text x="20" y="-8" text-anchor="middle" font-size="12" font-weight="bold" fill="#ea580c">🔥</text>
-                <text x="20" y="20" text-anchor="middle" font-size="10" fill="#ea580c">Combustion</text>
-                <text x="20" y="32" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">ΔH = -890 kJ</text>
+            <!-- COMBUSTION (centre) -->
+            <g transform="translate(400, 100)">
+                <!-- Grande flèche de réaction -->
+                <line x1="-100" y1="0" x2="-10" y2="0" stroke="#1e3a8a" stroke-width="4" marker-end="url(#reaction-arrow)"/>
+
+                <!-- Flamme stylisée au centre -->
+                <ellipse cx="0" cy="0" rx="40" ry="50" fill="url(#flame-gradient)"/>
+                <path d="M -15,-20 Q -20,-40 0,-50 Q 20,-40 15,-20 Q 10,-35 0,-45 Q -10,-35 -15,-20" fill="#fef08a" opacity="0.9"/>
+                <text x="0" y="5" text-anchor="middle" font-size="28" fill="white">🔥</text>
+
+                <text x="0" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#ea580c">COMBUSTION</text>
+
+                <!-- Flèche vers le bas pour ΔH -->
+                <line x1="0" y1="60" x2="0" y2="95" stroke="#dc2626" stroke-width="3" marker-end="url(#energy-arrow)" stroke-dasharray="5,3"/>
+                <text x="35" y="80" font-size="13" font-weight="bold" fill="#dc2626">ΔH = -890 kJ</text>
+                <text x="35" y="95" font-size="11" fill="#dc2626">(Énergie libérée)</text>
+
+                <!-- Flèche après la flamme -->
+                <line x1="10" y1="0" x2="100" y2="0" stroke="#1e3a8a" stroke-width="4" marker-end="url(#reaction-arrow)"/>
             </g>
 
-            <!-- CO2 - Dioxyde de carbone (Produit) -->
-            <g transform="translate(420,70)">
-                <rect x="-40" y="-25" width="150" height="100" fill="white" stroke="#16a34a" stroke-width="2" rx="8"/>
-                <circle cx="10" cy="25" r="18" fill="#16a34a" opacity="0.3" stroke="#16a34a" stroke-width="2"/>
-                <text x="10" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">O</text>
+            <!-- Section PRODUITS (droite) -->
+            <rect x="540" y="20" width="240" height="180" fill="#f0fdf4" stroke="#16a34a" stroke-width="3" rx="12" opacity="0.3"/>
+            <text x="660" y="50" text-anchor="middle" font-size="20" font-weight="bold" fill="#16a34a">PRODUITS</text>
 
-                <!-- Double liaison -->
-                <line x1="28" y1="23" x2="42" y2="23" stroke="#16a34a" stroke-width="3"/>
-                <line x1="28" y1="27" x2="42" y2="27" stroke="#16a34a" stroke-width="3"/>
-
-                <circle cx="60" cy="25" r="22" fill="#16a34a" opacity="0.3" stroke="#16a34a" stroke-width="2"/>
-                <text x="60" y="32" text-anchor="middle" font-size="22" font-weight="bold" fill="#16a34a">C</text>
-
-                <!-- Double liaison -->
-                <line x1="82" y1="23" x2="96" y2="23" stroke="#16a34a" stroke-width="3"/>
-                <line x1="82" y1="27" x2="96" y2="27" stroke="#16a34a" stroke-width="3"/>
-
-                <circle cx="114" cy="25" r="18" fill="#16a34a" opacity="0.3" stroke="#16a34a" stroke-width="2"/>
-                <text x="114" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#16a34a">O</text>
-
-                <text x="62" y="60" text-anchor="middle" font-size="13" font-weight="bold" fill="#16a34a">CO₂</text>
-                <text x="62" y="73" text-anchor="middle" font-size="10" fill="#666">Dioxyde de carbone</text>
-                <text x="62" y="85" text-anchor="middle" font-size="9" fill="#666">Gaz à effet de serre</text>
+            <!-- Molécule de CO2 -->
+            <g transform="translate(580, 105)">
+                <circle cx="-25" cy="0" r="15" fill="#16a34a" opacity="0.8"/>
+                <text x="-25" y="5" text-anchor="middle" font-size="15" font-weight="bold" fill="white">O</text>
+                <circle cx="0" cy="0" r="20" fill="#1e3a8a" opacity="0.8"/>
+                <text x="0" y="7" text-anchor="middle" font-size="18" font-weight="bold" fill="white">C</text>
+                <circle cx="25" cy="0" r="15" fill="#16a34a" opacity="0.8"/>
+                <text x="25" y="5" text-anchor="middle" font-size="15" font-weight="bold" fill="white">O</text>
+                <text x="0" y="35" text-anchor="middle" font-size="16" font-weight="bold" fill="#16a34a">CO₂</text>
+                <text x="0" y="50" text-anchor="middle" font-size="10" fill="#666">Dioxyde de carbone</text>
             </g>
 
-            <!-- H2O - Eau (Produit ×2) -->
-            <g transform="translate(600,70)">
-                <rect x="-35" y="-25" width="110" height="100" fill="white" stroke="#0ea5e9" stroke-width="2" rx="8"/>
-                <circle cx="20" cy="20" r="20" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-                <text x="20" y="27" text-anchor="middle" font-size="20" font-weight="bold" fill="#0284c7">O</text>
+            <!-- Signe + -->
+            <text x="680" y="125" text-anchor="middle" font-size="32" font-weight="bold" fill="#1e3a8a">+</text>
 
-                <line x1="20" y1="20" x2="0" y2="40" stroke="#0ea5e9" stroke-width="3"/>
-                <line x1="20" y1="20" x2="40" y2="40" stroke="#0ea5e9" stroke-width="3"/>
-
-                <circle cx="0" cy="40" r="14" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
-                <text x="0" y="45" text-anchor="middle" font-size="14" font-weight="bold" fill="#0284c7">H</text>
-
-                <circle cx="40" cy="40" r="14" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
-                <text x="40" y="45" text-anchor="middle" font-size="14" font-weight="bold" fill="#0284c7">H</text>
-
-                <!-- Angle -->
-                <path d="M 4 33 Q 20 25 36 33" fill="none" stroke="#0284c7" stroke-width="1" stroke-dasharray="2,2"/>
-                <text x="20" y="27" text-anchor="middle" font-size="7" fill="#0284c7">104.5°</text>
-
-                <text x="20" y="68" text-anchor="middle" font-size="13" font-weight="bold" fill="#0ea5e9">H₂O - Eau</text>
-                <text x="20" y="81" text-anchor="middle" font-size="10" font-weight="bold" fill="#0ea5e9">(×2 molécules)</text>
-                <text x="20" y="92" text-anchor="middle" font-size="9" fill="#666">État liquide</text>
+            <!-- Molécules de H2O (×2) -->
+            <g transform="translate(730, 105)">
+                <circle cx="0" cy="-8" r="18" fill="#0ea5e9" opacity="0.8"/>
+                <text x="0" y="-2" text-anchor="middle" font-size="16" font-weight="bold" fill="white">O</text>
+                <circle cx="-15" cy="8" r="12" fill="#bae6fd"/>
+                <text x="-15" y="12" text-anchor="middle" font-size="12" font-weight="bold" fill="#0284c7">H</text>
+                <circle cx="15" cy="8" r="12" fill="#bae6fd"/>
+                <text x="15" y="12" text-anchor="middle" font-size="12" font-weight="bold" fill="#0284c7">H</text>
+                <text x="0" y="38" text-anchor="middle" font-size="16" font-weight="bold" fill="#0ea5e9">2 H₂O</text>
+                <text x="0" y="53" text-anchor="middle" font-size="10" fill="#666">Eau</text>
             </g>
 
-            <!-- Bilan énergétique en bas -->
-            <rect x="50" y="220" width="600" height="160" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" rx="10"/>
-            <text x="350" y="250" text-anchor="middle" font-size="16" font-weight="bold" fill="#92400e">BILAN ÉNERGÉTIQUE</text>
+            <!-- Boîte d'information en bas -->
+            <rect x="20" y="230" width="760" height="100" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" rx="10"/>
+            <text x="400" y="255" text-anchor="middle" font-size="18" font-weight="bold" fill="#92400e">BILAN DE LA RÉACTION</text>
 
-            <!-- Équation complète -->
-            <text x="350" y="280" text-anchor="middle" font-size="14" fill="#1e3a8a">$\ce{CH4(g) + 2O2(g) -> CO2(g) + 2H2O(l)}$</text>
-
-            <!-- Détails énergétiques -->
-            <g transform="translate(80,295)">
-                <text x="0" y="0" font-size="13" font-weight="bold" fill="#dc2626">Énergie libérée :</text>
-                <text x="0" y="18" font-size="12" fill="#333">• ΔH = -890 kJ/mol</text>
-                <text x="0" y="33" font-size="12" fill="#333">• Réaction exothermique</text>
-                <text x="0" y="48" font-size="12" fill="#333">• Chaleur + Lumière (flamme)</text>
+            <g transform="translate(50, 275)">
+                <text x="0" y="0" font-size="14" font-weight="bold" fill="#1e3a8a">📊 Équation :</text>
+                <text x="0" y="20" font-size="13" fill="#333">CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(l)</text>
             </g>
 
-            <g transform="translate(350,295)">
-                <text x="0" y="0" font-size="13" font-weight="bold" fill="#16a34a">Applications :</text>
-                <text x="0" y="18" font-size="12" fill="#333">• Chauffage domestique</text>
-                <text x="0" y="33" font-size="12" fill="#333">• Production d'électricité</text>
-                <text x="0" y="48" font-size="12" fill="#333">• Cuisine (gaz naturel)</text>
+            <g transform="translate(300, 275)">
+                <text x="0" y="0" font-size="14" font-weight="bold" fill="#dc2626">⚡ Énergie :</text>
+                <text x="0" y="20" font-size="13" fill="#333">Réaction exothermique</text>
+                <text x="0" y="37" font-size="13" fill="#333">890 kJ libérés par mole</text>
+            </g>
+
+            <g transform="translate(540, 275)">
+                <text x="0" y="0" font-size="14" font-weight="bold" fill="#16a34a">🔧 Usages :</text>
+                <text x="0" y="20" font-size="13" fill="#333">Chauffage, cuisine</text>
+                <text x="0" y="37" font-size="13" fill="#333">Production d'électricité</text>
             </g>
         </svg>
     </div>
